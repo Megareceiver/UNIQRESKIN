@@ -1,0 +1,18 @@
+{foreach $trans AS $kk=>$tran}
+
+	<tr>
+		<td class="center">{$k+1}.{$kk +1}</td>
+		<td>{trans_type type=$tran->type}</td>
+		<td>
+
+			{tran_detail_view type=$tran->type tran_no=$tran->trans_no title=$tran->trans_no}
+		</td>
+		<td >{$tran->reference}</td>
+		<td class="center" >{date_format time=$tran->tran_date}</td>
+		<td class="textright">{number_format num=$tran->tran_amount }</td>
+		<td class="textright">{number_format num=$gl }</td>
+		<td class="textright">{number_format num=$tran->tran_amount }</td>
+		<td class="textright">{number_format num=$aged }</td>
+		<td class="textright">{number_format num=0 }</td>
+	</tr>
+{/foreach}

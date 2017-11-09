@@ -1,0 +1,65 @@
+
+{function name='showMonthValue' val=1}
+{*
+	{if isset($detail['month'|cat:($val+1)])}
+
+		{number_format num=$detail['month'|cat:($val+1)]-$detail['month'|cat:($val)]}
+
+
+	{/if}*}
+	{number_format num=$detail['month'|cat:($val)]}
+{/function}
+<div class="container wrapper">
+
+	<table class="" cellpadding="3" cellspacing="0" >
+		<tr>
+			<td width="78%">{$balance_word}</td>
+			<td width="5%" class="textright" >{$curr_symbol}:</td>
+			<td width="15%" class="textright" >{number_format num=$balance}</td>
+		</tr>
+	</table>
+
+	<table class="statement_footer borderall" cellpadding="3" cellspacing="0">
+		<tr class="color_header" >
+			<td>CURRENT</td>
+			<td>1 MONTH</td>
+			<td>2 MONTHs</td>
+			<td>3 MONTHs</td>
+			<td>4 MONTHs</td>
+			<td>5 MONTHs</td>
+		</tr>
+
+		<tr>
+
+		{$showdetail=0}
+		{foreach $details AS $k=>$dettal}
+			{if $showdetail < 6}
+			{$showdetail= $showdetail + 1}
+		    <td>{number_format num=$dettal amount=1}</td>
+
+		    {/if}
+		{/foreach}
+
+		</tr>
+		<tr><td colspan="6"></td></tr>
+		<tr class="color_header" >
+			<td>6 MONTHs</td>
+			<td>7 MONTH</td>
+			<td>8 MONTHs</td>
+			<td>9 MONTHs</td>
+			<td>10 MONTHs</td>
+			<td>11 & OVER</td>
+		</tr>
+		<tr>
+
+		{foreach $details AS $k=>$dettal}
+			{if $showdetail >= 12 }
+		    <td>{number_format num=$dettal amount=1}</td>
+	    	{/if}
+			{$showdetail= $showdetail + 1}
+	    {/foreach}
+		</tr>
+	</table>
+
+	<p>We shall be grateful if you will let us have payment as soon as possible. Any discrepancy in this statement must be reported to us in writing within 10 days</p>
+</div>

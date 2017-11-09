@@ -1,0 +1,40 @@
+/*
+.modal {
+	.modal-dialog {
+		top: 34px;
+	}
+	&.modal-header .modal-dialog {
+		top : 51px;
+	}
+}
+
+
+.modal {
+	.modal-header .modal-title {
+		font-size: 15px;
+	}
+	.modal-footer {
+		padding: 10px 0 5px 0;	
+	}
+	.modal-header {
+		padding: 0 0 15 0;	
+	}
+
+	
+}
+*/
+
+.modal-dialog {
+	margin: auto;
+	[class^="input-group"] {
+		margin-top: 5px;
+		&:FIRST-CHILD {
+			margin-top: 0;
+		}
+	}
+
+	.modal-title {
+		font-size: 17px;
+		color: $theme_color;
+	}
+}

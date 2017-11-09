@@ -1,0 +1,47 @@
+<table width=100% cellpadding=2 cellspacing=0 >
+	<thead><tr>
+		<th class="textleft" >Trans Type</th>
+		<th width="10%" class="textcenter" >No</th>
+
+		<th width="10%" class="left" >GL trans total</th>
+		<th width="10%" class="left" >Items Total</th>
+		<th width="10%" class="textcenter">Tran Date</th>
+		<th width="10%" class="textcenter">GL date min</th>
+		<th width="10%" class="textcenter">GL date max</th>
+		<th width="5%">Report</th>
+	</tr></thead>
+
+	{if $items|@count }
+	<tbody>
+
+	{foreach $items AS $ite}
+		<tr>
+			<td>{trans_type type=$ite->type}</td>
+			<td class="center" >{anchor uri="sales/view/view_invoice.php?trans_type=10&trans_no="|cat:$ite->trans_no title=$ite->trans_no}</td>
+
+			<td>{$ite->gl_count}</td>
+			<td>{$ite->item_count}</td>
+			<td class="center" >{date_format time=$ite->tran_date}</td>
+			<td class="center" >{date_format time=$ite->gl_date_min}</td>
+			<td class="center" >{date_format time=$ite->gl_date_max}</td>
+			<td>
+				{if $ite->item_count > 0}
+				{anchor uri="maintenance/repost/sale_invoice/"|cat:$ite->trans_no title='Repost' }
+				{/if}
+			</td>
+		</tr>
+	{/foreach}
+
+	{else}
+		<tr><td colspan="{$items|@count}" class="center" >No Items</td> </tr>
+	{/if}
+	</tbody>
+
+	<tfoot><tr>
+		{assign var=page_item value=($page-1)*$smarty.const.page_padding_limit}
+
+		<td>Records {$page_item + 1}-{$items|@count + $page_item} of {$total}</td>
+		<td colspan="7" style="text-align: right;">{table_page_padding}</td>
+	</tr></tfoot>
+
+	</table>

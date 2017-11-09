@@ -1,0 +1,16 @@
+<table cellpadding="3" cellspacing="0"  >
+	<tr>
+	{assign var=colum value=1}
+	<td class="boleft"  style="width: {$content_w}mm;">
+		As advance / full / part / payment towards:
+	</td>
+
+
+
+	<td class="textright boleft boright  {$line_class}" style="width: 27.25mm;"  >
+
+
+
+	</td>
+	</tr>
+</table>

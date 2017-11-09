@@ -1,0 +1,29 @@
+<div class="page-head">
+	<div class="container">
+
+		<div class="page-title">
+			<h1>
+				{$title} {if $page_description}<small>{$page_description}</small>{/if}
+			</h1>
+			{if isset($button_add_new)}
+				<div class="add_new_inquiry" >{inquiry_addnew_button}</div>
+
+			{/if}
+		</div>
+
+		{*
+		<!-- BEGIN PAGE TOOLBAR -->
+		<div class="page-toolbar">
+			<!-- BEGIN THEME PANEL -->
+			<div class="btn-group btn-theme-panel">
+				<a href="javascript:;" class="btn dropdown-toggle"
+					data-toggle="dropdown"> <i class="icon-settings"></i>
+				</a>
+
+			</div>
+			<!-- END THEME PANEL -->
+		</div>
+		<!-- END PAGE TOOLBAR -->
+		*}
+	</div>
+</div>

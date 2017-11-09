@@ -1,0 +1,175 @@
+
+@page {
+	margin: 10px 50px;
+}
+body, table, table td {
+	font-size: 14px;
+}
+
+
+h1 {
+	font-size: 19px;
+}
+#maincontent {
+	min-height: 500px;
+	height: 500px;
+}
+.content1 {
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: solid;
+    min-height: 150px;
+}
+
+.content2 {
+
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: solid;
+    min-height: 150px;
+    padding-top: 30px;
+    padding-bottom:0px;
+}
+
+
+
+.content3 {
+
+    margin-left: auto;
+    margin-right: auto;
+
+    min-height: 130px;
+}
+
+.content4 {
+
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 130px;
+    padding-top: 10px;
+
+}
+
+
+
+table.tablestyle2 {
+	border-collapse: collapse;
+	border: 1px solid #cccccc;
+}
+table.tablestyle2 td {
+	border-collapse: collapse;
+	border: 1px solid #cccccc;
+}
+table.tablestyle_inner {
+	border-collapse: collapse;
+/*	border: 1px solid #f9f9f9; */
+	border: none !important;
+}
+table.tablestyle_inner td {
+	border-collapse: collapse;
+/*	border: 1px solid #f9f9f9; */
+	border: none !important;
+}
+.tablestyle_noborder {
+	padding: 3px;
+}
+.tablestyle_noborder input.searchbox {
+	width: 140px;
+}
+
+.tableheader {
+	font-weight: bold;
+	background-color: #eaeaea;
+	color: black;
+	text-align: center;
+	padding: 25px 4px;
+}
+
+.tableheader2 {
+	font-weight: bold;
+	background-color: #dee7ec;
+	color: black;
+	text-align: left;
+	
+}
+
+table tbody tr .oddrow {background: #eaeaea;}
+table td {
+	padding: 5px;
+}
+.evenrow td{
+    text-align: center;
+    white-space: nowrap;
+	height: 30px;
+
+}
+
+.totalrow tr {
+
+}
+
+.totalrow td{
+    text-align: center;
+    white-space: nowrap;
+    padding-top: 20px;
+}
+
+.amount{
+/*    border-bottom: 2px solid #000; */
+    padding-bottom: 11px;
+
+}
+
+#received_by {
+    /*width: 450px;*/
+    width: 47%;
+    height: 150px;
+   border: 1px solid #4f81bd;
+    margin-left: 10px;
+    float: left;
+}
+
+#received_by p{
+    margin: 20px;
+}
+
+#authorized_signator {
+    /*width: 450px;*/
+    width: 47%;
+    height: 150px;
+    border: 1px solid #4f81bd;
+    margin-right: 10px;
+    float: right;
+}
+#authorized_signator p,
+#received_by p {
+	margin: 5px;
+}
+#authorized_signator .bottom {
+	margin: 5px;
+	position: relative;
+
+
+	text-align: right;
+}
+
+
+
+td.textleft {
+	text-align: left;
+	float: left;
+}
+td.textright {
+	text-align: right;
+}
+
+.line {
+	border-bottom: 2px dashed #000;
+
+	font-size: 25px;
+	padding-top: 77px;
+}
+
+.textbold {
+	font-weight: bold;
+}

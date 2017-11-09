@@ -1,0 +1,65 @@
+
+
+	<table cellpadding="3" cellspacing="0" width="100%" class="bobottom  boright" >
+		{if isset($order.comment) && $order.comment!='' }
+		<thead>
+			{$height = $height-5}
+			<tr>
+				<td class="boright boleft" style="width: 15%" ></td>
+				<td style="width: 70%;">{$order.comment}</td>
+				<td class="boleft" style="width: {$amount_w}mm;"></td>
+			</tr>
+		</thead>
+		{/if}
+		<tbody>
+
+			<tr>
+				<td class="boright boleft" style="height: {$height}mm; width: {$content_w}mm;" ></td>
+				<td class="boleft" style="width: {$amount_w}mm;"></td>
+			</tr>
+			<tr>
+				<td style=" width: {$content_w}mm;" class="textright boleft" >Total Allocated</td>
+				<td class="textright boleft" style="width: {$amount_w}mm;" >{number_format num=$order.total_allocated amount=1}</td>
+			</tr>
+			<tr>
+				<td style="width: {$content_w}mm;" class="textright boleft" >Left to Allocate</td>
+				<td class="textright boleft" style="width: {$amount_w}mm;" >{number_format num=$order.left_alloc amount=1}</td>
+			</tr>
+			<tr>
+				<td style=" width: {$content_w}mm;" class="textright boleft" >Total Discount</td>
+				<td  class="textright boleft" style="width: {$amount_w}mm;" >{number_format num=$order.discount amount=1}</td>
+			</tr>
+			<tr>
+				<td style=" width: 130mm;" class="boleft" >{money_words num=$total_receipt curr_code=$order.curr_code}</td>
+				<td style=" width: {$content_w-130}mm;" class="textright" ><b>TOTAL RECEIPT</b></td>
+				<td  class="textright boleft" style="width: {$amount_w}mm;" ><b>{number_format num=$order.total_receipt amount=1}</b></td>
+			</tr>
+
+		</tbody>
+	</table>
+	<p></p>
+	<table cellpadding="3" cellspacing="0" width="100%" class="" >
+		<tbody>
+
+			<tr>
+				<td style=" width: 25%;" >By Cash / Cheque* / Draft No</td>
+				<td style=" width: 35%;"><p class="sign_spache" ></p></td>
+				<td style=" width: 15%;" class="textright" >Dated</td>
+				<td style=" width: 25%;"><p class="sign_spache" ></p></td>
+			</tr>
+
+			<tr>
+				<td style=" width: 25%;"  >Drawn on Bank</td>
+				<td style=" width: 35%;"><p class="sign_spache" ></p></td>
+				<td style=" width: 15%;" class="textright" >Branch</td>
+				<td style=" width: 25%;"><p class="sign_spache" ></p></td>
+
+			</tr>
+
+		</tbody>
+	</table>
+	<p class="textcenter">
+		<i>All amounts stated in - {$order.curr_code}
+			<br>Bank: N/A, Bank Account: N/A
+			<br>* Subject to Realisation of the Cheque</i>
+	</p>

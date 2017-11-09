@@ -1,0 +1,76 @@
+.form-control.multicheckbox {
+
+    height: 150px !important;
+    overflow-y: scroll;
+}
+.form-control.multicheckbox label {
+	font-weight: normal;
+	display: block;
+	cursor: pointer;
+}
+.form-control.multicheckbox label:HOVER {
+	color: #3eb34e;
+}
+.form-control.multicheckbox input[type=checkbox] {
+	position: relative;
+	top: 1px;
+	margin-right: 5px;
+}
+
+.col-float {
+	[class^="col-"] {
+		float: left;
+		display: inline-block;
+		width: auto;
+	}
+
+
+	label {
+		margin-right: 5px;
+	}
+
+}
+
+.input-money {
+	min-width: 100px;
+}
+.inputdate {
+	max-width: 120px;
+	.date-picker {
+		text-align: center;
+	}
+}
+
+
+
+.row-filter [class^="col-"] {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+
+	> .btn {
+		margin : 2px 10px;
+	}
+}
+
+.row-filter .row[class^="input-group"] {
+	margin: auto 5px;
+}
+
+
+.input_stocks {
+	.row [class^="col"] {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	input[type=text]{
+		/* width: 30%; */
+	}
+	input[type=text], span.select {
+		display: inline-block;
+	}
+
+	span.select {
+		width: 100%;
+	}
+}

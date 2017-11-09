@@ -1,0 +1,23 @@
+<div class="container wrapper">
+	<table class="common" cellpadding="3" cellspacing="0"  >
+
+		<thead ><tr class="color_header" >
+			{foreach $items AS $title=>$ite}
+			<td width="{$ite.w}%" class="textcenter">{$title}</td>
+			{/foreach}
+			{*
+			<td width="20%" class="textcenter bofirst">Customer's Reference</td>
+			<td width="20%" class="textcenter boleft" >Sales Person</td>
+			<td width="20%" class="textcenter boleft" >Your GST no.</td>
+			<td class="textcenter boleft" >Delivery Note No.</td>
+			<td class="textcenter boleft bolast" >Due Date</td>
+			*}
+		</tr></thead>
+
+		<tbody ><tr>
+			{foreach $items AS $title=>$ite}
+			<td class="textcenter" >{$ite.val}</td>
+			{/foreach}
+		</tr></tbody>
+	</table>
+</div>

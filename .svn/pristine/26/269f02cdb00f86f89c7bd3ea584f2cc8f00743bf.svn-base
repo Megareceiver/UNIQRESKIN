@@ -1,0 +1,20 @@
+<table width=100% cellpadding=2 cellspacing=0 >
+	<thead><tr>
+		<th>Trans Type</th>
+		<th>#</th>
+		<th>Date</th>
+		<th>Due Date</th>
+		<th>Charges</th>
+		<th>Credits</th>
+		<th>Allocated</th>
+		<th>Balance</th>
+		<th>Outstanding</th>
+	</tr></thead>
+	<tbody>
+	{if isset($suppliers) && $suppliers|@count > 1 }
+		{foreach $suppliers AS $supp}
+		<tr class="table_header1" ><td colspan="8" >Class - {$classNum} - {$class->class_name}</td></tr>
+		{/foreach}
+	{/if}
+	</tbody>
+</table>

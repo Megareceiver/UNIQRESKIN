@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<GSTAuditFile>
+    <Companies>
+        <Company>
+            <BusinessName>{$company.coy_name}</BusinessName>
+            <BusinessRN>{$company.coy_no}</BusinessRN>
+            <GSTNumber>{$company.gst_no}</GSTNumber>
+            <PeriodStart>{$date_from}</PeriodStart>
+            <PeriodEnd>{$date_to}</PeriodEnd>
+            <GAFCreationDate>{$created}</GAFCreationDate>
+            <ProductVersion>AT v5.1</ProductVersion>
+            <GAFVersion>GAF_V1.0</GAFVersion>
+        </Company>
+    </Companies>
+    <Purchases>
+		{*
+        <Purchase>
+            <SupplierName>THAI FISH CRACKERS</SupplierName>
+            <SupplierBRN />
+            <InvoiceDate>2015-12-17</InvoiceDate>
+            <InvoiceNumber>SH7997561</InvoiceNumber>
+            <ImportDeclarationNo>B11124699</ImportDeclarationNo>
+            <LineNumber>1</LineNumber>
+            <ProductDescription>Purchase of fish crackers from Thai</ProductDescription>
+            <PurchaseValueMYR>1700</PurchaseValueMYR>
+            <GSTValueMYR>102</GSTValueMYR>
+            <TaxCode>IM</TaxCode>
+            <FCYCode>USD</FCYCode>
+            <PurchaseFCY>485.71</PurchaseFCY>
+            <GSTFCY>29.14</GSTFCY>
+        </Purchase>
+        <Purchase>
+
+            <SupplierName>RUSSIAN TROUT</SupplierName>
+            <SupplierBRN />
+            <InvoiceDate>2015-12-18</InvoiceDate>
+            <InvoiceNumber>JS6657139</InvoiceNumber>
+            <ImportDeclarationNo>J110013483</ImportDeclarationNo>
+            <LineNumber>1</LineNumber>
+            <ProductDescription>Purchase of trout from Russia</ProductDescription>
+            <PurchaseValueMYR>1900</PurchaseValueMYR>
+            <GSTValueMYR>0</GSTValueMYR>
+            <TaxCode>ZP</TaxCode>
+            <FCYCode>USD</FCYCode>
+            <PurchaseFCY>542.85</PurchaseFCY>
+            <GSTFCY>0</GSTFCY>
+        </Purchase>
+        <Purchase>
+            <SupplierName>Klinik Nik</SupplierName>
+            <SupplierBRN>H654211-W</SupplierBRN>
+            <InvoiceDate>2015-12-26</InvoiceDate>
+            <InvoiceNumber>SJ/12/5673</InvoiceNumber>
+            <ImportDeclarationNo />
+            <LineNumber>1</LineNumber>
+            <ProductDescription>Medical claims -Mohd. Ali</ProductDescription>
+            <PurchaseValueMYR>60</PurchaseValueMYR>
+            <GSTValueMYR>3.6</GSTValueMYR>
+            <TaxCode>BL</TaxCode>
+            <FCYCode>XXX</FCYCode>
+            <PurchaseFCY>0</PurchaseFCY>
+            <GSTFCY>0</GSTFCY>
+        </Purchase>
+        *}
+        {if isset($purchase_xml) }{$purchase_xml}{/if}
+    </Purchases>
+    <Supplies>
+    	{*
+
+        <Supply>
+            <CustomerName>PQR SDN BHD</CustomerName>
+            <CustomerBRN>867890-B</CustomerBRN>
+            <InvoiceDate>2015-12-21</InvoiceDate>
+
+            <InvoiceNumber>2353</InvoiceNumber>
+            <LineNumber>2</LineNumber>
+            <ProductDescription>Rental of Office</ProductDescription>
+            <SupplyValueMYR>2000</SupplyValueMYR>
+            <GSTValueMYR>120</GSTValueMYR>
+            <TaxCode>SR</TaxCode>
+            <Country />
+            <FCYCode>XXX</FCYCode>
+            <SupplyFCY>0</SupplyFCY>
+            <GSTFCY>0</GSTFCY>
+        </Supply>
+        <Supply>
+            <CustomerName>QATAR SEAFOOD</CustomerName>
+            <CustomerBRN />
+            <InvoiceDate>2015-12-20</InvoiceDate>
+            <InvoiceNumber>2352</InvoiceNumber>
+            <LineNumber>1</LineNumber>
+            <ProductDescription>fish cracker</ProductDescription>
+            <SupplyValueMYR>2000</SupplyValueMYR>
+            <GSTValueMYR>0</GSTValueMYR>
+            <TaxCode>ZR</TaxCode>
+            <Country>QATAR</Country>
+            <FCYCode>USD</FCYCode>
+            <SupplyFCY>571.43</SupplyFCY>
+            <GSTFCY>0</GSTFCY>
+        </Supply>
+        <Supply>
+            <CustomerName>QATAR SEAFOOD</CustomerName>
+            <CustomerBRN />
+            <InvoiceDate>2015-12-20</InvoiceDate>
+            <InvoiceNumber>2352</InvoiceNumber>
+            <LineNumber>2</LineNumber>
+            <ProductDescription>Trout</ProductDescription>
+            <SupplyValueMYR>2500</SupplyValueMYR>
+            <GSTValueMYR>0</GSTValueMYR>
+            <TaxCode>ZR</TaxCode>
+            <Country>QATAR</Country>
+            <FCYCode>USD</FCYCode>
+            <SupplyFCY>714.28</SupplyFCY>
+            <GSTFCY>0</GSTFCY>
+        </Supply>
+        <Supply>
+            <CustomerName>QATAR SEAFOOD</CustomerName>
+            <CustomerBRN />
+            <InvoiceDate>2015-12-20</InvoiceDate>
+            <InvoiceNumber>2352</InvoiceNumber>
+            <LineNumber>3</LineNumber>
+            <ProductDescription>Sharkfins</ProductDescription>
+            <SupplyValueMYR>500</SupplyValueMYR>
+            <GSTValueMYR>0</GSTValueMYR>
+
+            <TaxCode>ZR</TaxCode>
+            <Country>QATAR</Country>
+            <FCYCode>USD</FCYCode>
+            <SupplyFCY>142.86</SupplyFCY>
+            <GSTFCY>0</GSTFCY>
+        </Supply>
+        *}
+        {if isset($supplies_xml) }{$supplies_xml}{/if}
+    </Supplies>
+    <Ledger>
+    {*
+        <LedgerEntry>
+            <TransactionDate>2015-12-18</TransactionDate>
+            <AccountID>10000</AccountID>
+            <AccountName>BANK</AccountName>
+            <TransactionDescription>Payment for fish crackers</TransactionDescription>
+            <Name>THAI FISH CRACKERS</Name>
+            <TransactionID />
+            <SourceDocumentID>TTref784316</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>0</Debit>
+            <Credit>1802</Credit>
+            <Balance>8198</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-19</TransactionDate>
+            <AccountID>10000</AccountID>
+            <AccountName>BANK</AccountName>
+            <TransactionDescription>Payment for trout</TransactionDescription>
+            <Name>RUSSIAN TROUT</Name>
+            <TransactionID>9454</TransactionID>
+            <SourceDocumentID>TTRef 643271</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>0</Debit>
+            <Credit>1900</Credit>
+            <Balance>6298</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-26</TransactionDate>
+            <AccountID>10000</AccountID>
+            <AccountName>BANK</AccountName>
+            <TransactionDescription>Staff medical claims</TransactionDescription>
+            <Name>KLINIK NIK</Name>
+            <TransactionID>9455</TransactionID>
+            <SourceDocumentID>CHQ54680</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>0</Debit>
+            <Credit>63.6</Credit>
+            <Balance>6234.4</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-28</TransactionDate>
+            <AccountID>10000</AccountID>
+
+            <AccountName>BANK</AccountName>
+            <TransactionDescription>Payment for shark fins</TransactionDescription>
+            <Name>MEI MEI SDN BHD</Name>
+            <TransactionID>9457</TransactionID>
+            <SourceDocumentID>CHQ54678</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>0</Debit>
+            <Credit>318</Credit>
+            <Balance>5916.4</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-30</TransactionDate>
+            <AccountID>10000</AccountID>
+            <AccountName>BANK</AccountName>
+            <TransactionDescription>Receipt for sale of seafood</TransactionDescription>
+            <Name>QATAR SEAFOOD</Name>
+            <TransactionID>9456</TransactionID>
+            <SourceDocumentID>TTRef 134679</SourceDocumentID>
+            <SourceType>AR</SourceType>
+            <Debit>5000</Debit>
+            <Credit>0.00</Credit>
+            <Balance>10916.4</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-30</TransactionDate>
+            <AccountID>10000</AccountID>
+            <AccountName>BANK</AccountName>
+            <TransactionDescription>Receipt for residential House &amp; Office rental</TransactionDescription>
+            <Name>PQR SDN BHD</Name>
+            <TransactionID>9310</TransactionID>
+            <SourceDocumentID>CHQ123456</SourceDocumentID>
+            <SourceType>AR</SourceType>
+            <Debit>3120</Debit>
+            <Credit>0</Credit>
+            <Balance>14036.40</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-01</TransactionDate>
+            <AccountID>11200</AccountID>
+            <AccountName>TRADE DEBTORS</AccountName>
+            <TransactionDescription>OPENING BALANCE</TransactionDescription>
+            <Name />
+            <TransactionID>9311</TransactionID>
+            <SourceDocumentID />
+            <SourceType />
+            <Debit>0</Debit>
+            <Credit>0.00</Credit>
+            <Balance>0.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+
+            <TransactionDate>2015-12-20</TransactionDate>
+            <AccountID>11200</AccountID>
+            <AccountName>TRADE DEBTORS</AccountName>
+            <TransactionDescription>Sale of Seafood</TransactionDescription>
+            <Name>QATAR SEAFOOD</Name>
+            <TransactionID />
+            <SourceDocumentID>INV/ABCPL/2352</SourceDocumentID>
+            <SourceType>AR</SourceType>
+            <Debit>5000</Debit>
+            <Credit>0</Credit>
+            <Balance>5000.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-30</TransactionDate>
+            <AccountID>11200</AccountID>
+            <AccountName>TRADE DEBTORS</AccountName>
+            <TransactionDescription>Receipt for sale of seafood</TransactionDescription>
+            <Name>QATAR SEAFOOD</Name>
+            <TransactionID>2352</TransactionID>
+            <SourceDocumentID>TTRef 134679</SourceDocumentID>
+            <SourceType>AR</SourceType>
+            <Debit>0.00</Debit>
+            <Credit>5000</Credit>
+            <Balance>0.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-01</TransactionDate>
+            <AccountID>11201</AccountID>
+            <AccountName>OTHER DEBTORS</AccountName>
+            <TransactionDescription>OPENING BALANCE</TransactionDescription>
+            <Name />
+            <TransactionID>9310</TransactionID>
+            <SourceDocumentID />
+            <SourceType />
+            <Debit>0.00</Debit>
+            <Credit>0.00</Credit>
+            <Balance>0.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-21</TransactionDate>
+            <AccountID>11201</AccountID>
+            <AccountName>OTHER DEBTORS</AccountName>
+            <TransactionDescription>Rental of residential House &amp; Office</TransactionDescription>
+            <Name>PQR SDN BHD</Name>
+            <TransactionID />
+            <SourceDocumentID>INV/ABCPL/2353</SourceDocumentID>
+            <SourceType>AR</SourceType>
+            <Debit>3120</Debit>
+            <Credit>0.00</Credit>
+            <Balance>3120</Balance>
+
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-30</TransactionDate>
+            <AccountID>11201</AccountID>
+            <AccountName>OTHER DEBTORS</AccountName>
+            <TransactionDescription>Receipt for residential House &amp; Office rental</TransactionDescription>
+            <Name>PQR SDN BHD</Name>
+            <TransactionID>2353</TransactionID>
+            <SourceDocumentID>CHQ123456</SourceDocumentID>
+            <SourceType>AR</SourceType>
+            <Debit>0.00</Debit>
+            <Credit>3120</Credit>
+            <Balance>0.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-01</TransactionDate>
+            <AccountID>21104</AccountID>
+            <AccountName>GST -OUTPUT TAX</AccountName>
+            <TransactionDescription>OPENING BALANCE</TransactionDescription>
+            <Name />
+            <TransactionID>9311</TransactionID>
+            <SourceDocumentID />
+            <SourceType />
+            <Debit>0.00</Debit>
+            <Credit>0.00</Credit>
+            <Balance>0.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-21</TransactionDate>
+            <AccountID>21104</AccountID>
+            <AccountName>GST -OUTPUT TAX</AccountName>
+            <TransactionDescription>Rental of Office</TransactionDescription>
+            <Name>PQR SDN BHD</Name>
+            <TransactionID />
+            <SourceDocumentID>INV/ABCPL/2353</SourceDocumentID>
+            <SourceType>AR</SourceType>
+            <Debit>0.00</Debit>
+            <Credit>120</Credit>
+            <Balance>-120</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-01</TransactionDate>
+            <AccountID>21190</AccountID>
+            <AccountName>GST -INPUT TAX</AccountName>
+            <TransactionDescription>OPENING BALANCE</TransactionDescription>
+            <Name />
+            <TransactionID>2353</TransactionID>
+            <SourceDocumentID />
+            <SourceType />
+            <Debit>0.00</Debit>
+
+            <Credit>0.00</Credit>
+            <Balance>0.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-17</TransactionDate>
+            <AccountID>21190</AccountID>
+            <AccountName>GST -INPUT TAX</AccountName>
+            <TransactionDescription>Purchase of fish crackers from Thai</TransactionDescription>
+            <Name>THAI FISH CRACKERS</Name>
+            <TransactionID />
+            <SourceDocumentID>SH7997561</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>102</Debit>
+            <Credit>0.00</Credit>
+            <Balance>102</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-19</TransactionDate>
+            <AccountID>21190</AccountID>
+            <AccountName>GST -INPUT TAX</AccountName>
+            <TransactionDescription>Purchase of shark fins</TransactionDescription>
+            <Name>MEI MEI SDN BHD</Name>
+            <TransactionID>77661</TransactionID>
+            <SourceDocumentID>STV/012324/8</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>18</Debit>
+            <Credit>0.00</Credit>
+            <Balance>120</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-01</TransactionDate>
+            <AccountID>21191</AccountID>
+            <AccountName>GST -DISALLOWED INPUT TAX</AccountName>
+            <TransactionDescription>OPENING BALANCE</TransactionDescription>
+            <Name />
+            <TransactionID>77663</TransactionID>
+            <SourceDocumentID />
+            <SourceType />
+            <Debit>0.00</Debit>
+            <Credit>0.00</Credit>
+            <Balance>0.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-26</TransactionDate>
+            <AccountID>21191</AccountID>
+            <AccountName>GST -DISALLOWED INPUT TAX</AccountName>
+            <TransactionDescription>Medical claims -Mohd. Ali</TransactionDescription>
+            <Name>KLINIK NIK</Name>
+            <TransactionID />
+            <SourceDocumentID>SJ/12/5673</SourceDocumentID>
+
+            <SourceType>AP</SourceType>
+            <Debit>3.6</Debit>
+            <Credit>0.00</Credit>
+            <Balance>3.6</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-01</TransactionDate>
+            <AccountID>33556</AccountID>
+            <AccountName>TRADE CREDITORS</AccountName>
+            <TransactionDescription>OPENING BALANCE</TransactionDescription>
+            <Name />
+            <TransactionID />
+            <SourceDocumentID />
+            <SourceType />
+            <Debit>0.00</Debit>
+            <Credit>0.00</Credit>
+            <Balance>0.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-17</TransactionDate>
+            <AccountID>33556</AccountID>
+            <AccountName>TRADE CREDITORS</AccountName>
+            <TransactionDescription>Purchase of fish crackers fromThai</TransactionDescription>
+            <Name>THAI FISH CRACKERS</Name>
+            <TransactionID />
+            <SourceDocumentID>SH7997561</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>0.00</Debit>
+            <Credit>1802</Credit>
+            <Balance>-1802</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-18</TransactionDate>
+            <AccountID>33556</AccountID>
+            <AccountName>TRADE CREDITORS</AccountName>
+            <TransactionDescription>Payment for fish crackers</TransactionDescription>
+            <Name>THAI FISH CRACKERS</Name>
+            <TransactionID>77661</TransactionID>
+            <SourceDocumentID>TTRef 784316</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>1802</Debit>
+            <Credit>0.00</Credit>
+            <Balance>0</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-18</TransactionDate>
+            <AccountID>33556</AccountID>
+            <AccountName>TRADE CREDITORS</AccountName>
+            <TransactionDescription>Purchase of trout from Russia</TransactionDescription>
+            <Name>RUSSIAN TROUT</Name>
+
+            <TransactionID>9454</TransactionID>
+            <SourceDocumentID>JS6657139</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>0.00</Debit>
+            <Credit>1900</Credit>
+            <Balance>-1900.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-19</TransactionDate>
+            <AccountID>33556</AccountID>
+            <AccountName>TRADE CREDITORS</AccountName>
+            <TransactionDescription>Payment for trout</TransactionDescription>
+            <Name>RUSSIAN TROUT</Name>
+            <TransactionID>77662</TransactionID>
+            <SourceDocumentID>TTRef 643271</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>1900</Debit>
+            <Credit>0.00</Credit>
+            <Balance>0.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-19</TransactionDate>
+            <AccountID>33556</AccountID>
+            <AccountName>TRADE CREDITORS</AccountName>
+            <TransactionDescription>Purchase of shark fins</TransactionDescription>
+            <Name>MEI MEI SDN BHD</Name>
+            <TransactionID>9455</TransactionID>
+            <SourceDocumentID>STV/012324/8</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>0.00</Debit>
+            <Credit>318</Credit>
+            <Balance>-318.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-28</TransactionDate>
+            <AccountID>33556</AccountID>
+            <AccountName>TRADE CREDITORS</AccountName>
+            <TransactionDescription>Payment for shark fins</TransactionDescription>
+            <Name>MEI MEI SDN BHD</Name>
+            <TransactionID>77663</TransactionID>
+            <SourceDocumentID>CHQ54678</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>318</Debit>
+            <Credit>0.00</Credit>
+            <Balance>0.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-01</TransactionDate>
+            <AccountID>53001</AccountID>
+            <AccountName>REVENUE -TRADE</AccountName>
+
+            <TransactionDescription>OPENING BALANCE</TransactionDescription>
+            <Name />
+            <TransactionID>9456</TransactionID>
+            <SourceDocumentID />
+            <SourceType />
+            <Debit>0.00</Debit>
+            <Credit>0.00</Credit>
+            <Balance>0.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-20</TransactionDate>
+            <AccountID>53001</AccountID>
+            <AccountName>REVENUE -TRADE</AccountName>
+            <TransactionDescription>Sale of Seafood</TransactionDescription>
+            <Name>QATAR SEAFOOD</Name>
+            <TransactionID />
+            <SourceDocumentID>INV/ABCPL/2352</SourceDocumentID>
+            <SourceType>AR</SourceType>
+            <Debit>0.00</Debit>
+            <Credit>2000</Credit>
+            <Balance>-2000.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-20</TransactionDate>
+            <AccountID>53001</AccountID>
+            <AccountName>REVENUE -TRADE</AccountName>
+            <TransactionDescription>Sale of Seafood</TransactionDescription>
+            <Name>QATAR SEAFOOD</Name>
+            <TransactionID>2352</TransactionID>
+            <SourceDocumentID>INV/ABCPL/2352</SourceDocumentID>
+            <SourceType>AR</SourceType>
+            <Debit>0.00</Debit>
+            <Credit>2500</Credit>
+            <Balance>-4500.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-20</TransactionDate>
+            <AccountID>53001</AccountID>
+            <AccountName>REVENUE -TRADE</AccountName>
+            <TransactionDescription>Sale of Seafood</TransactionDescription>
+            <Name>QATAR SEAFOOD</Name>
+            <TransactionID>2352</TransactionID>
+            <SourceDocumentID>INV/ABCPL/2352</SourceDocumentID>
+            <SourceType>AR</SourceType>
+            <Debit>0.00</Debit>
+            <Credit>500</Credit>
+            <Balance>-5000.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-01</TransactionDate>
+
+            <AccountID>53010</AccountID>
+            <AccountName>REVENUE -RENTAL</AccountName>
+            <TransactionDescription>OPENING BALANCE</TransactionDescription>
+            <Name />
+            <TransactionID>2352</TransactionID>
+            <SourceDocumentID />
+            <SourceType />
+            <Debit>0.00</Debit>
+            <Credit>0.00</Credit>
+            <Balance>0.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-21</TransactionDate>
+            <AccountID>53010</AccountID>
+            <AccountName>REVENUE -RENTAL</AccountName>
+            <TransactionDescription>Rental of residential House</TransactionDescription>
+            <Name>PQR SDN BHD</Name>
+            <TransactionID />
+            <SourceDocumentID>INV/ABCPL/2353</SourceDocumentID>
+            <SourceType>AR</SourceType>
+            <Debit>0.00</Debit>
+            <Credit>1000</Credit>
+            <Balance>-1000.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-21</TransactionDate>
+            <AccountID>53010</AccountID>
+            <AccountName>REVENUE -RENTAL</AccountName>
+            <TransactionDescription>Rental of Office</TransactionDescription>
+            <Name>PQR SDN BHD</Name>
+            <TransactionID>2353</TransactionID>
+            <SourceDocumentID>INV/ABCPL/2353</SourceDocumentID>
+            <SourceType>AR</SourceType>
+            <Debit>0.00</Debit>
+            <Credit>2000</Credit>
+            <Balance>-3000.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-01</TransactionDate>
+            <AccountID>62001</AccountID>
+            <AccountName>EXPENSES -STAFF</AccountName>
+            <TransactionDescription>OPENING BALANCE</TransactionDescription>
+            <Name />
+            <TransactionID>2353</TransactionID>
+            <SourceDocumentID />
+            <SourceType />
+            <Debit>0.00</Debit>
+            <Credit>0.00</Credit>
+            <Balance>0.00</Balance>
+        </LedgerEntry>
+
+        <LedgerEntry>
+            <TransactionDate>2015-12-26</TransactionDate>
+            <AccountID>62001</AccountID>
+            <AccountName>EXPENSES -STAFF</AccountName>
+            <TransactionDescription>Medical claims -Mohd. Ali</TransactionDescription>
+            <Name>KLINIK NIK</Name>
+            <TransactionID />
+            <SourceDocumentID>SJ/12/5673</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>60</Debit>
+            <Credit>0.00</Credit>
+            <Balance>60.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-01</TransactionDate>
+            <AccountID>63001</AccountID>
+            <AccountName>TRADING PURCHASE</AccountName>
+            <TransactionDescription>OPENING BALANCE</TransactionDescription>
+            <Name />
+            <TransactionID />
+            <SourceDocumentID />
+            <SourceType />
+            <Debit>0.00</Debit>
+            <Credit>0.00</Credit>
+            <Balance>0.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-17</TransactionDate>
+            <AccountID>63001</AccountID>
+            <AccountName>TRADING PURCHASE</AccountName>
+            <TransactionDescription>Purchase of fish crackers from Thai</TransactionDescription>
+            <Name>THAI FISH CRACKERS</Name>
+            <TransactionID />
+            <SourceDocumentID>SH7997561</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>1700</Debit>
+            <Credit>0.00</Credit>
+            <Balance>1700.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-18</TransactionDate>
+            <AccountID>63001</AccountID>
+            <AccountName>TRADING PURCHASE</AccountName>
+            <TransactionDescription>Purchase of trout from Russia</TransactionDescription>
+            <Name>RUSSIAN TROUT</Name>
+            <TransactionID>77661</TransactionID>
+            <SourceDocumentID>JS6657139</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>1900</Debit>
+            <Credit>0.00</Credit>
+
+            <Balance>3600.00</Balance>
+        </LedgerEntry>
+        <LedgerEntry>
+            <TransactionDate>2015-12-19</TransactionDate>
+            <AccountID>63001</AccountID>
+            <AccountName>TRADING PURCHASE</AccountName>
+            <TransactionDescription>Purchase of shark fins</TransactionDescription>
+            <Name>MEI MEI SDN BHD</Name>
+            <TransactionID>77662</TransactionID>
+            <SourceDocumentID>STV/012324/8</SourceDocumentID>
+            <SourceType>AP</SourceType>
+            <Debit>300</Debit>
+            <Credit>0.00</Credit>
+            <Balance>3900.00</Balance>
+        </LedgerEntry>
+        *}
+        {if isset($gl_trans_xml)}{$gl_trans_xml}{/if}
+    </Ledger>
+    <Footer>
+        <TotalPurchaseCount>{$purchase_total.count}</TotalPurchaseCount>
+        <TotalPurchaseAmount>{number_format num=$purchase_total.amount}</TotalPurchaseAmount>
+        <TotalPurchaseAmountGST>{number_format num=$purchase_total.gst}</TotalPurchaseAmountGST>
+        <TotalSupplyCount>{$sale_total.count}</TotalSupplyCount>
+        <TotalSupplyAmount>{number_format num=$sale_total.amount}</TotalSupplyAmount>
+        <TotalSupplyAmountGST>{number_format num=$sale_total.gst}</TotalSupplyAmountGST>
+        <TotalLedgerCount>{$gl_trans_total.count}</TotalLedgerCount>
+        <TotalLedgerDebit>{number_format num=$gl_trans_total.debit}</TotalLedgerDebit>
+        <TotalLedgerCredit>{number_format num=$gl_trans_total.credit}</TotalLedgerCredit>
+        <TotalLedgerBalance>{number_format num=$gl_trans_total.balance}</TotalLedgerBalance>
+    </Footer>
+</GSTAuditFile>

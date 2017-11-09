@@ -1,0 +1,103 @@
+{if isset($table)}
+{assign var=subtotal value=0}
+	<table class="tablestyle" width="70%" cellspacing="0" cellpadding="2" colspan="8">
+		<thead><tr>
+			{foreach $table AS $field=>$th}
+				{if $field=='edit' || $field=='remove' }
+					<th class="tableheader textcenter" style="width: 5px;" ></th>
+				{else}
+					<th class="tableheader {if isset($th.class)} {$th.class}{/if}" {if isset($th.w) }style="width: {$th.w}%;" {/if}>{$th.title}</th>
+				{/if}
+			{/foreach}
+		</tr></thead>
+		{assign var=name value='inputname'}
+		<tbody>{foreach $items AS $k=>$ite}
+			<tr>{foreach $table AS $field=>$th}
+				<td {if isset($th.class)} class="{$th.class}" {/if}>
+				{$name = "line["|cat:$k|cat:"]["|cat:$field|cat:"]"}
+
+				{if $field=='total'}
+					{formInput name=$name class='title number money' readonly=1 value=0 }
+				{elseif $field==stock_id}
+					{anchor uri='inventory/inquiry/stock_status.php?stock_id='|cat:$ite->$field title=$ite->$field opennew=1 }
+					{inputHidden name=$name value=$ite->$field }
+				{elseif $field=='discount_percent'}
+					{formInput name=$name class='title number money' readonly=1 value=$ite->$field*100 }
+				{elseif $field=='edit'}
+					{editAjax}
+				{elseif $field=='remove'}
+					{removeAjax}
+				{elseif $field=='tax_type_id'}
+					{input_tax_title name=$name value=$ite->tax_type_id}
+
+
+				{else}
+					{formInput name=$name value=$ite->$field class='title' readonly=1}
+				{/if}
+				</td>{/foreach}
+				{$subtotal = $subtotal + $ite->qty_dispatched*$ite->price*(1-$ite->discount_percent) }
+			{/foreach}</tr>
+
+			<tr>
+			{foreach $table AS $field=>$th} {if $field !='edit' AND $field !='remove' }
+				<td class="{if isset($th.class)} {$th.class} {/if}" >
+
+				{if $field=='price' }
+					{formInput name=$field class=number }
+				{elseif $field=='tax_type_id' }
+					{input_taxes name=$field trans=2}
+				{elseif $field=='item_description'}
+					{input_products name=$field}
+				{elseif $field=='total' OR $field=='units' OR $field=='qty_dispatched' OR $field=='qty_done' }
+					{formInput name=$field class='title' readonly=1 attr='readonly'}
+
+				{else}
+					{formInput name=$field}
+				{/if}
+				</td>
+			{/if}{/foreach}
+
+				<td colspan="2">
+					<a href="javascript:void(0)" class="add-item ajaxsubmit" >Add Item</a>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot ><tr class="edit-row" style="display: none;" >
+			{foreach $table AS $field=>$th}
+				<td class="{if isset($th.class)} {$th.class} {/if}" >
+				{if $field=='edit'}
+					{saveAjax}
+				{elseif $field=='remove'}
+					{cancelAjax}
+
+				{elseif $field=='price' }
+					{formInput name=$field class=number }
+				{elseif $field=='tax_type_id' }
+					{input_taxes name=$field trans=2}
+				{elseif $field=='item_description'}
+					{input_products name=$field}
+				{elseif $field=='total' OR $field=='units' OR $field=='units' OR $field=='qty_dispatched' OR $field=='qty_done' }
+					{formInput name=$field class='title' readonly=1 }
+				{elseif $field=='tax_type_name'}
+					{input_taxes name=$field trans=2}
+
+				{else}
+					{formInput name=$field}
+				{/if}
+				</td>
+			{/foreach}
+			<tr>
+				<td align="right" colspan="9">Shipping Cost</td>
+				<td colspan="3" align="right" ><input type="text" value="{number_format num=$ChargeFreightCost amount=1}" name="ChargeFreightCost" style="width: 95%;"></td>
+			</tr>
+			{if $taxes && count($taxes) > 0}{foreach $taxes AS $tax}
+				<tr>
+					<td align="right" colspan="9">{$tax->name} ({$tax->rate}%) {if $tax_included==1}{number_format num=$tax->value}{/if}</td><td align="right" colspan="3" >{if $tax_included!=1}{number_format num=$tax->value}{/if}</td>
+				</tr>
+			{/foreach}{/if}
+			<tr>
+				<td align="right" colspan="9">Sub-total</td><td align="right" colspan="3" >{number_format num=$subtotal + $ChargeFreightCost amount=1}</td>
+			</tr>
+		</tr></tfoot>
+	</table><br>
+{/if}

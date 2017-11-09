@@ -1,0 +1,41 @@
+<div class="table-responsive">
+
+	<table width=100% cellpadding=2 cellspacing=0 class="table-striped table-hover table-headfixed" >
+	<thead>
+		<tr>
+			<td>Types of Acquisition</td>
+			<td>Value of Acquisition Excluding GST (RM)</td>
+			<td colspan="2">Input Tax 6% (RM)</td>
+		</tr>
+	</thead>
+	<thead>
+		<tr>
+			<td>STANDARD RATE</td>
+			<td></td>
+			<td>Claimable</td>
+			<td>Non-Claimable</td>
+		</tr>
+	</thead>
+	{if $items|@count }
+	<tbody>
+
+	{foreach $items AS $ite}
+		<tr>
+		{foreach $table AS $field=>$title}
+			<td>
+
+			</td>
+		{/foreach}
+
+		</tr>
+
+	{/foreach}
+
+	{else}
+		<tr><td colspan="{$items|@count}" class="center" >No Items</td> </tr>
+	{/if}
+	</tbody>
+
+
+	</table>
+</div>

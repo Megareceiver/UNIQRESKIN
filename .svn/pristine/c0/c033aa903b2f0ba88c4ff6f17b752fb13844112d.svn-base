@@ -1,0 +1,42 @@
+.form-actions {
+	.inputs-left {
+		color: #fff;
+		display: inline-block;
+		padding: 5px 10px;
+
+	}
+	.btn_left {
+		display:inline-block;
+	}
+
+	button.btn {
+		float: right;
+	}
+	.btn {
+		margin: 5px 10px;
+		font-size: 12px;
+		padding: 5px 10px;
+	}
+
+	#controls {
+		display: inline;
+	}
+
+}
+
+
+
+.portlet-form .form-actions,
+.form .form-actions {
+	padding: 5px 10px;
+	margin: 0;
+	background-color: #f5f5f5;
+	border-top: 1px solid #e7ecf1;
+
+	*zoom: 1;
+
+	background-color: #697882;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+
+}

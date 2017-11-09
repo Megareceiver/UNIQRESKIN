@@ -1,0 +1,61 @@
+{function space num=0}
+	{while $num > 0} &nbsp;{$num = $num -1 }{/while}
+{/function}
+<div class="container wrapper">
+	{if isset($order) && isset($order.payment_terms) && $order.payment_terms !='' }
+	<p class="paymen_terms" >{space num=2}Payment Terms: {$order.payment_terms}</p>
+	{/if}
+
+	<table class="items" cellpadding="3" cellspacing="0">
+		<tbody>
+			<tr class="color_header" >
+				<td width="85%" class=" borderall" >
+					<table cellpadding="3" cellspacing="0">
+						<tr>
+							{foreach $table AS $title}
+							<td width="{$title.w}%" class="textbold {if isset($title.class)}{$title.class}{/if}" {*style="border: 1px solid #fff;"*} >{$title.title}</td>
+							{/foreach}
+						</tr>
+					</table>
+				</td>
+				<td class="textright borderall" style="width: {$amount_w}px;" ><b>Amount</b></td>
+
+			</tr>
+
+				{foreach $items AS $item}
+				<tr>
+				<td class="boleft" >
+					<table cellpadding="3" cellspacing="0" >
+						<tr>
+							{foreach $table AS $field=>$title}
+							<td width="{$title.w}%" class="{if isset($title.ite_class)}{$title.ite_class}{elseif isset($title.class)}{$title.class}{/if}" >
+								{if $field=='price' || $field=='unit_price' || $field=='qty'}
+									{number_format num=$item->$field}
+								{elseif $field=='description'}
+									{if isset($item->long_description) && $item->long_description != ''}
+										{$item->long_description}
+									{else}
+										{$item->description}
+									{/if}
+								{elseif isset($item->$field) }
+									{$item->$field}
+								{/if}
+							</td>
+							{/foreach}
+						</tr>
+					</table>
+				</td>
+				<td class="textright boleft boright" >
+					{if isset($item->price) AND isset($item->qty) }
+						{number_format num=$item->price*$item->qty*(1-$item->discount_percent) }
+
+					{/if}
+				</td>
+				</tr>
+				{/foreach}
+
+		</tbody>
+	</table>
+
+</div>
+

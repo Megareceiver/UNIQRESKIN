@@ -1,0 +1,17 @@
+<div class="row borderall" style="margin-bottom: 10px;">
+	<div class="col-md-3">
+		{formInputGroup field=$tran_type name='tran_type' colunm='4-8' }
+	</div>
+	<div class="col-md-3">
+		{formInputGroup field=$date_from name='date_from' }
+	</div>
+	<div class="col-md-3">
+		{formInputGroup field=$date_to name='date_to' }
+	</div>
+	<div class="col-md-2">
+		{formInputGroup field=$status name='status' colunm='0-12'}
+	</div>
+	<div class="col-md-1"><div class="form-group">{submit_button title="Show" atype=1}</div>
+
+	</div>
+</div>

@@ -1,0 +1,69 @@
+{assign typeCredit [$smarty.const.ST_CUSTCREDIT,$smarty.const.ST_CUSTPAYMENT,$smarty.const.ST_BANKDEPOSIT] }
+<table class="table table-striped clearfix {$class}">
+<thead><tr>
+	<th>#</th>
+	<th class="textleft">Tran Type</th>
+	<th class="textleft" width="10%">Tran No</th>
+	<th class="textleft" width="7%">Reference</th>
+	<th class="center" width="7%">Tran Date</th>
+	<th class="textright" width="10%">Tran Amount</th>
+	<th class="textright" width="10%">Allocated</th>
+	<th class="textright" width="10%">GL </th>
+	<th class="textright" width="10%">Aged</th>
+	<th class="textright" width="10%">Balance</th>
+</tr></thead>
+{if $trans|@count > 0 }
+	{assign var=tran_amount value=0 }
+
+	<tbody>
+		{foreach $trans AS $k=>$debtor}
+			{if isset($debtor['opening']) && isset($debtor['opening']->charges) }
+				{$aged = $aged + $debtor['opening']->charges - $debtor['opening']->credits }
+			{/if}
+
+			{if $debtor.agedReports|@count > 0 }{foreach $debtor.agedReports AS $kk=>$tran}
+				{assign var=tran_balance value=($tran->tran_amount-$tran->tran_alloc) }
+				{$balance_total = $balance_total + $tran_balance}
+				{$allocation_total = $allocation_total + $tran->tran_alloc}
+				{$gl_total = $gl_total + $tran->gl_amount }
+				{$tran_amount = $tran_amount + $tran->tran_amount}
+
+{*
+				{if !$balance_show && abs($tran_balance)==0}{continue}{/if}
+*}
+				<tr style="{background_red num1=$aged num2=$balance hidden=false};">
+					<td class="center">{$k+1}.{$kk +1}</td>
+					<td>{tran_detail_view type=$tran->type tran_no=$tran->trans_no}</td>
+					<td>
+
+						{gl_tran_view type=$tran->type tran_no=$tran->trans_no title=$tran->trans_no}
+					</td>
+					<td >{$tran->reference}</td>
+					<td class="center" >{date_format time=$tran->tran_date}</td>
+					<td class="textright">{number_format num=$tran->tran_amount }</td>
+					<td class="textright">{number_format num=$tran->tran_alloc }</td>
+					<td class="textright">{number_format num=$tran->gl_amount }</td>
+					<td class="textright">{number_format num=$aged }</td>
+					<td class="textright">{number_format num=$tran_balance }</td>
+				</tr>
+
+			{/foreach}{/if}
+
+
+
+		{/foreach}
+	</tbody>
+	<tfoot>
+		<tr style="{background_red num1=$aged num2=$gl hidden=0}; ">
+				<td>{$k+1}</td>
+				<td colspan="4">{if $total_only!= 1}Grand Total : {/if}{anchor uri="sales/aged-customer-check/"|cat:$debtor.debtor->debtor_no title=$debtor.debtor->name}</td>
+				<td class="textright">{number_format num=$tran_amount }</td>
+				<td class="textright">{number_format num=$allocation_total }</td>
+				<td class="textright">{number_format num=$gl_total }</td>
+				<td class="textright">{number_format num=$aged}</td>
+				<td class="textright">{number_format num=$balance_total}</td>
+		</tr>
+	</tfoot>
+{/if}
+
+</table>

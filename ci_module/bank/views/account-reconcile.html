@@ -1,0 +1,40 @@
+
+
+<div class="row borderall" style="margin-bottom: 10px;">
+	<div class="col-md-8">{formInputGroup name='bank_account'
+		onchange_ajax=true}</div>
+
+	<div class="col-md-4">{formInputGroup name='bank_date'
+		colunm='5-7' onchange_ajax=true}</div>
+</div>
+
+<div class="table-responsive">
+
+	<table width=100% cellpadding=2 cellspacing=0
+		class="table-striped table-hover table-headfixed">
+		<thead>
+			<tr>
+				<td style="width: 10%;">Reconcile Date</td>
+				<td style="width: 20%;">Beginning Balance</td>
+				<td style="width: 20%;">Ending Balance</td>
+				<td style="width: 15%;">Account Total</td>
+				<td style="width: 15%;">Reconciled Amount</td>
+				<td>Difference</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="center">{formInputGroup name='reconcile_date'
+					colunm='0-12' }</td>
+				<td class="center">{formInputGroup name='beg_balance'
+					colunm='0-12' }</td>
+				<td class="center">{formInputGroup name='end_balance'
+					colunm='0-12' }</td>
+				<td class="right">{formInputGroup name='total' colunm='0-12'}</td>
+				<td class="right">{formInputGroup name='reconciled' colunm='0-12'}</td>
+				<td class="right">{formInputGroup name='difference' colunm='0-12'}</td>
+			</tr>
+		<tbody>
+	</table>
+</div>
+

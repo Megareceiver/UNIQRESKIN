@@ -1,0 +1,16 @@
+{assign var=total value=0}
+<div class="container wrapper" >
+	<table cellpadding="3" cellspacing="0" width="100%" class="bobottom  boright" >
+		<tbody>
+			<tr>
+				<td class="boright boleft" style="height: {$height}mm; width: {$width-$amount_w}mm" ></td>
+				<td class="boleft" style="width: {$amount_w}mm;"></td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+
+
+
+

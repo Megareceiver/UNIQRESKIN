@@ -1,0 +1,64 @@
+<div class="row head">
+	<nav class="navbar navbar-fixed-top">
+    	<div class="navbar-header">
+		 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span> 
+	      	</button>
+    		{app_logo}
+    	</div>
+    	<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				{assign var="moduledisable" value=0}
+				{if isset($apps) AND $apps|count > 0}
+				{foreach $apps AS $name=>$app}
+					{if isset($app->enabled) AND $app->enabled != 1 }
+						{$moduledisable=1}
+					{else}
+						{$moduledisable=0}
+					{/if}
+					{if $app->id != 'Dashboard' }
+					<li class="dropdown {if $moduledisable != 1}menu-dropdown{/if} {$name} {$moduledisable}">
+						{application_link app=$app}
+						{if isset($app->modules)}
+						<ul class="dropdown-menu">
+							{foreach $app->modules AS $module} {if isset($module->name) AND $module->name|count_characters > 0 }
+							<li {if count($module->lappfunctions) >0  OR count($module->rappfunctions) > 0}class="dropdown-submenu"{/if} >
+								{application_menu module=$module}
+								<ul class="dropdown-menu">
+								{if isset($module->lappfunctions)}
+									{foreach $module->lappfunctions AS $lapp}
+									{application_link app=$lapp outer='li'}
+									{/foreach}
+								{/if}
+								{if isset($module->rappfunctions)}
+									{foreach $module->rappfunctions AS $rapp}
+										{application_link app=$rapp outer='li'}
+									{/foreach}
+								{/if}
+								</ul>
+							</li> {/if} {/foreach}
+						</ul> {/if}
+					</li> {/if}
+				{/foreach}{/if}
+			</ul>
+			<ul class="nav navbar-nav pull-right avatar">
+				<li class="dropdown">
+					<a
+						href="javascript:;" class="dropdown-toggle"
+						data-toggle="dropdown" data-hover="dropdown"
+						data-close-others="true">{user_login_avatar} 
+					</a>
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li class="droplist-custom">Welcome!<br/> {user_login_fullname}</li>
+						<li>{anchor uri='admin/change_current_user_password.php' title='Account' }</li>
+						<li>{anchor uri='admin/display_prefs.php' title='Settings' }</li>
+						<li class="divider"></li>
+						<li><a href="{site_url uri='access/logout.php'}">Log Out</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</div>

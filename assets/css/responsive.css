@@ -1,0 +1,112 @@
+.col-md-10, .col-md-15,
+.col-md-20, .col-md-25,
+.col-md-35, .col-md-30,
+.col-md-40, .col-md-45,
+.col-md-50 {
+	float: left;
+	min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+}
+.col-md-10 { width: 10%; }
+.col-md-15 { width: 15%; }
+.col-md-20 { width: 20%; }
+.col-md-25 { width: 25%; }
+.col-md-30 { width: 30%; }
+.col-md-35 { width: 35%; }
+.col-md-40 { width: 40%; }
+.col-md-50 { width: 50%; }
+
+/*
+ * listview
+ */
+.group-fillter {
+	border: 1px solid #ddd;
+	padding: 5px;
+}
+.group-fillter .row {
+	padding: 5px 0;
+}
+.group-fillter .row label {
+	width: calc(20% + 5px);
+	display: inline-block;
+	margin-right: 5px;
+	text-align: right;
+}
+.group-fillter .row input,
+
+
+.group-fillter .row .form-control {
+	width: calc(80% - 10px);
+	height: 25px;
+}
+.group-fillter .row select {
+	height: 25px;
+}
+.group-fillter .row .inputdate {
+	margin: 0;
+}
+.group-fillter .row .inputdate input[type=text]{
+	width: 100%;
+	height: 23px;
+	margin-top: 0;
+}
+
+.group-fillter .row .inputdate .icon {
+	margin-left: 0;
+	right: 0;
+	top: 1px;
+}
+/*
+ * Stock Item search
+ */
+.group-fillter .stocks_search label {
+	width: calc(5.4% + 5px);
+}
+.group-fillter .stocks_search input[name=stock_search_code] {
+	width: 19.2%;
+}
+.group-fillter .stocks_search .chosen-container {
+	width: calc(75% - 15px) !important;
+	top: -1px;
+	left: 5px;
+}
+
+/*
+ * customer Fillter
+ */
+.group-fillter .customer_select label {
+	width: 125px;
+}
+.group-fillter .customer_select .chosen-container {
+	width: calc(100% - 130px) !important;
+	top: -1px;
+	left: 5px;
+}
+
+.no-padding [class*="col-"],
+.no-padding[class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+ }
+
+ /*
+  * FORM control
+  */
+.form-group span.unit {
+	float: right;
+    position: relative;
+    right: 4px;
+    top: -20px;
+}
+
+/*
+ * style for form
+ */
+.top15 {
+	margin-top: 15px;
+}
+.textcenter {
+	text-align: center;
+}

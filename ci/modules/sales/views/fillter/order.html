@@ -1,0 +1,32 @@
+<div class="group-fillter">
+	<div class="row">
+		{if isset($fields.trans_no)}
+			<div class="col-md-15" >{inputRow field=$fields.trans_no name='trans_no' }</div>
+		{/if}
+
+		{if isset($fields.ref)}
+			<div class="col-md-20" >{inputRow field=$fields.ref name='ref' }</div>
+		{/if}
+		{if isset($fields.date_from)}
+			<div class="col-md-15" >{inputRow field=$fields.date_from name='date_from' }</div>
+		{/if}
+		{if isset($fields.date_to)}
+			<div class="col-md-15" >{inputRow field=$fields.date_to name='date_to' }</div>
+		{/if}
+		{if isset($fields.stock_location)}
+			<div class="col-md-35" >{inputRow field=$fields.stock_location name='stock_location' }</div>
+		{/if}
+
+	</div>
+	<br class="" >
+	<div class="row">
+		{if isset($fields.stock_search)}
+			<div class="col-md-50 stocks_search" >{inputRow field=$fields.stock_search name='stock_search' }</div>
+		{/if}
+
+		{if isset($fields.customer)}
+			<div class="col-md-40 customer_select" >{inputRow field=$fields.customer name='customer' }</div>
+		{/if}
+		<div class="col-md-10" >{submit_button title='Search' }</div>
+	</div>
+</div>

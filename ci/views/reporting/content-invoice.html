@@ -1,0 +1,55 @@
+
+<div class="container wrapper">
+	{if isset($order) && isset($order.payment_terms) && $order.payment_terms !='' }
+	<p class="paymen_terms" >{space num=2}Payment Terms: {$order.payment_terms}</p>
+	{/if}
+
+
+	<table class="items" cellpadding="3" cellspacing="0" >
+		<thead class="" >
+			<tr>
+
+				{foreach $table AS $k=>$title}
+				<td style="width:{($width-$amount_w)/100*$title.w}mm;" class="{if $k=='stock_id' OR $k=='stk_code' }boleft {/if}bobottom botop color_header textbold {if isset($title.class)}{$title.class}{/if}">{$title.title}</td>
+				{/foreach}
+				<td class="textright borderall color_header" style="width: {$amount_w}mm;" ><b>Amount</b> b</td>
+			</tr>
+
+		</thead>
+		<tbody>
+
+
+				{foreach $items AS $item}
+				<tr>
+							{foreach $table AS $field=>$title}
+							<td style="width:{($width-$amount_w)/100*$title.w}mm;" class="{if $field=='stock_id' || $k=='stk_code' }boleft {/if} {if isset($title.ite_class)}{$title.ite_class}{elseif isset($title.class)}{$title.class}{/if}" >
+								{if $field=='price' || $field=='unit_price' || $field=='qty'}
+									{number_format num=$item->$field}
+								{elseif $field=='description'}
+									{if isset($item->long_description) && $item->long_description != ''}
+										{$item->long_description}
+									{else}
+										{$item->description}
+									{/if}
+								{elseif $field=='discount_percent'}
+									{$item->$field}%
+								{elseif isset($item->$field) }
+									{$item->$field}
+								{/if}
+							</td>
+							{/foreach}
+
+						<td class="textright boleft boright" style="width: {$amount_w}mm;"  >
+							{if isset($item->price) AND isset($item->qty) }
+								{number_format num=$item->price*$item->qty*(1-$item->discount_percent)  amount=1 }
+
+							{/if}
+						</td>
+				</tr>
+				{/foreach}
+
+		</tbody>
+	</table>
+
+</div>
+

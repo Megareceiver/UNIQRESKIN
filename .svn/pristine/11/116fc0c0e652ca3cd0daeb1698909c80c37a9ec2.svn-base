@@ -1,0 +1,30 @@
+<div class="row borderall" style="margin-bottom: 10px;">
+	<div class="col-md-5">
+		{formInputGroup field=$account name='account' }
+	</div>
+	<div class="col-md-3">
+		{formInputGroup name='date_from' }
+	</div>
+	<div class="col-md-3">
+		{formInputGroup field=$date_to name='date_to' }
+	</div>
+
+<div class="col-md-12 linebreak"></div>
+
+	<div class="col-md-4">
+		{formInputGroup name='amount_min' colunm='6-6'}
+	</div>
+	<div class="col-md-4">
+		{formInputGroup name='amount_max' colunm='6-6'}
+	</div>
+
+	<div class="col-md-2">
+		<div class="form-group clearfix" style="display: block; padding-top: 5px">
+			<label style="display: inline;">Check </label>
+			{formInput name='check_incorrect' type=$check_incorrect.type value=$check_incorrect.value }
+		</div>
+	</div>
+	<div class="col-md-1"><div class="form-group">{submit_button title="Show" atype=1}</div>
+
+	</div>
+</div>

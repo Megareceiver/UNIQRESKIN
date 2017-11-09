@@ -1,0 +1,20 @@
+@font-face {
+    font-family: Palanquin;
+    src: url(../fonts/palanquin-regular.ttf);
+}
+
+@font-face {
+    font-family: JosefinSlab;
+    src: url(../fonts/JosefinSlab-Light);
+}
+
+body,
+.dropdown-menu { font-family: Palanquin !important; }
+
+/*header*/
+.navbar-nav.avatar-box img { width: 25px; }
+.navbar-nav a, 
+.navbar-nav.avatar-box a { 
+	padding: 13px 18px; 
+}
+

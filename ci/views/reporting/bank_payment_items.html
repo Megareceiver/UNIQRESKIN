@@ -1,0 +1,32 @@
+
+
+<table class="tablestyle" cellpadding=2 cellspacing=0>
+        <tbody>
+        {assign var=total value=0}
+
+        	{foreach $gl_trans AS $tran}
+        	{assign var=debit value=0}
+        	{assign var=credit value=0}
+
+        	{if $tran->amount > 0}
+        		{$debit = $tran->amount}
+
+        	{else}
+        		{$credit = abs($tran->amount)}
+        	{/if}
+        	{$total = $total+$debit}
+        		<tr>
+	        	<td class="textcenter" style="width: 20%;">{$tran->account}</td>
+	        	<td style="width: 35%;">{$tran->account_name}</td>
+	        	<td class="textright" style="width: 10%;">{number_format num=$debit zero=false}</td>
+	        	<td class="textright" style="width: 10%;">{number_format num=$credit zero=false}</td>
+	        	<td style="width: 25%;" >{$tran->memo_}</td>
+
+	            </tr>
+        	{/foreach}
+        	<tr>
+	        	<td class="textright" colspan="3">TOTAL AMOUNT PAID</td>
+				<td class="" colspan="2">: {number_format num=$total}</td>
+			</tr>
+        </tbody>
+	</table>

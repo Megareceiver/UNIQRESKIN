@@ -1,0 +1,49 @@
+<div class="row clearfix form-horizontal form-group-at">
+	<div class="col-md-6 border-h-r">
+		{if isset($type) && $type =='customer' }
+
+		{formInputGroup type='CUSTOMER' name='customer' title="Customer Name" field=$customer class="autosubmit"}
+		{formInputGroup type='BRANCH' name='branch' title="Branch" field=$branch }
+
+		{/if}
+
+		{if $type =='supplier' }
+		{formInputGroup type='SUPPLIER' name='customer' title="Supplier Name" field=$customer }
+
+		{/if}
+
+
+
+		{inputHidden name='id' value=$id.value }
+
+	</div>
+	<div class="col-md-6">
+
+		{formInputGroup type='qdate' name='tran_date' title="Date" value=$tran_date.value }
+
+		{*formInputGroup type='TEXT' name='ref' title="Reference" value=$ref.value *}
+
+
+		{formInputGroup type='NUMBER' name='ref' title="Reference" value=$ref.value }
+
+
+		{*formInputGroup type='NUMBER' name='payment' title="Deposit" value=$payment.value *}
+	</div>
+</div>
+
+{if isset($currency)}
+<div class="row clearfix form-horizontal form-group-at">
+	<div class="col-md-6">{formInputGroup type='currency' name='currency' title="Currency" field=$currency class="autosubmit" }</div>
+	<div class="col-md-6">{formInputGroup type='NUMBER' name='curr_rate' title="Rate" field=$curr_rate }</div>
+</div>
+{/if}
+
+<div class="row clearfix form-horizontal form-group-at">
+	<div class="col-md-5">{formInputGroup type='NUMBER' name='debit' title="Debit" field=$debit }</div>
+
+
+	<div class="col-md-7">{formInputGroup type='NUMBER' name='' value=($debit.value*$curr_rate.value)|round:"2" title="Debit (Base Currency)" colunm='4-8' disabled=1 attr='class="form-control debit_base"' }</div>
+
+	<div class="col-md-5">{formInputGroup type='NUMBER' name='credit' title="Credit" field=$credit }</div>
+	<div class="col-md-7">{formInputGroup type='NUMBER' name='' value=($credit.value*$curr_rate.value)|round:"2" title="Credit (Base Currency)" colunm='4-8' disabled=1  attr='class="form-control credit_base"'  }</div>
+</div>

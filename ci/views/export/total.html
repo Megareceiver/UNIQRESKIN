@@ -1,0 +1,70 @@
+{assign var=total value=0}
+<div class="container wrapper" >
+	<table cellpadding="3" cellspacing="0" width="100%" class="bobottom  boright" >
+		<tbody>
+			<tr>
+				<td class="boright boleft {if $border_top}botop{/if}" style="height: {$height}mm; width: {$width-$amount_w}mm;" ></td>
+				<td class="boleft {if $border_top}botop{/if}" style="width: {$amount_w}mm;"></td>
+			</tr>
+			<tr>
+				<td style="width: {$width-$amount_w}mm;" class="textright boleft" >Sub-total</td>
+				<td class="textright boleft" style="width: {$amount_w}mm;" >{number_format num=$sub_total amount=1}</td>
+			</tr>
+			{if isset($order.shipping_total)}
+			<tr>
+				<td style="width: {$width-$amount_w}mm;" class="textright boleft" >Shipping</td>
+				<td class="textright boleft" style="width: {$amount_w}mm;" >{number_format num=$order.shipping_total amount=1}</td>
+			</tr>
+			{/if}
+			{foreach $taxes AS $tax}
+			<tr>
+				<td style="width: {$width-$amount_w}mm;" class="textright boleft" >Tax ({$tax.name}) Amount</td>
+				<td style="" class="textright boleft " style="width: {$amount_w}mm;" >{number_format num=$tax.value amount=1}</td>
+			</tr>
+			{/foreach}
+
+			{if isset($amount_total)}
+			<tr>
+				<td style="width: {$width-$amount_w}mm;" class="textright boleft" ><b>TOTAL PO</b></td>
+				<td  class="textright boleft" style="width: {$amount_w}mm;" ><b>{number_format num=$amount_total amount=1}</b></td>
+			</tr>
+			{/if}
+
+			{if isset($order.amount_total_val)}
+				{if isset($order.order_ex_gst)}
+				<tr>
+					<td style="width: {$width-$amount_w}mm;" class="textright boleft" ><b>TOTAL ORDER EX GST</b></td>
+					<td  class="textright boleft" style="width: {$amount_w}mm;" ><b>{number_format num=$sub_total amount=1}</b></td>
+				</tr>
+				{/if}
+			<tr>
+				<td  class="boleft" style="width: 115mm;" >{money_words num=$order.amount_total_val curr_code=$order.curr_code}</td>
+				<td style="width: {$width-$amount_w-115}mm;" class="textright" ><b>{if isset($order.amount_total_title) }{$order.amount_total_title}{else}TOTAL PO{/if}</b></td>
+				<td  class="textright boleft" style="width: {$amount_w}mm;" ><b>{number_format num=$order.amount_total_val amount=1}</b></td>
+			</tr>
+			{/if}
+
+		</tbody>
+	</table>
+
+</div>
+
+{if isset($legal_text) && $legal_text !='' }<p><i style="font-size: 80%;">{print_address addr=$legal_text}</i></p>{/if}
+
+<div class="container wrapper" >
+<table cellpadding="3" cellspacing="0" width="100%" >
+	<tbody>
+		<tr>
+			<td style="width: 30%; height: 23mm" class="textcenter borderall"><h4>Prepared By</h4></td>
+			<td style="width: 5%;"></td>
+			<td style="width: 30%;" class="textcenter borderall"><h4>Approved By</h3></td>
+			<td style="width: 5%;"></td>
+			<td style="width: 30%;" class="textcenter borderall"><h4>Received By</h3></td>
+		</tr>
+
+	</tbody>
+	</table>
+</div>
+
+
+

@@ -1,0 +1,53 @@
+
+<div class="row">
+
+	<div class="col-md-2 form-group2" role="form">
+	  		<span class="input-group-addon" id="sizing-addon1">Date</span>
+			{formInput type='DATE' name='date' value=$date}
+		</div>
+
+		<div class="col-md-2 form-group2" role="form">
+	  		<span class="input-group-addon" id="sizing-addon1">Days</span>
+			<input type="text" class="form-control" placeholder="Threshold" name="threshold" value="{$threshold}"  style="width: 80px !important; ">
+		</div>
+
+	  	<div class="col-md-1"><button type="submit" class="ajaxsubmit">Load Deliverys</button></div>
+
+</div>
+
+<div class="container" style="margin-top: 10px;"><table class="bottraps_style">
+	<thead>
+		<tr>
+			<td style=" width: 10%" >Type</td>
+			<td style="width: 5%" >#</td>
+			<td style=" width: 10%" ">Reference</td>
+			<td style=" width: 10%" class="textcenter">Date</td>
+			<td>Customer</td>
+			<td style=" width: 10%" class="textcenter">Days</td>
+		</tr>
+	</thead>
+	{if $items }<tbody>{foreach $items AS $tran}
+		<tr>
+			<td>{trans_type type=$tran->type}</td>
+			<td>{$tran->trans_no}</td>
+			<td>{$tran->reference}</td>
+			<td class="textcenter">{date_format time=$tran->tran_date}</td>
+			<td>{$tran->customer_name}</td>
+			<td class="textcenter" >{days_diff begin=$tran->tran_date end=$date}</td>
+
+
+		</tr>
+	{/foreach}</tbody>{/if}
+	{if $items|@count < $total}
+	<tfoot><tr>
+		<td colspan="9"></td>
+		<td><button class="ajaxsubmit" type="submit" name="first" value="1">First</button></td>
+		<td><button class="ajaxsubmit" type="submit" name="pre" value="{if $page > 1}{$page-1}{else}1{/if}">Pre</button></td>
+		<td><button class="ajaxsubmit" type="submit" name="next" value="{if $page < $page_last}{$page+1}{else}{$page_last}{/if}">Next</button></td>
+		<td><button class="ajaxsubmit" type="submit" name="last" value={$page_last}>Last</button></td>
+
+	</tr></tfoot>
+
+	{/if}
+</table></div>
+

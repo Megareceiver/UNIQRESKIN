@@ -1,0 +1,47 @@
+
+
+.home-icon {
+	width: 80px;
+	height: 80px;
+	display: inline-block;
+	border: 2px solid $brand-success;
+	border-radius: 50%;
+
+
+	> .fa {
+		font-size: 40px;
+		line-height: 74px;
+
+	}
+}
+$at-color: #32c5d2;
+a.homeblock {
+	display: inline-block;
+	height : 180px;
+	width: 100%;
+	color: #333;
+	border: 2px solid #ededed;
+
+	&:HOVER{
+		text-decoration: none;
+		border: 2px solid $at-color;
+		.home-icon {
+			border-color : $at-color;
+			background-color: $at-color;
+			> .fa {
+				color: #fff;
+			}
+		}
+	}
+	h4 {
+		font-weight: bold;
+		font-size: 12px;
+	}
+	> span {
+		font-size: 10px;
+		color: #646464;
+	}
+}
+
+
+

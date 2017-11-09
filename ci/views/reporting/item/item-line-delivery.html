@@ -1,0 +1,22 @@
+<table cellpadding="3" cellspacing="0"  >
+	<tr>
+	{foreach $table AS $field=>$title}
+
+	<td style=" width: {$title.w}%; " class="  {if $field=='stock_id' OR ( isset($title.boleft) AND $title.boleft==1 )  }boleft {/if} {$line_class} {if isset($title.ite_class)}{$title.ite_class}{elseif isset($title.class)}{$title.class}{/if}" >
+		{if $field=='price' || $field=='unit_price' || $field=='qty'}
+			{number_format num=$item->$field}
+		{elseif $field=='description'}
+			{$item->description}>
+			{if isset($item->long_description) && $item->long_description != ''}
+				<br{print_address addr=$item->long_description}
+			{/if}
+		{elseif $field=='discount_percent'}
+			{$item->$field}%
+		{elseif isset($item->$field) }
+			{$item->$field}
+		{/if}
+	</td>
+	{/foreach}
+
+	</tr>
+</table>

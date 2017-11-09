@@ -1,0 +1,48 @@
+<div id="atmodal"  class="modal fade show modal-xl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" role="document" style="width: 600px; margin-top: 10% " >
+    <div class="modal-content">
+
+      <div class="modal-body">
+      	<h4>Setup Wizard</h4>
+      	<p>Wellcome to UNIQ 365 Clound Accounting!</p>
+      	<p>Befor staring with the system, you need to complate the neccessary setting and key in the initial master data such as : Products, Suppliers, Customers, Bank Accounts, etc. This Setup Wizard helps you to complate one by one setting for the system , you can skip this setup wizard as long as you can not proceed the transactions.</p>
+		<div class="setupwizard" data-spacing="60">
+		<div class="rowline" style="min-height: 150px;">
+			<div class="events-wrapper">
+				<div class="events row" style="width: 100%; transform: translateX(0px);">
+					{assign var=finished value=0}
+					{assign var=k value=0 }
+					{assign var=width_step value=0 }
+					{if count($steps) > 0}{foreach $steps AS $s}
+					{$k = $k + 1}
+					<div class="col text-center border-red">
+						<span class="number rounded-circle {if $s[1]}finished {$finished = $k}{/if}">{$k}</span>
+						<span>{$s[0]}</span>
+
+					</div>
+					{/foreach}
+					{$width_step = 1/count($steps) }
+					{/if}
+
+
+
+					<span class="filling-line bg-green" aria-hidden="true" style="transform: scaleX({if $finished < 1}0{else} {($finished-0.5)*$width_step} {/if});" finished="{$finished}" step-w="{$width_step}"></span>
+				</div>
+
+				<!-- .events -->
+			</div>
+			<!-- .events-wrapper -->
+
+		</div>
+	</div>
+      </div>
+      <div class="modal-footer text-center">
+      	<form action="/setup/wizard" method="post" >
+	      	<button type="submit" class="btn btn-primary ajaxsubmit" name="start" value="1" >Start</button>
+	        <button type="button" class="btn btn-secondary ajaxsubmit" name="skip" value=1 >Skip</button>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>

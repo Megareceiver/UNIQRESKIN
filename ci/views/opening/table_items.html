@@ -1,0 +1,58 @@
+<div id="_page_body"><div id="items_table">
+	<table id="item_listview" class="tablestyle" cellspacing="0" cellpadding="2">
+		<thead>
+			<tr>
+				<td style="width:10%" >Transaction#</td>
+				<td style="width:10%" >Date</td>
+				<td style="width:10%" >Type</td>
+				<td style="width:25%" >{if $type=='sale'}Customer{else}Supplier{/if}</td>
+				<td style="width:9%" >Debit</td>
+				<td style="width:9%" >Credit</td>
+				<td style="width:9%" >Debit (Base)</td>
+				<td style="width:9%" >Credit (Base)</td>
+				<td style="width:100px" ></td>
+				<td style="width:100px" ></td>
+			</tr>
+		</thead>
+		<tbody>
+			{if $items}{foreach $items AS $ite}
+				<tr>
+					<td>{$ite->trans_no}</td>
+					<td>{date_format time=$ite->tran_date}</td>
+					<td>Trans Type</td>
+					<td>{$ite->name}</td>
+					<td>{$ite->debit}</td>
+					<td>{$ite->credit}</td>
+					<td>{$ite->debit}</td>
+					<td>{$ite->credit}</td>
+
+					<td>{if $ite->status == 0}
+						<a class="ajaxsubmit" href="/admin/opening.php?type={$type}&edit={$ite->id}" > View </a>
+					{/if}</td>
+					<td><button class="ajaxsubmit" title="remove item" value={$ite->id} name="Remove" type="submit" ><span>Remove</span></button></td>
+				</tr>
+			{/foreach}{/if}
+		</tbody>
+		
+		{if $items|@count < $total->total}
+		<tfoot><tr>
+			{function name=pagelink type='sale' page=1}
+				{if $page <=0 } {$page = 1} {/if}
+				href="opening.php?type={$type}&p={$page}"
+			{/function}
+		
+			
+			<td colspan="6"></td>
+			<td width="10" ><a {pagelink type=$type page=$page-1} class="ajaxsubmit">First</a></td>
+			<td width="10" ><a {pagelink type=$type page=$page-1} class="ajaxsubmit">Pre</a></td>
+			
+			<td width="10" ><a {pagelink type=$type page=$page+1} class="ajaxsubmit">Next</1></td>
+			<td width="10" ><a {pagelink type=$type page=$lastpage} class="ajaxsubmit" >Last</1></td>
+	
+		</tr></tfoot>
+	
+		{/if}
+	</table>
+	
+	<a title="Add new item to document" class="ajaxsubmit" href="/admin/opening.php?type={$type}&new=1"><img height="12" src="../../themes/template/images/ok.gif"> Add </a>
+</div></div>

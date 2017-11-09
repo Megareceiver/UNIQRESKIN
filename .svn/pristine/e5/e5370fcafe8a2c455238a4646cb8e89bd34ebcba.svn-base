@@ -1,0 +1,70 @@
+<div class="content_area" >
+	<div class="row control">
+		<form action="" method="post">
+		<div class="col-lg-2 col-md-2 textright" ></div>
+		<div class="col-lg-1 col-md-1 textright" >From</div>
+		<div class="col-lg-2 col-md-2" >
+			{formInput name='date_from' type='DATE' value=$from }
+		</div>
+		<div class="col-lg-1 col-md-1 textright" >To</div>
+		<div class="col-lg-2 col-md-2" >
+			{formInput name='date_to' type='DATE' value=$to }
+		</div>
+		<div class="col-lg-1 col-md-1"><button value="Show" name="Show" type="submit" class="inputsubmit">Show</button></div>
+		</form>
+	</div>
+
+	<table class="table table-striped" cellpadding=2 cellspacing=3 >
+		<thead><tr>
+			{foreach $table AS $field=>$val}
+				{if $field=='collectible' OR $field =='net_input' }
+				<th class="textright" >{$val[1]}</th>
+				{else}
+				<th>{$val[1]}</th>
+				{/if}
+
+			{/foreach}
+
+		</tr></thead>
+		<tbody>
+			{assign var=total value=0 }
+			{foreach $items AS $ite}
+				{if $ite->net_input != 0  OR $ite->collectible != 0 OR $ite->payable !=0  }
+				{assign var=net value=( $ite->collectible + $ite->payable) }
+				{$total = $total + $net}
+
+				<tr>
+					<td>{$ite->name}</td>
+					<td>Charged on sales (Output Tax)</td>
+					<td class="textright">{number_format num=$ite->payable}</td>
+					<td class="textright">{number_format num=$ite->net_output}</td>
+				</tr>
+
+				<tr>
+					<td>{$ite->name}</td>
+					<td>Paid on purchases (Input Tax)</td>
+					<td class="textright">{number_format num=$ite->collectible}</td>
+					<td class="textright">{number_format num=$ite->net_input}</td>
+				</tr>
+
+				<tr class="textbold highlight" >
+
+					<td>{$ite->name}</td>
+					<td>Net payable or collectible:</td>
+					<td class="textright">{number_format num=$net}</td>
+					<td></td>
+
+				</tr>
+				{/if}{/foreach}
+				<tr class="textbold" >
+
+					<td></td>
+					<td>Total payable or refund:</td>
+					<td class="textright">{number_format num=$total}</td>
+					<td></td>
+
+				</tr>
+
+		</tbody>
+	</table>
+</div>

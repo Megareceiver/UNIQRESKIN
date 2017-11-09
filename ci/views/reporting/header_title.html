@@ -1,0 +1,28 @@
+<table cellspacing="0" >
+	<tr><td >Date</td><td>{$order.date}</td></tr>
+	{if isset($order.purchase_order)}
+		<tr><td >Purchase Order No.</td><td>{$order.purchase_order}</td></tr>
+	{/if}
+	{if isset($order.invoice_no)}
+		<tr><td >Invoice No.</td><td>{$order.invoice_no}</td></tr>
+	{elseif isset($order.delivery_no)}
+		<tr><td >Delivery No.</td><td>{$order.delivery_no}</td></tr>
+	{elseif isset($order.credit_note_no)}
+		<tr><td >Credit Note No.</td><td>{$order.credit_note_no}</td></tr>
+	{elseif isset($order.order_no)}
+		<tr><td >Order No.</td><td>{$order.order_no}</td></tr>
+	{elseif isset($order.supp_credit_no)}
+		<tr><td >Remittance No.</td><td>{$order.supp_credit_no}</td></tr>
+	{elseif isset($order.quotation_no)}
+		<tr><td >Quotation No.</td><td>{$order.quotation_no}</td></tr>
+
+	{/if}
+	{if isset($order.receipt_no)}
+		<tr><td >Receipt No.</td><td>{$order.receipt_no}</td></tr>
+	{/if}
+	{if isset($page_number)}
+		<tr><td >Page.</td><td>{$page_number}</td></tr>
+	{/if}
+
+
+</table>

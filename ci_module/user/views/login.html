@@ -1,0 +1,28 @@
+<div class="container" style="width: 400px; padding-top: 50px;" >
+	<div class="logo">
+		<a href="#">{if $logo}<img alt="accountanttoday" src="{$logo}" border="0"  />{else}{$com_name}{/if}</a>
+	</div>
+	<form name="loginform" action="" method="POST">
+		<div class="login-input">
+			<div class="input-user">
+				User name
+				<input type="text" name="username" value=""/>
+			</div>
+			<div class="input-pass">
+				Password
+				<input type="password" name="password" value="" />
+			</div>
+		</div>
+		<div class="login-btn">
+		{*
+			<div class="btn-check" style="display: none;">
+				<input type="checkbox" name="loged" /><p>Keep me loged in?</p>
+			</div>
+		*}
+		<input type="submit" name="SubmitUser" value="Login" class="btnlogin">
+
+		</div>
+		<input type='hidden' id=ui_mode name='ui_mode' value="" />
+		<input type="hidden" name="company_login_name" value="0" />
+	</form>
+</div>

@@ -1,0 +1,48 @@
+[class^="icon19_"] {
+	display: inline-block;
+	height: 19px;
+	width: 19px;
+	text-indent: -999999px;
+	background-image: url("../icon19.png");
+}
+
+.icon19_edit { background-position: 0 0; }
+button:HOVER .icon19_edit { background-position: 0 -19px; }
+.icon19_del { background-position: -19px 0; }
+button:HOVER .icon19_del { background-position: -19px -19px; }
+
+.formtable {
+	/*
+	border: 1px solid #cccccc;
+	margin-top: 10px;
+	*/
+}
+
+.formtable .form-control.inputdate .icon {
+	top: 4px;
+}
+
+.formtable .form-group:FIRST-CHILD {
+	border-top: none;
+}
+
+.formtable .form-group {
+	/*
+	border-top: 1px solid #cccccc;
+	*/
+	margin: 0;
+	padding: 5px;
+	clear: left;
+}
+
+.formtable .form-group label {
+	height: 100%;
+	font-weight: normal;
+	line-height: 25px;
+	margin-bottom: 0;
+}
+
+.formtable .form-group select {
+	width: 100%;
+}
+

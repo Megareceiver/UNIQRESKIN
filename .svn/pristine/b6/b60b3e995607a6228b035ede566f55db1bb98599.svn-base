@@ -1,0 +1,13 @@
+<GLDataLines>
+	<TransactionDate>{date_format time=$tran_date}</TransactionDate>
+	<AccountID>{$gl->account}</AccountID>
+	<AccountName><![CDATA[{$gl->account_name}]]></AccountName>
+	<TransactionDescription><![CDATA[OPENING BALANCE]]></TransactionDescription>
+	<Name><![CDATA[]]></Name>
+	<TransactionID></TransactionID>
+	<SourceDocumentID></SourceDocumentID>
+	<SourceType></SourceType>
+	<Debit>{number_format num=0}</Debit>
+	<Credit>{number_format num=0}</Credit>
+	<Balance>{number_format num=$balance}</Balance>
+</GLDataLines>

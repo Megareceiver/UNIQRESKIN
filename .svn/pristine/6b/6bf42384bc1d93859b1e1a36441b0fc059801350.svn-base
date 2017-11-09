@@ -1,0 +1,97 @@
+<div class="page-wrapper-row">
+	<div class="page-wrapper-top">
+		<div class="page-header">
+			<div class="page-header-top">
+				<div class="container">
+					<div class="page-logo">{company_logo}</div>
+					<a href="javascript:;" class="menu-toggler"></a>
+					<div class="top-menu float-right pt-3">
+						<ul class="nav navbar-nav pull-right">
+							{* <li class="droddown dropdown-separator"><span class="separator"></span></li> *}
+
+							<li class="dropdown dropdown-user dropdown-dark float-left"><a
+								href="javascript:;" class="dropdown-toggle"
+								data-toggle="dropdown" data-hover="dropdown"
+								data-close-others="true"> {user_login_avatar} <span
+									class="username username-hide-mobile">{user_login_fullname}</span>
+							</a>
+								<ul class="dropdown-menu dropdown-menu-default">
+									<li>{anchor uri='admin/change_current_user_password.php'
+										title='<i class="icon-user"></i> Account' }
+									</li>
+									<li>{anchor uri='admin/display_prefs.php' title='<i class="fa fa-gears"></i> Settings' }
+									</li>
+									<li class="divider"></li>
+									<li>
+										<a href="{site_url uri='access/logout.php'}"><i class="icon-key"></i> Log Out</a>
+									</li>
+								</ul></li>
+							<li class="float-left">
+								<span class="sr-only">Toggle Quick Sidebar</span>
+								<a href="{site_url uri='access/logout.php'}" class="pt-3"> <i class="icon-logout"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="page-header-menu">
+				<div class="container navbar navbar-toggleable-md ">
+
+					<div class="hor-menu navbar-collapse">
+						<ul class="navbar-nav">
+							{assign var="moduledisable" value=0}
+							{if isset($apps) AND $apps|count > 0}
+							{foreach $apps AS $name=>$app}
+
+								{if isset($app->enabled) AND $app->enabled != 1 }
+									{$moduledisable=1}
+								{else}
+									{$moduledisable=0}
+								{/if}
+								{if $app->id != 'Dashboard' }
+								<li class="nav-item {if $moduledisable != 1}menu-dropdown{/if} {$name} {$moduledisable}">
+								{application_link app=$app}
+								{if isset($app->modules)}
+								<ul class="dropdown-menu pull-left">
+
+									{foreach $app->modules AS $module} {if isset($module->name) AND $module->name|count_characters > 0 }
+									<li {if count($module->lappfunctions) >0  OR count($module->rappfunctions) > 0}class="dropdown-submenu"{/if} >
+										{application_menu module=$module}
+										<ul class="dropdown-menu">
+										{if isset($module->lappfunctions)}
+											{foreach $module->lappfunctions AS $lapp}
+											{application_link app=$lapp outer='li'}
+											{/foreach}
+										{/if}
+										{if isset($module->rappfunctions)}
+											{foreach $module->rappfunctions AS $rapp}
+												{application_link app=$rapp outer='li'}
+											{/foreach}
+										{/if}
+										</ul>
+									</li> {/if} {/foreach}
+								</ul> {/if}
+
+								</li> {/if}
+							{/foreach}{/if}
+						</ul>
+					</div>
+					<form class="search-form" action="" method="POST">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search"
+								name="query"> <span class="input-group-btn"> <a
+								href="javascript:;" class="btn submit"> <i
+									class="icon-magnifier"></i>
+							</a>
+							</span>
+						</div>
+					</form>
+					<!-- END MEGA MENU -->
+				</div>
+			</div>
+			<!-- END HEADER MENU -->
+		</div>
+		<!-- END HEADER -->
+	</div>
+</div>

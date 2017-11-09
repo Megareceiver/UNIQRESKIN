@@ -1,0 +1,126 @@
+<table class="table table-striped clearfix {$class}">
+<thead><tr>
+	<th>#</th>
+	<th class="textleft">Tran Type</th>
+	<th class="textleft" width="7%">Reference</th>
+	<th class="center" width="5%">Tran Date</th>
+	<th class="center" width="5%">Due Date</th>
+	<th class="textright" width="10%">Charges</th>
+	<th class="textright" width="10%">Credits</th>
+	<th class="textright" width="10%">Allocated</th>
+	<th class="textright" width="10%">Outstanding</th>
+	<th class="textright" width="10%">Old Func</th>
+	<th class="textright" width="10%">Total</th>
+	<th class="textright" width="10%">Balance</th>
+
+
+</tr></thead>
+{if $trans|@count > 0 }
+<tbody>
+{assign var=balance_old_total value=0}
+
+		{foreach $trans AS $k=>$debtor}
+			{assign var=charges_amount value=0}
+			{assign var=credits_amount value=0}
+			{assign var=allocated_amount value=0}
+			{assign var=outstanding_amount value=$debtor.opening}
+
+			{if !$total_only}
+
+				{if $debtor.trans|@count > 0 }{foreach $debtor.trans AS $kk=>$tran}
+					{assign var=charges value=0}
+					{assign var=credits value=0}
+					{assign var=outstanding value=0}
+
+					{assign var=total_amount value=$tran->total_amount}
+					{assign var=allocated value=$tran->allocated}
+
+					{if in_array($tran->type,$typeCredit) }
+						{$total_amount=$total_amount*(-1)}
+						{$allocated = -$tran->allocated}
+					{/if}
+
+					{if $total_amount > 0}
+						{$charges = $total_amount}
+					{else}
+						{$credits = -$total_amount}
+					{/if}
+
+
+					{$charges_amount = $charges_amount + $charges}
+					{$credits_amount = $credits_amount + $credits}
+					{$allocated_amount = $allocated_amount + $allocated}
+					{$outstanding_amount = $outstanding_amount + $total_amount - $allocated}
+
+					<tr style="">
+						<td class="center">{$k+1}.{$kk +1}</td>
+						<td>{tran_detail_view type=$tran->type tran_no=$tran->trans_no}</td>
+						<td>{$tran->reference}</td>
+						<td class="center" >{date_format time=$tran->tran_date}</td>
+						<td class="center" >{date_format time=$tran->due_date}</td>
+						<td class="textright">{number_format num=$charges}</td>
+						<td class="textright">{number_format num=$credits}</td>
+						<td class="textright">{number_format num=$tran->allocated}</td>
+						<td class="textright">{number_format num=($total_amount - $allocated) }</td>
+						<td class="textright">{number_format num=0}</td>
+						<td class="textright">{number_format num=$outstanding_amount}</td>
+						<td class="textright">{number_format num=0}</td>
+					</tr>
+				{/foreach}{/if}
+			{elseif $debtor.trans|@count > 0 }
+				{assign var=tran_sum value=$debtor.trans[0]}
+				{$outstanding_amount = $outstanding_amount + $tran_sum->total_amount - $tran_sum->allocated}
+			{/if}
+
+
+
+			{$outstanding_total = $outstanding_total + $outstanding_amount}
+
+
+			{assign var=balance_old value=$debtor.opening}
+
+
+			{if is_array($debtor.balance_old)}
+				{$balance_old = $balance_old + $debtor.balance_old.TotalAmount - $debtor.balance_old.Allocated}
+				{$balance_old_total = $balance_old_total + $balance_old}
+			{/if}
+
+
+			<tr class="{if $total_only !=1}rowh1{/if}" style="{background_red num1=$outstanding_amount num2=$balance_old hidden=1};" >
+				<td class="center" >{$k+1}</td>
+				<td colspan="2" style="font-size: 120%;">
+					{anchor uri="sales/aged-customer-check/customer-balance/"|cat:$debtor.debtor->debtor_no title=$debtor.debtor->name}
+				</td>
+				<td colspan="2">Open Balance</td>
+				<td class="textright">{number_format num=$charges_amount}</td>
+				<td class="textright">{number_format num=$credits_amount}</td>
+				<td class="textright">{number_format num=$allocated_amount}</td>
+				<td class="textright">{number_format num=$outstanding_amount}</td>
+				<td class="textright">
+					{number_format num=$balance_old}
+
+				</td>
+				<td class="textright">{number_format num=$outstanding_total}</td>
+				<td class="textright">{number_format num=0}</td>
+			</tr>
+
+
+
+		{/foreach}
+	</tbody>
+	<tfoot>
+		<tr>
+			<td></td>
+			<td colspan="4">Grand Total</td>
+			<td class="textright">{number_format num=0}</td>
+			<td class="textright">{number_format num=0}</td>
+			<td class="textright">{number_format num=0}</td>
+			<td class="textright"></td>
+			<td class="textright">{number_format num=$balance_old_total}</td>
+			<td class="textright">{number_format num=$outstanding_total}</td>
+			<td class="textright">{number_format num=0}</td>
+		</tr>
+	</tfoot>
+{/if}
+
+</table>

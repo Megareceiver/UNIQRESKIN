@@ -1,0 +1,69 @@
+<table class="table table-striped clearfix {$class}">
+<thead><tr>
+{foreach $table AS $field=>$title}
+	{if $title|is_array}
+		<td {if isset($title.1)} class="{$title.1}" {/if} style="{if isset($title.2)} width:{$title.2}%; {/if}">{$title.0}</td>
+	{else}
+		<td>{$title}</td>
+	{/if}
+
+{/foreach}
+</tr></thead>
+{if $items|@count }
+	<tbody>
+	<tr>
+		<td colspan="4">Opening Balace - {$date_begin}</td>
+		<td colspan="4" class="text-right">{number_format num=$open_balance}</td>
+	</tr>
+
+	{foreach $items AS $ite}
+		<tr>
+		{foreach $table AS $field=>$title}
+			{assign var=field_type value='auto'}
+			{if $title|is_array}
+				{if isset($title.3)}
+					{$field_type = $title.3 }
+				{/if}
+				<td {if isset($title.1)} class="{$title.1}" {/if} style="{if isset($title.2)} width:{$title.2}%; {/if} " >
+
+
+			{else}
+				<td>
+			{/if}
+
+			{if $field=='gl_date' OR $field=='tran_date' }
+				{date_format time=$ite->$field}
+
+			{elseif $field=='type'}
+				{trans_type type=$ite->$field}
+			{elseif $field=='total' OR $field=='remainder'}
+				{number_format num=$ite->$field}
+			{elseif $field=='actions'}
+				{if isset($ite->type) && isset($ite->trans_no) }
+
+					<a onclick="javascript:openWindow(this.href,this.target); return false;" href="../../gl/view/gl_trans_view.php?type_id={$ite->type}&trans_no={$ite->trans_no}" target="_blank"><img border="0" height="12" title="GL" src="../../themes/template/images/gl.png"></a>
+
+				{/if}
+			{else}
+				{if $field_type=='number'}
+					{number_format num=$ite->$field}
+				{else}
+					{$ite->$field}
+				{/if}
+			{/if}
+			</td>
+		{/foreach}
+
+		</tr>
+
+	{/foreach}
+
+	{else}
+		<tr><td colspan="{$items|@count}" class="center" >No Items</td> </tr>
+	{/if}
+	<tr>
+		<td colspan="4">Ending Balace - {$date_end}</td>
+		<td colspan="4" class="text-right">{number_format num=$open_balance}</td>
+	</tr>
+	</tbody>
+</table>

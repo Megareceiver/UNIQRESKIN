@@ -1,0 +1,19 @@
+
+<div id="atmodal" class="bootbox modal fade" role="dialog">
+	<div class="modal-dialog modal-lg" role="document" style="width: 600px;">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="containter text-center">
+					<span class="img-fluid img-thumbnail" style="display: inline-block;">{$svg}</span>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+				<i class="fa fa-rotate-left"></i>
+				Close
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+

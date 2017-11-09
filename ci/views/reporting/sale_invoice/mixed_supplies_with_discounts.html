@@ -1,0 +1,106 @@
+<div class="fontinvoice" >
+{assign var=content_w value=95}
+<div class="textcenter">
+
+	<p>{$company.address}</p>
+	{if $company.gst_no}<p>GST ID:{$company.gst_no}</p>{/if}
+	{if $trans_no}<p><b>Invoice No:</b>{$trans_no}</p>{/if}
+</div>
+<table>
+	<tr>
+		<td style="width: 5%"></td>
+		<td style="width: 50%" >{$tran_date}</td>
+		<td ></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Salesperson:{$saleman}</td>
+		<td ></td>
+	</tr>
+</table>
+<p style="line-height: 0.05cm; border-bottom: 1px dashed #000;"></p>
+
+<table cellspacing="3" >
+	<thead>
+		<tr>
+			<th style="width:{pdf_column_w w=50}"></th>
+			<th style="width:{pdf_column_w w=20}" class="textright fontinvoice" ></th>
+			<th style="width:{pdf_column_w w=10}" class="textbold textright fontinvoice" >RM</th>
+			<th style="width:{pdf_column_w w=10}" class="textbold textright fontinvoice" >RM</th>
+			<th style="width:{pdf_column_w w=10}" class="textbold textright fontinvoice" >CODE</th>
+		</tr>
+	</thead>
+	<tbody>
+		{assign var=item_count value=0}
+
+		{foreach $items AS $ite}
+			{assign var=item_price value=$ite->quantity*$ite->unit_price}
+			{$item_count = $item_count + $ite->quantity}
+			<tr>
+				<td style="width:{pdf_column_w w=50}">
+					{if $ite->description}<p class="fontinvoice" >{$ite->description}</p>{/if}
+					{if $ite->stock_id}<p class="fontinvoice" >{$ite->stock_id}</p>{/if}
+					{if $ite->discount_percent > 0}<p>Disc. @ {$ite->discount_percent}%</p>{/if}
+
+				</td>
+				<td style="width:{pdf_column_w w=20}"  class="textright" >{$ite->quantity}*{$ite->unit_price} ea</td>
+				<td style="width:{pdf_column_w w=10}"  ></td>
+				<td style="width:{pdf_column_w w=10}" class="textright" >
+					<p class="fontinvoice">{$item_price}</p>
+					{if $ite->discount_percent > 0}<p class="fontinvoice">{$item_price*$ite->discount_percent}</p>{/if}
+				</td>
+
+				<td style="width:{pdf_column_w w=10}" class="textright" >T{if isset($taxes[$ite->tax_type_id])}{$taxes[$ite->tax_type_id].rate}{/if}</td>
+			</tr>
+		{/foreach}
+	</tbody>
+
+</table>
+<p style="line-height: 0.1cm; border-bottom: 1px dashed #000;"></p>
+
+<table cellspacing="3" >
+	<tr>
+		<td style="width:{pdf_column_w w=72.6}" >Item Count</td>
+		<td style="width:{pdf_column_w w=30};" class="textright">{$item_count}</td>
+	</tr>
+	<tr>
+		<td>Total Sales Inclusive of GST @ 6%</td>
+		<td class="textright" >{number_format num=$gst_6}</td>
+	</tr>
+	<tr>
+		<td>Rounding Adj</td><td class="textright" >{number_format num=$rounding_adj}</td>
+	</tr>
+	<tr>
+		<th>Total Sales (Rounded)</th><th class="textright" >{number_format num=$amount_total}</th>
+	</tr>
+	<tr>
+		<th>CASH</th><th class="textright" >0</th>
+	</tr>
+	<tr>
+		<th>Change CASH</th><th class="textright" >0</th>
+	</tr>
+</table>
+
+<table cellspacing="3" class="fontinvoice2" >
+	<tr>
+		<td style="width:{pdf_column_w w=40};" >GST Summary</td>
+		<td style="width:{pdf_column_w w=30};" class="textright">Amount(RM)</td>
+		<td style="width:{pdf_column_w w=31.5};" class="textright">Tax(RM)</td>
+	</tr>
+	{foreach $items AS $ite}
+
+		{assign var=item_price value=$ite->quantity*$ite->unit_price}
+		{assign var=tax value=$taxes[$ite->tax_type_id]}
+		{if isset($tax)}<tr>
+		<td>{$tax.no}</td>
+		<td class="textright">{number_format num=$item_price*(100-$tax.rate)/100}</td>
+		<td class="textright">{number_format num=$item_price*$tax.rate/100}</td>
+		</tr>{/if}
+	{/foreach}
+	<tr>
+		<td style="width:{pdf_column_w w=70};" >Total Promotional Savings</td>
+
+		<td style="width:{pdf_column_w w=30};" class="textright">0</td>
+	</tr>
+</table>
+</div>

@@ -1,0 +1,17 @@
+<div class="container wrapper">
+	<table class="common" cellpadding="3" cellspacing="0"  >
+
+		<thead ><tr class="color_header" >
+			{foreach $items AS $title=>$ite}
+			<td width="{$ite.w}%" class="textcenter">{$title}</td>
+			{/foreach}
+
+		</tr></thead>
+
+		<tbody ><tr>
+			{foreach $items AS $title=>$ite}
+			<td class="textcenter" >{$ite.val}</td>
+			{/foreach}
+		</tr></tbody>
+	</table>
+</div>

@@ -1,0 +1,10 @@
+@CHARSET "ISO-8859-1";
+
+.dashboard_item {
+	width: 100%;
+	padding: 15px;
+}
+
+.dashboard_item img {
+	width: 100%;
+}

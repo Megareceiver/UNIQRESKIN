@@ -1,0 +1,25 @@
+
+<table cellpadding="0" cellspacing="0">
+<tr >
+{foreach $table AS $field=>$title}
+
+<td class="{if isset($title.ite_class)}{$title.ite_class}{elseif isset($title.class)}{$title.class}{/if}" width="{pdf_column_w w=$title.w}" >
+	{if $field=='tran_date'}
+			{date_format time=$item->tran_date}
+	{elseif $field=='trans_type'}
+		{trans_type type=$item->trans_type}
+
+	{elseif $field=='debit'}{number_format num=$debit zero=true amount=1}
+	{elseif $field=='credit'}{number_format num=$credit zero=true amount=1}
+	{elseif $field=='Allocated'}{number_format num=$item->$field zero=true amount=1}
+	{elseif isset($item->$field) }
+		{$item->$field}
+	{/if}
+
+</td>
+{/foreach}
+<td class="textright" width="{$amount_w}mm" >
+	{number_format num=$balance amount=1}
+</td>
+</tr>
+</table>

@@ -1,0 +1,35 @@
+
+
+	{assign var=offset value=0}
+	{assign var=formSpace value=12}
+	{if $form_width > 0}
+		{$formSpace = 12-$form_width}
+		{$offset = (12-$form_width)/2}
+	{/if}
+	<div class="col-md-{$form_width} form {if $offset > 0} col-md-offset-{$offset}{/if}">
+	{if isset($fields)}{foreach $fields AS $name=>$field}
+
+		{if $field.type !='HIDDEN' }
+
+		{formInputGroup field=$field name=$name}
+
+		{else}
+		{formInput type=$field.type name=$name field=$field}
+		{/if}
+		{/foreach}
+	{/if}
+
+	{if isset($submit)}
+	<div class="form-actions" >
+		{foreach $submit AS $name => $title}
+			{if $title|is_array}
+				{submit_button name=$name title=$title.0 atype=$title.1}
+			{else}
+				{submit_button name=$name title=$title atype=1}
+			{/if}
+
+		{/foreach}
+	</div>
+	{/if}
+	</div>
+

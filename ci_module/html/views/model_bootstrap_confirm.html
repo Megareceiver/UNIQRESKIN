@@ -1,0 +1,20 @@
+<div id="atmodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title">{$title}</h2>
+            </div>
+            <div class="modal-body" style="text-align:center;">
+            	{if isset($content)}<h3>{$content}</h3>{/if}
+
+        	</div>
+        	<div class="modal-footer">
+        		<button href="#" class=" ajaxsubmit" name="{$button_ok.name}" value="1" type="submit">
+                  <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> {$button_ok.title}
+                 </button>
+                <button type="button" class="inputsubmit" data-dismiss="modal">
+                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> No</button>
+            </div>
+    </div>
+</div>

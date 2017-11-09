@@ -1,0 +1,14 @@
+<GLDataLines>
+	<TransactionDate>{date_format time=$gl->tran_date}</TransactionDate>
+	<AccountID>{$gl->account}</AccountID>
+	<AccountName><![CDATA[{$gl->account_name}]]></AccountName>
+	<TransactionDescription><![CDATA[{$gl->memo_}]]></TransactionDescription>
+	<Name><![CDATA[{$gl->user_trans_name}]]></Name>
+	<TransactionID>{$gl->counter}</TransactionID>
+	<SourceDocumentID>{$gl->tran_reference}</SourceDocumentID>
+	<SourceType>{if $gl->type==$smarty.const.ST_SALESINVOICE || $gl->type==$smarty.const.ST_CUSTPAYMENT || $gl->type==$smarty.const.ST_CUSTCREDIT}AR{elseif $gl->type==$smarty.const.ST_SUPPINVOICE || $gl->type==$smarty.const.ST_SUPPAYMENT}AP{else}Cash transaction{/if}</SourceType>
+	
+	<Debit>{number_format num=$debit}</Debit>
+	<Credit>{number_format num=$credit}</Credit>
+	<Balance>{number_format num=$balance}</Balance>
+</GLDataLines>

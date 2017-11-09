@@ -1,0 +1,63 @@
+<table class="table table-striped clearfix {$class}">
+<thead><tr>
+	<th>#</th>
+	<th>Customer Name</th>
+	<th class="textright" width="10%">Tran Amount</th>
+	<th class="textright" width="10%">Allocated</th>
+	<th class="textright" width="10%">GL </th>
+	<th class="textright" width="15%">GL Balance</th>
+	<th class="textright" width="10%">Aged</th>
+	<th class="textright" width="10%">Balance</th>
+</tr></thead>
+{if $trans|@count > 0 }
+
+
+	<tbody>
+		{foreach $trans AS $k=>$tran}
+			{$tran_amount = $tran_amount + $tran.agedReports->tran_amount }
+			{$allocation_total = $allocation_total + $tran.agedReports->tran_alloc }
+			{$gl_total = $gl_total + $tran.agedReports->gl_amount }
+
+			{assign var=balance value=($tran.agedReports->tran_amount - $tran.agedReports->tran_alloc)}
+
+
+			{assign var=aged_old value=$tran.aged_old}
+
+
+			{$balance_total = $balance_total + $balance }
+			{$aged_old_total = $aged_old_total + $aged_old.Balance}
+			{$gl_balance_total = $gl_balance_total + $tran.gl_balance}
+
+			<tr style="height: 30px; font-weight: bold; {background_red num1=$tran.agedReports->tran_amount num2=$tran.gl_balance num3=$aged_old.Balance num4=$balance hidden=0}">
+				<td>{$k+1}</td>
+				<td>
+					{assign var=detail_uri value=$tran.debtor->debtor_no|cat:"?date_begin="|cat:$date_begin|cat:"&date_end="|cat:$date_end}
+					{anchor uri="sales/aged-customer-check/"|cat:$detail_uri title=$tran.debtor->name}
+				</td>
+				<td class="textright">{number_format num=$tran.agedReports->tran_amount }</td>
+				<td class="textright">{number_format num=$tran.agedReports->tran_alloc }</td>
+				<td class="textright">{number_format num=$tran.agedReports->gl_amount }</td>
+				<td class="textright">{number_format num=$tran.gl_balance }</td>
+				<td class="textright">{number_format num=$aged_old.Balance}</td>
+				<td class="textright">{number_format num=$balance }</td>
+			</tr>
+
+
+		{/foreach}
+	</tbody>
+	<tfoot>
+
+		<tr>
+			<td></td>
+			<td>Grand Total</td>
+			<td class="textright">{number_format num=$tran_amount}</td>
+			<td class="textright">{number_format num=$allocation_total}</td>
+			<td class="textright">{number_format num=$gl_total}</td>
+			<td class="textright">{number_format num=$gl_balance_total+$gl_opening} (OB:{number_format num=$gl_opening})</td>
+			<td class="textright">{number_format num=$aged_old_total}</td>
+			<td class="textright">{number_format num=$balance_total}</td>
+		</tr>
+	</tfoot>
+{/if}
+
+</table>

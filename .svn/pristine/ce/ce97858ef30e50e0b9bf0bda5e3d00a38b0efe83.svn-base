@@ -1,0 +1,40 @@
+<table cellpadding="2" cellspacing="0" >
+	<tr>
+		<td colspan="2" style="width: 13.5cm"><h3 style="font-weight: bold;">{$page_title}</h3></td>
+		<td>{$company.name}</td>
+	</tr>
+	<tr>
+		<td style="width: 3.5cm;">Print Out Date:</td><td style="width: 10cm;">{$now}</td>
+		<td>{$host}</td>
+	</tr>
+
+	<tr>
+		<td>Fiscal Year::</td><td>{$fiscal_year}</td>
+		<td>{$user}</td>
+	</tr>
+	<tr>
+		<td>Period:</td><td>{$date_range}</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Supplier:</td><td>{$fromsupp}</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Currency:</td><td>{$currency}</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Suppress Zeros:</td><td>{$no_zeros}</td>
+		<td></td>
+	</tr>
+
+</table>
+
+<table cellpadding="3" cellspacing="0" class="header_balance" >
+	<tr>
+		{foreach $items_view AS $col}
+		<td width="{pdf_column_w w=$col.w content_w=$content_w}" class="textitalic {if isset($col.class_header)}{$col.class_header}{elseif isset($col.class)}{$col.class}{/if}" >{$col.title}</td>
+		{/foreach}
+	</tr>
+</table>

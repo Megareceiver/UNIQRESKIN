@@ -1,0 +1,10 @@
+
+<div class="row form-inline table_fillter ">
+  <div class="col-md-4">
+	  <div class="form-group">
+	    <label>Type</label>
+	    {formInput type='trans_type' name='type' value=$fillter_title }
+	  </div>
+  </div>
+  <div class="col-md-3"></div>
+</div>

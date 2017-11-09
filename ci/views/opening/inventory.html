@@ -1,0 +1,47 @@
+{if isset($fields)}
+	<table id="inventory_openning" class="table table-striped table-bordered table-hover"  >
+		<thead><tr>
+			{foreach $fields AS $field}
+				<td style="{if isset($field.w)}width: {$field.w}px;{elseif isset($field.size)}width: {$field.size}%;{/if}" >{$field.title}</td>
+			{/foreach}
+			<td></td>
+		</tr></thead>
+		<tbody>
+		{if !empty($items) }{foreach $items AS $ite}
+			<tr>
+				{*$foreach $ite AS $name => $field*}
+				{foreach $fields AS $name => $field}
+					{assign var=val value=0}
+					{if isset($ite->$name) }
+						{$val = $ite->$name}
+					{/if}
+
+					{if $name=='total'}
+					<td>
+						{formInput type=$field.type field=$field name=$name|cat:'_iventory[]' value=$ite->cost*$ite->qty}
+						{inputHidden  name="total[]" value=$ite->cost*$ite->qty attr=' class="amount" ' }
+					</td>
+					{else}
+					<td>{formInput type=$field.type field=$field name=$name|cat:'[]' value=$val}</td>
+					{/if}
+
+				{/foreach}
+				<td>{inputHidden  name="id[]" value=$ite->id} <button class="ajaxsubmit table_actions" ajax=false title="remove item" value={$ite->id} name="Remove" type="submit" ><i class="fa fa-remove text-danger"></i></button></td>
+			</tr>
+		{/foreach}{/if}
+
+		<tr>
+			{foreach $fields AS $name => $field}
+				<td>{formInput type=$field.type field=$field name=$name|cat:'[]' }</td>
+			{/foreach}
+			<td>{inputHidden  name="id[]" value=0}
+				<button id="AddItem" class="ajaxsubmit table_actions" title="Add new item to document" value="Add Item" name="AddItem" type="submit" ><i class="fa fa-plus text-info"></i> </button>
+
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+
+
+{/if}

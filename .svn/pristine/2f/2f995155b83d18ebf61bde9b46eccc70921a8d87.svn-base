@@ -1,0 +1,18 @@
+<table cellpadding="3" cellspacing="0" width="100%" class="bobottom  boright {if isset($border_top) && $border_top==true}botop{/if}" >
+	<tbody>
+		<tr>
+			{if isset($type) && $type==110}
+			<td class="boright boleft boleft" style="height: {$height}mm; width: 100%" ></td>
+
+			{else}
+			<td class="boright boleft" style="height: {$height}mm; width: {$content_w}mm;" ></td>
+			<td class="boleft" style="width: {$amount_w}mm;"></td>
+			{/if}
+
+		</tr>
+	</tbody>
+</table>
+
+
+
+

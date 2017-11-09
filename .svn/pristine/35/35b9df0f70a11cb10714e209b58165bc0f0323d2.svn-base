@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>{$power_by}</title>
+	{assets type='css'}
+	{assets type='js'}
+</head>
+<body>
+{$content}
+</body>
+</html>

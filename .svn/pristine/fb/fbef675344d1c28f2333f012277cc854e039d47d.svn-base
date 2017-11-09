@@ -1,0 +1,52 @@
+
+			{if $debtor.trans|@count > 0 }{foreach $debtor.trans AS $kk=>$tran}
+
+				{assign var=charges value=0}
+				{assign var=credits value=0}
+				{assign var=outstanding value=0}
+
+				{assign var=total_amount value=$tran->total_amount}
+				{assign var=allocated value=$tran->allocated}
+
+				{if in_array($tran->type,$typeCredit) }
+					{$total_amount=$total_amount*(-1)}
+					{$allocated = -$tran->allocated}
+				{/if}
+
+				{if $total_amount > 0}
+					{$charges = $total_amount}
+				{else}
+					{$credits = -$total_amount}
+				{/if}
+
+{*
+				{if $tran->type==$smarty.const.ST_SALESINVOICE OR $tran->type==$smarty.const.ST_BANKPAYMENT }
+					{$outstanding = $charges + $credits - $allocated}
+				{else}
+					{$outstanding = $charges - $credits + $allocated}
+				{/if}
+*}
+{$outstanding = $charges - $credits + $allocated}
+				{$charges_amount = $charges_amount + $charges}
+				{$credits_amount = $credits_amount + $credits}
+				{$allocated_amount = $allocated_amount + $allocated}
+				{$outstanding_amount = $outstanding_amount + $outstanding}
+{*
+				{if $total_only}{continue}{/if}
+*}
+				<tr style="">
+					<td class="center">{$k+1}.{$kk +1}</td>
+					<td>{tran_detail_view type=$tran->type tran_no=$tran->trans_no}</td>
+					<td>{$tran->reference}</td>
+					<td class="center" >{date_format time=$tran->tran_date}</td>
+					<td class="center" >{date_format time=$tran->due_date}</td>
+					<td class="textright">{number_format num=$charges}</td>
+					<td class="textright">{number_format num=$credits}</td>
+					<td class="textright">{number_format num=$tran->allocated}</td>
+					<td class="textright">{number_format num=$outstanding_amount}</td>
+					<td class="textright">{number_format num=$outstanding_amount}</td>
+				</tr>
+
+
+{/foreach}{/if}
+aaaa

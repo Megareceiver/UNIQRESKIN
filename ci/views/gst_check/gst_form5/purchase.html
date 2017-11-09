@@ -1,0 +1,15 @@
+<PurchaseLines>
+	<SupplierName><![CDATA[{$supp_name}]]></SupplierName>
+	<SupplierUEN>{$gst_no}</SupplierUEN>
+	<InvoiceDate>{$tran_date}</InvoiceDate>
+	<InvoiceNo>{$reference}</InvoiceNo>
+	<PermitNo></PermitNo>
+	<LineNo>{$line_no}</LineNo>
+	<ProductDescription><![CDATA[{$product_desc}]]></ProductDescription>
+	<PurchaseValueSGD>{number_format num=($price) }</PurchaseValueSGD>
+	<GSTValueSGD>{number_format num=$tax_value}</GSTValueSGD>
+	<TaxCode>{$tax_code}</TaxCode>
+	<FCYCode>{$currency_code}</FCYCode>
+	<PurchaseFCY>{number_format num=$price_curr}</PurchaseFCY>
+	<GSTFCY>{number_format num=$tax_curr}</GSTFCY>
+</PurchaseLines>

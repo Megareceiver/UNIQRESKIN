@@ -1,0 +1,100 @@
+
+<div class="row">
+	<div class="col-md-3 form-group2">
+		<select  name="datebaddeb" class="combo" title="" _last="0"   >
+		       <option value="D">Date</option>
+		       <option  {if $datebaddeb==M} selected="true" {/if} value="M">Month</option>
+		</select>
+		<span id="datedeb">
+        	{if $datebaddeb==D}
+            	{formInput type='DATE' name='date' value=$date}
+			{else}
+				<span class="form-control inputdate">
+					<input class="monthpicker" name='date' type="text" value="{$date}" />
+				</span>
+			{/if}
+
+		</span>
+
+	</div>
+
+		<div class="col-md-2 form-group2" role="form">
+	  		<span class="input-group-addon" id="sizing-addon1">Threshold</span>
+			<input type="text" class="form-control" placeholder="Threshold" name="threshold" value="{$threshold}"  style="width: 80px !important; ">
+		</div>
+	  	<div class="col-md-5 form-group2">
+			<span class="input-group-addon" id="sizing-addon1">Customer</span>
+			{formInput type='CUSTOMER' name='debtor' all=true value=$debtor}
+		</div>
+	  	<div class="col-md-1"><button type="submit" class="ajaxsubmit">Load Overdue Invoices</button></div>
+
+</div>
+
+<div class="container" style="margin-top: 10px;"><table class="bottraps_style">
+	<thead>
+		<tr>
+			<td></td>
+			<td colspan="9"></td>
+			<td colspan="4" class="textcenter" >Status</td>
+
+		</tr>
+		<tr>
+			<td>Trans No</td>
+			<td>Date</td>
+			<td>Customer</td>
+			<td>Curr</td>
+			<td>Amount</td>
+			<td>Base Amt</td>
+			<td>ExRT</td>
+			<td>GST Amt</td>
+			<td>O/D days</td>
+			<td style="width:8%; text-align: center;">Processed</td>
+			<td>RevTrn</td>
+			<td style="width:8%; text-align: center;" >Paid</td>
+			<td>RevTrn</td>
+		</tr>
+	</thead>
+	{if $items }<tbody>{foreach $items AS $tran}
+		<tr>
+			<td class="textcenter">{$tran->trans_no}</td>
+			<td class="textcenter">{date_format time=$tran->tran_date}</td>
+			<td>{$tran->debtor_name}</td>
+			<td class="textcenter">{$tran->curr_code}</td>
+			<td class="textright" >{number_format num=$tran->ov_amount amount=1}</td>
+			<td class="textright" >{number_format num=$tran->ov_amount*$tran->rate amount=1}</td>
+			<td class="textright" >{$tran->rate}</td>
+			<td class="textright" >{number_format num=$tran->ov_gst*$tran->rate amount=1 }</td>
+			<td class="textcenter">{days_to_now time=$tran->tran_date}</td>
+			<td class="textcenter" >
+				{if $tran->process}
+					Yes
+				{else}
+					<button type="submit" class="ajaxsubmit" name="process" value="{$tran->trans_no}" ajax=false >Process</button>
+				{/if}
+			</td>
+			<td class="textcenter">{if $tran->process}{$tran->process}{/if}</td>
+			<td class="textcenter">
+				{if $tran->paid}
+					Yes
+				{elseif $tran->process }
+					<button type="submit" class="ajaxsubmit" name="paid" value="{$tran->trans_no}" ajax=false >Paid</button>
+				{else}
+					No
+				{/if}
+			</td>
+			<td class="textcenter">{if $tran->paid}{$tran->paid}{/if}</td>
+		</tr>
+	{/foreach}</tbody>{/if}
+	{if $items|@count < $total}
+	<tfoot><tr>
+		<td colspan="9"></td>
+		<td><button class="ajaxsubmit" type="submit" name="first" value="1">First</button></td>
+		<td><button class="ajaxsubmit" type="submit" name="pre" value="{if $page > 1}{$page-1}{else}1{/if}">Pre</button></td>
+		<td><button class="ajaxsubmit" type="submit" name="next" value="{if $page < $page_last}{$page+1}{else}{$page_last}{/if}">Next</button></td>
+		<td><button class="ajaxsubmit" type="submit" name="last" value={$page_last}>Last</button></td>
+
+	</tr></tfoot>
+
+	{/if}
+</table></div>
+

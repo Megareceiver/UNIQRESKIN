@@ -1,0 +1,41 @@
+@font-face {
+    font-family: Quicksand;
+    src: url(../fonts/Quicksand-Regular.ttf);
+}
+
+body { font-family: Quicksand !important; }
+
+/*header menu*/
+.row.head { display: block; height: 50px; margin-bottom: 20px; }
+
+/*main content*/
+.page-header,
+.page-content {
+	padding: 15px;
+}
+
+
+
+/* RESPONSIVE ================================================================ */
+/* extra small */
+@media (max-width: 767px) {
+	
+}
+
+/* extra small to small */
+@media (max-width: 991px) {
+	
+}
+
+/* small */
+@media (min-width: 768px) and (max-width: 991px) {
+	
+}
+/* medium */
+@media (min-width: 992px) and (max-width: 1199px) {
+	
+}
+/* large */
+@media (min-width: 1200px) {
+	
+}

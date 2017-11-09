@@ -1,0 +1,23 @@
+<div class="row boderall">
+	<div class="col-md-6 inputgroup boderright">
+		{customers name="customer_id" }
+		{branchs name="branch_id" group=$fields.branch_id.parent }{$fields.branch_id.parent}
+		{finput_text name="ref" field=$fields.ref }
+	</div>
+	<div class="col-md-3 inputgroup">
+		{finput_customer_credit field=$fields.currency }
+		{finput_inputstr field=$fields.discount }
+		{finput_input name='dimension_id' }
+		{finput_input name='dimension2_id' }
+	</div>
+	<div class="col-md-3 inputgroup boderleft">
+		{if isset($fields.payment)}
+			{finput_payment_terms field=$fields.payment }
+		{/if}
+		{if isset($fields.sales_type)}
+			{finput_sales_type field=$fields.sales_type }
+		{/if}
+		{finput_input name='OrderDate' }
+
+	</div>
+</div>

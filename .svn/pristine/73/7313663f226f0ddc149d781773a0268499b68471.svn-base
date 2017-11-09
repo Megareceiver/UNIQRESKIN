@@ -1,0 +1,24 @@
+body {
+    font-family: "Helvetica Neue",Helvetica,"Noto Sans",sans-serif,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 1.42857;
+    background: #fff;
+    color: #002740;
+}
+header {display: none;}
+.main-content {
+    width: 450px;
+    margin: 40 auto;
+    background: #d4d4d4;
+    border-radius: 10px;
+}
+.form-logout table {background: #d4d4d4; border: none;border-radius: 10px;}
+
+.form-logout table tbody tr:nth-child(2n) {
+    background: #d4d4d4;
+}
+.form-logout table tbody tr td {
+    color: #002740;
+}
+a {color: #002740; text-decoration: none; font-size: 14px;font-family: "Helvetica Neue",Helvetica,"Noto Sans",sans-serif,Arial,sans-serif;}
+a:hover {color: #2376bc;}

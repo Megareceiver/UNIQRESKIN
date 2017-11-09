@@ -1,0 +1,15 @@
+.idea/
+.buildpath
+.project
+.settings/
+tmp/
+assets/plugins/bootstrap-4.0.0/prepros.cfg
+assets/plugins/bootstrap-4.0.0/scss/.scss-lint.yml
+assets/plugins/bootstrap-select/prepros.cfg
+assets/metronic/prepros.cfg
+assets/metronic/prepros-6.config
+assets/plugins/bootstrap-4.0.0/prepros-6.config
+ci_module/html/test_out.html
+config_db.php
+
+company/0/pdf_files/gst-form3.pdf

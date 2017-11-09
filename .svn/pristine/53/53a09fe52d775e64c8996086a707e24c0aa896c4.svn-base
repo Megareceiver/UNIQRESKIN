@@ -1,0 +1,54 @@
+<table class="table table-striped clearfix {$class}">
+<thead><tr>
+	<th width="5%" >#</th>
+	<th class="textleft">Tran Type</th>
+	<th class="textleft">Debtor Name</th>
+	<th class="textleft" width="10%">Tran No</th>
+	<th class="center" width="5%">Tran Date</th>
+	<th class="textright" width="15%">GL Amount</th>
+	<th class="textright" width="15%">Tran Amount</th>
+	<th class="textright" width="15%">Balance</th>
+</tr></thead>
+{if $trans|@count > 0 }
+	{assign var=tran_amount value=0}
+	{assign var=gl_amount value=0}
+	{assign var=balance value=0}
+
+	<tbody>
+		{foreach $trans AS $k=>$tran}
+			{$balance = $balance +$tran->tran_amount-$tran->alloc}
+			<tr>
+				<td class="center">{$k+1}</td>
+				<td>{trans_type type=$tran->type}</td>
+				<td>{$tran->debtor}</td>
+
+				<td >
+					{*if $tran->type ==10}
+						{anchor uri="sales/view/view_invoice.php?trans_type=10&trans_no="|cat:$tran->type_no title=$tran->type_no}
+						{anchor uri="gl/tran_view?type_id=10&trans_no="|cat:$tran->type_no title=$tran->amount}
+					{/if*}
+					{$tran->trans_no}
+				</td>
+				<td class="center" >{date_format time=$tran->tran_date}</td>
+
+				<td class="textright">{number_format num=$tran->gl_amount}</td>
+				<td class="textright">{number_format num=$tran->tran_amount}</td>
+				<td class="textright">{number_format num=$balance }</td>
+			</tr>
+			{$gl_amount = $gl_amount + $tran->gl_amount}
+			{$tran_amount = $tran_amount + $tran->tran_amount}
+
+		{/foreach}
+	</tbody>
+	<tfoot>
+		<tr>
+
+			<td colspan="5">Grand Total</td>
+			<td class="textright">{number_format num=$gl_amount}</td>
+			<td class="textright">{number_format num=$tran_amount}</td>
+			<td class="textright">{number_format num=$balance}</td>
+		</tr>
+	</tfoot>
+{/if}
+
+</table>

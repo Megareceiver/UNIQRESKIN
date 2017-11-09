@@ -1,0 +1,77 @@
+{function line step=1 value='' title='' n=''}
+<div class="row">
+
+	<div class="col-1">{$n}</div>
+
+	<div class="col-5">{$title}</div>
+	<div class="col-5">
+		<input class="num" value="{$value}">.00
+	</div>
+	<div class="col-1 line-step">[{$step}]</div>
+</div>
+{/function}
+
+<div id="gstform5"
+	style="width: 21cm; border: 1px solid #000; font-size: 14px;"
+	class="p-0 mx-auto">
+
+	<div class="f5-header text-center">
+		<p class="m-0 font-weight-bold" style="font-size: 140%">GOODS AND
+			SERVICES TAX RETURN</p>
+		<h4 class="m-0">Goods and Services Tax Act 1993</h4>
+	</div>
+	<div class="container">
+		<div class="row ml-3 mb-2">
+			<div class="col-6 border border-dark">
+				<p class="m-0">{$company.coy_name}</p>
+				<p class="m-0" style="height: 106px;">{$company.postal_address}</p>
+				<div class="font-weight-bold">GST Reg No. {$company.gst_no}</div>
+			</div>
+			<div class="col-6 pl-3">
+				<p class="m-0">Kindly complete this Return after the end of your
+					accounting period. The date for submission is one month after the
+					end of the accounting period. Penalties will be imposed if you do
+					not submit your Return and make payment by the due date.</p>
+				<div class="row m-0 border border-dark">
+					<div class="col-12">Period Covered by this return</div>
+					<div class="col-7">
+						<span style="text-align: right;">From : </span>{$date_from}
+					</div>
+					<div class="col-5">
+						<span style="text-align: right;">To : </span>{$date_to}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="f5-header">SUPPLIES</div>
+	<div class="container  m-3">{line step=1 value=$f1 title='Total
+		value of standard-rated supplies' } {line step=2 value=$f2
+		title='Total value of zero-rated supplies' } {line step=3 value=$f3
+		title='Total value of exempt supplies' } {line step=4 value=($f1 + $f2
+		+ $f3) title='Total value (1) + (2) + (3)' }</div>
+	<div class="f5-header">PURCHASES</div>
+	<div class="container  m-3">{line step=5 value=$f5 title='Total
+		value' }</div>
+
+	<div class="f5-header">TAXES</div>
+	<div class="container  m-3">{line step=6 value=$f6 title='Output
+		Tax Due' } {line step=7 value=$f7 title='Input Tax and Refunds
+		claimed' n='Less:' } {line step=8 value=$f8 title='Net GST to be paid
+		to IRAS or Net GST to be claimed from IRAS' n='Equals:' }</div>
+	<div class="f5-header">APPLICABLE TO TAXABLE PERSONS UNDER MAJOR
+		EXPORTER SCHEME / APPROVED 3RD PARTY</div>
+	<div class="container  m-3">
+		<div class="row">LOGISTICS COMPANY / OTHER APPROVED SCHEMES ONLY
+		</div>
+		{line step=9 value=$f9 title='Total value of goods imported under this
+		scheme' }
+	</div>
+	<div class="f5-header">REVENUE</div>
+	<div class="container  m-3">{line step=13 value='' title='Revenue
+		for the accounting period' }</div>
+
+</div>
+<p style="width: 21cm; margin: 0 auto;">**Not for partially-exempt
+	traders</p>

@@ -1,0 +1,36 @@
+	<div class="setupwizard" data-spacing="60">
+		<div class="rowline">
+			<div class="events-wrapper">
+				<div class="events row" style="width: 100%; transform: translateX(0px);">
+					{assign var=finished value=0}
+					{assign var=k value=0 }
+					{assign var=width_step value=0 }
+					{if count($steps) > 0}{foreach $steps AS $s}
+					{$k = $k + 1}
+					{if $s[1]}{$finished = $k}{/if}
+					<div class="col text-center border-red">
+						
+						<a href="/{$s[2]}">
+						<span class="number rounded-circle {if $finished == $k}finished{/if}">{$k}</span>
+						</a>
+						<a href="/{$s[2]}">
+						<span>{$s[0]}</span>
+						</a>
+						
+					</div>
+					{/foreach}
+					{$width_step = 1/count($steps) }
+					{/if}
+
+
+
+					<span class="filling-line bg-green" aria-hidden="true" style="transform: scaleX({if $finished < 1}0{else} {($finished-0.5)*$width_step} {/if});" finished="{$finished}" step-w="{$width_step}"></span>
+				</div>
+
+				<!-- .events -->
+			</div>
+			<!-- .events-wrapper -->
+
+		</div>
+	</div>
+

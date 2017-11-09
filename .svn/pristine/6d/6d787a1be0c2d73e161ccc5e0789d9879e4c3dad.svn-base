@@ -1,0 +1,197 @@
+@page {
+	margin: 10px 50px;
+	width: 210mm;
+    height: 297mm;
+}
+body, table, table td {
+	font-size: 11px;
+}
+
+
+
+.wrapper {
+    height: auto !important;
+    height: 242mm;
+    /* margin: 0 auto -142px; */ 
+    /* the bottom margin is the negative value of the footer's height */
+}
+
+
+
+
+
+a {
+    text-decoration: none;
+}
+
+.payment_term {
+	padding-left: 15px;
+	height: 45px;
+	line-height: 45px;
+	font-style: italic;
+}
+.footer {
+	text-align: center;
+}
+.header {
+    min-height: 150px;
+
+}
+
+.lable_header {
+	width: 100px;
+}
+
+.delivery {
+	
+}
+table td.border {
+	border: 1px solid #999;
+}
+
+
+table.items {
+    border: 1px solid #999;
+    border-spacing: 0;
+    
+}
+
+
+
+table.items td.borderleft{
+    border-left: 1px solid #999;
+}
+
+
+
+
+
+
+
+
+.table_item tbody {
+	height: 100%;
+	clear: both;
+}
+
+.table_items thead td {
+	
+	margin: 0;
+	
+}
+
+
+
+table td{ 
+	padding: 5px;
+}
+table .border-left {
+	border-left: 1px solid #000;
+}
+table td.noborder {
+}
+.header_title {
+    width: 80px;
+   
+    font-style: italic;
+    
+}
+
+.line1 {
+	
+	background: url("../images/pdf_line1.png") repeat-x;
+	
+	height: 1px;
+	max-height: 2px;
+	overflow: hidden;
+	width: 100%;
+	background-color: red;
+	padding: 0;
+	display: block;
+}
+
+.sign {
+	text-align: center;
+	vertical-align: top;
+	height: 100px;
+}
+
+/*
+* div display table
+*/
+.items_table .thead {
+	width: 100%;
+	display: table;
+	font-size: 13px;
+    height: 35px;
+    background-color: #dee7eb;
+    border: 1px solid #999;
+}
+.items_table .thead > div {
+	
+    font-size: 12px;
+    
+    
+    display: table-cell;
+}
+
+.items_table .border {
+	border: 1px solid #999;
+}
+.items_table .tbody {
+	border: 1px solid #999;
+	border-top: 0;
+	width: 100%;
+	
+	height: 250mm;
+}
+.items_table .amount {
+	border-left: 1px solid #999;
+	width: 20%;
+}
+
+
+
+/*
+new code 06-30
+*/
+
+table.common thead tr,
+table.items .header {
+    background-color: #dee7eb;
+    border: none;
+    font-size: 10px;
+    height: 25px;
+    line-height: 25px;
+    font-weight: bold;
+    border-left: 1px solid olive;
+    
+}
+
+.amount {
+	
+	width: 150px;
+	background-color: red;
+}
+
+table.items .firstcol {
+	border-left: none; 
+	 
+}
+
+
+.items-content {
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
+	border-top: 1px solid #999;
+	
+	
+}
+
+.items-content-close {
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	
+	
+}

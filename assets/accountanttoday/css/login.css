@@ -1,0 +1,46 @@
+
+body {
+	background: #f5faf5 none repeat scroll 0 0;
+	font-family: "segoeui";
+    font-size: 13px;
+}
+
+.login-input {
+    background: #fff none repeat scroll 0 0;
+    border-bottom: 1px solid #b5b8c9;
+    padding: 30px;
+	border: 1px solid #b5b8c9;
+}
+
+.logo {
+	text-align: center;
+}
+
+input[type=text],input[type=password] {
+	width: 100%;
+	border: 1px solid #b5b8c9;
+	height: 25px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.login-btn {
+    background: #e3f1e5 none repeat scroll 0 0;
+    border: 1px solid #b5b8c9;
+	border-top : 0;
+    height: 80px;
+}
+
+input.btnlogin {
+    background: #2eb544 none repeat scroll 0 0;
+    color: #fff;
+    font-size: 16px;
+    line-height: 0;
+
+    padding: 15px 30px;
+	border: 1px solid #b5b8c9;
+
+	float: right;
+	margin-top: 23px;
+	margin-right: 25px;
+}

@@ -1,0 +1,47 @@
+{if isset($fields)}
+	<table width=100% cellpadding=2 cellspacing=0 >
+	<thead><tr>
+	
+	<th style="width: 10%;">Account</th>
+	<th style="text-align: left;">Account Name</th>
+	<th style="text-align: left; width: 15%;">Type</th>
+	<th style="text-align: left;">#</th>
+	<th style="width: 10%;">Trans Date</th>
+	<th style="text-align: right;">Amount</th>
+	<th>Actions</th>
+	
+	</tr></thead>
+	<tbody>
+	{if isset($items) && $items|@count > 0}
+	{foreach $items AS $ite}
+		<tr>
+		<td class="center" >{$ite->account}</td>
+		<td>{$ite->account_name}</td>
+		<td>{trans_type type=$ite->type}</td>
+		<td>{$ite->type_no}</td>
+		<td class="center" >{date_format time=$ite->tran_date}</td>
+		<td class="textright" >{number_format num=$ite->amount}</td>
+	
+		<td class="center">
+			
+			<a  href="../../gl/view/gl_trans_view.php?type_id={$ite->type}&trans_no={$ite->type_no}" onclick="javascript:openWindow(this.href,this.target); return false;" ><img border="0" height="12" title="GL" src="../../themes/uniq365/images/gl.png"></a>
+			{if $ite->type==$smarty.const.ST_SALESINVOICE}
+				<a  href="../../sales/sales_order_entry.php?reinvoice={$ite->type_no}" onclick="javascript:openWindow(this.href,this.target); return false;" ><img border="0" height="12" title="GL" src="../../themes/uniq365/images/refresh.png"></a>
+			{elseif $ite->type==$smarty.const.ST_SUPPINVOICE}
+				<a  href="../../purchasing/supplier_invoice.php?reinvoice={$ite->type_no}" onclick="javascript:openWindow(this.href,this.target); return false;" ><img border="0" height="12" title="GL" src="../../themes/uniq365/images/refresh.png"></a>
+			{/if}
+		</td>
+		
+		</tr>
+
+	{/foreach}
+	{else}
+		<tr><td colspan="7" class="center" >No Items</td> </tr>
+	{/if}
+	
+	</tbody>
+	{if $items|@count > 0}
+	<tfoot><tr><td class="textright" colspan="7">{table_page_padding}</td></tr></tfoot>
+	{/if}
+	</table>
+{/if}

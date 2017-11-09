@@ -1,0 +1,95 @@
+.setupwizard .filling-line {
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #7b9d6f;
+	-webkit-transform: scaleX(0);
+	-moz-transform: scaleX(0);
+	-ms-transform: scaleX(0);
+	-o-transform: scaleX(0);
+	transform: scaleX(0);
+	-webkit-transform-origin: left center;
+	-moz-transform-origin: left center;
+	-ms-transform-origin: left center;
+	-o-transform-origin: left center;
+	transform-origin: left center;
+	-webkit-transition: -webkit-transform 0.3s;
+	-moz-transition: -moz-transform 0.3s;
+	transition: transform 0.3s;
+}
+
+.setupwizard .events {
+	position: absolute;
+	z-index: 1;
+
+	top: 25px;
+	height: 2px;
+
+	background: #dfdfdf;
+	transition: transform 0.4s;
+	margin-left: 0;
+}
+
+.setupwizard .events-wrapper {
+	position: relative;
+	height: 100%;
+	/*
+	 * margin: 0 40px;
+	 */
+	overflow: hidden;
+
+}
+
+.setupwizard .rowline {
+	position: relative;
+	height: 100px;
+	width: 100%;
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.setupwizard {
+	opacity: 1;
+	transition: opacity 0.2s;
+	-webkit-transition: opacity 0.2s;
+	-moz-transition: opacity 0.2s;
+
+}
+.setupwizard {
+
+	a {
+		color: #333;
+	}
+	.col:HOVER a {
+		text-decoration: none;
+		color: #26a1ab;
+	}
+	.row .col span {
+		display: block;
+
+		&.number {
+			border: 1px solid #26a1ab;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			font-size: .8rem;
+			margin: 0 auto;
+
+			position: relative;
+			top: -15px;
+			z-index: 2;
+			font-weight: bold;
+
+			background: #fff;
+			&.finished {
+				background: #26a1ab;
+				color : #fff;
+			}
+
+		}
+	}
+}

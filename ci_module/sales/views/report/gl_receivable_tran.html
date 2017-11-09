@@ -1,0 +1,43 @@
+<h3>{$title}</h3>
+<table class="table table-striped clearfix {$class}" style="margin-top: 10px;">
+<thead><tr>
+	<th class="textcenter" style="width: 5%;" >#</th>
+	<th class="textleft">Tran Type</th>
+	<th class="textright">Freight</th>
+	<th class="textright">Rreight Tax</th>
+	<th class="textright">Amount</th>
+	<th class="textright">GST</th>
+	<th class="textright">Discount</th>
+	<th class="textright">GL 1200</th>
+	<th class="textright">Total Balance</th>
+</tr></thead>
+{if $trans|@count > 0 }
+	{assign var=balance value=0}
+	<tbody>
+		{foreach $trans AS $k=>$tran}
+			{if $tran->balance != 0}
+			<tr>
+				<td class="center">{$k+1}</td>
+				<td>{trans_type type=$tran->type}</td>
+				<td class="textright">{number_format num=$tran->freight}</td>
+				<td class="textright">{number_format num=$tran->freight_tax}</td>
+				<td class="textright">{number_format num=$tran->amount}</td>
+				<td class="textright">{number_format num=$tran->gst}</td>
+				<td class="textright">{number_format num=$tran->discount}</td>
+				<td class="textright">{number_format num=$tran->gl_total}</td>
+				<td class="textright">{number_format num=$tran->balance}</td>
+			</tr>
+			{/if}
+			{$balance = $balance + $tran->balance}
+		{/foreach}
+	</tbody>
+	<tfoot>
+		<tr>
+
+			<td colspan="2">Grand Total</td>
+			<td class="textright">{number_format num=$balance}</td>
+		</tr>
+	</tfoot>
+{/if}
+
+</table>

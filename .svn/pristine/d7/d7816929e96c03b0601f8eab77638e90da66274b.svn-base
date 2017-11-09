@@ -1,0 +1,13 @@
+
+<div class="form-group">
+    <label for="">By User</label>
+    <span>{$smarty.session.wa_current_user->username}</span>
+</div>
+<div class="form-group">
+    <label for="">I/P Address</label>
+    <span>{$smarty.server.REMOTE_ADDR}</span>
+</div>
+<div class="form-group">
+    <label for="">Date</label>
+    <span>{datetime_format}</span>
+</div>

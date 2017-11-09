@@ -1,0 +1,26 @@
+<table class="bo3top" cellpadding="0" style="">
+	<tr>
+		<td class="page_title2" style="width: 75%; line-height: 1cm;">{$title}</td>
+		<td style="vertical-align: middle; line-height: 1cm; width: 25%;" >{$company.name}</td>
+	</tr>
+	<tr>
+		<td>
+			<table cellspacing="3" cellpadding="0">
+				<tr><td >Print Out Date</td><td class="">{$print_time}</td></tr>
+				<tr><td>Fiscal Year</td><td >{$fiscal_year}</td></tr>
+				<tr><td>Period</td><td >{$period}</td></tr>
+				<tr><td>Type</td><td>Detailed Report</td></tr>
+			</table>
+		</td>
+		<td style="vertical-align: top;"><table>
+			<tr><td>{$host}</td></tr>
+			<tr><td>{$user}</td></tr>
+			<tr><td></td></tr>
+			<tr><td></td></tr>
+			<tr><td style="text-align: right;">Page : 1</td></tr>
+
+		</table></td>
+
+
+	</tr>
+</table>

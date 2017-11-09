@@ -1,0 +1,51 @@
+
+{function name='showMonthValue' val=1}
+	{if isset($detail['month'|cat:($val+1)])} {number_format num=$detail['month'|cat:($val+1)]-$detail['month'|cat:($val)]}{/if}
+{/function}
+<div class="container wrapper">
+
+	<table class="" cellpadding="3" cellspacing="0" >
+		<tr>
+			<td width="80%">{$balance_word}</td>
+			<td width="5%" class="textright" >RM :</td>
+			<td width="15%" class="textright" >{number_format num=$balance}</td>
+		</tr>
+	</table>
+
+	<table class="statement_footer borderall" cellpadding="3" cellspacing="0">
+		<tr>
+			<td>CURRENT</td>
+			<td>1 MONTH</td>
+			<td>2 MONTHs</td>
+			<td>3 MONTHs</td>
+			<td>4 MONTHs</td>
+			<td>5 MONTHs</td>
+		</tr>
+		<tr>
+			<td>{if isset($details.balance)} {number_format num=($details.balance-$details.due)}{/if}</td>
+			<td>{if isset($details.month1)} {number_format num=$details.due-$details.month1}{/if}</td>
+			<td>{showMonthValue detail=$details val=1}</td>
+			<td>{showMonthValue detail=$details val=2}</td>
+			<td>{showMonthValue detail=$details val=3}</td>
+			<td>{showMonthValue detail=$details val=4}</td>
+		</tr>
+		<tr>
+			<td>6 MONTHs</td>
+			<td>7 MONTH</td>
+			<td>8 MONTHs</td>
+			<td>9 MONTHs</td>
+			<td>10 MONTHs</td>
+			<td>11 & OVER</td>
+		</tr>
+		<tr>
+			<td>{showMonthValue detail=$details val=5}</td>
+			<td>{showMonthValue detail=$details val=6}</td>
+			<td>{showMonthValue detail=$details val=7}</td>
+			<td>{showMonthValue detail=$details val=8}</td>
+			<td>{showMonthValue detail=$details val=9}</td>
+			<td>{if isset($details.month11)} {number_format num=$details.month11}{/if}</td>
+		</tr>
+	</table>
+
+	<p>We shall be grateful if you will let us have payment as soon as possible. Any discrepancy in this statement must be reported to us in writing within 10 days</p>
+</div>

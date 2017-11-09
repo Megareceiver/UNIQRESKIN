@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Company xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="IAFSchemav.1.0.0.xsd">
+<CompanyInfo>
+	<CompanyName><![CDATA[{$company.coy_name}]]></CompanyName>
+	<CompanyUEN>{$company.coy_no}</CompanyUEN>
+	<GSTNo>{$company.gst_no}</GSTNo>
+	<PeriodStart>{date_format time=$date_from}</PeriodStart>
+	<PeriodEnd>{date_format time=$date_to}</PeriodEnd>
+	<IAFCreationDate>{$created}</IAFCreationDate>
+	<ProductVersion>Uniq365 Accounting (Cloud Edition) 9.0.4</ProductVersion>
+	<IAFVersion>IAFv1.0.0</IAFVersion>
+</CompanyInfo>
+
+{$purchase_xml}
+{$supply_xml}
+{$gl_xml}
+</Company>
+
+   

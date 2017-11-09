@@ -1,0 +1,28 @@
+{assign var=balance value=0}
+<table class="table borderrignt_none" style="">
+	<thead>
+		<tr>
+			<th style="width: 15%" class="center">Type</th>
+			<th>#</th>
+			<th class="center" >Date</th>
+			<th>Person/Item</th>
+			<th class="right" >Debit</th>
+			<th class="right" >Credit</th>
+			<th class="right" >Balance</th>
+			<th>Memo</th>
+		</tr>
+	</thead>
+	<tbody>{if $items|@count > 0 }{foreach $items AS $ite}
+{$balance = $balance + $ite->debit - $ite->credit}
+		<tr>
+			<td>{trans_type type=$ite->type}</td>
+			<td>{$ite->type_no}</td>
+			<td class="center" >{date_format time=$ite->tran_date}</td>
+			<td>{payment_person_name type=$ite->person_type_id person_id=$ite->person_id}</<td>
+			<td class="right" >{number_format num=$ite->debit}</td>
+			<td class="right" >{number_format num=$ite->credit}</td>
+			<td class="right" >{number_format num=$balance}</td>
+			<td>{$ite->memo_}</<td>
+		</tr>
+	{/foreach}{/if}</tbody>
+</table>

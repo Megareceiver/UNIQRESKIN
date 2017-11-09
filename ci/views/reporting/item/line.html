@@ -1,0 +1,42 @@
+<table cellpadding="3" cellspacing="0"  >
+
+	<tr>
+	{assign var=col value=1}
+	{foreach $table AS $field=>$title}
+	<td style=" width: {$title.w*$content_w/100}mm;" class="{if $field=='item_code' OR ( isset($title.boleft) AND $title.boleft==1 ) OR $col==1 }boleft {/if}  {$line_class} {if isset($title.ite_class)}{$title.ite_class}{elseif isset($title.class)}{$title.class}{/if}" >
+		{if $field=='price' || $field=='unit_price' || $field=='qty' || $field=='left_alloc' || $field=='Total' }
+			{number_format num=$item->$field}
+		{elseif $field=='trans_type'}
+			{trans_type type=$item->$field}
+		{elseif $field=='description'}
+			{$item->description}
+			{if isset($item->long_description) && $item->long_description != ''}
+				<br>{print_address addr=$item->long_description}
+
+			{/if}
+		{elseif $field=='discount_percent'}
+			{number_format num=$item->$field*100 dec=0}%
+        {elseif $field=='trans_type'}
+            {trans_type type=$item->$field}
+        {elseif $field=='tran_date' || $field =='due_date' }{date_format time=$item->$field}
+		{elseif isset($item->$field) }
+			{$item->$field}
+
+		{/if}
+
+		{$col = $col + 1}
+	</td>
+
+	{/foreach}
+
+	<td class="textright boleft boright  {$line_class}" style="width: {$amount_w}mm;"  >
+		{if isset($item->price) AND isset($item->qty) }
+			{number_format num=$item->price*$item->qty*(1-$item->discount_percent)  amount=1 }
+		{elseif isset($item->line_total)}
+			{number_format num=$item->line_total  amount=1 }
+		{/if}
+
+
+	</td>
+	</tr>
+</table>

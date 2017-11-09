@@ -1,0 +1,22 @@
+<div class="container wrapper">
+<table style="width: 100%;" cellpadding="0" cellspacing="0" >
+	<tr style="line-height: 30px;">
+		<td width="12px"></td>
+		<td width="50%;">Order To</td>
+		<td width="50%;">Deliver To</td>
+	</tr>
+	<tr>
+		<td width="12px"></td>
+		<td>
+			{if isset($name)}<p>{$name}</p>{/if}
+			{if isset($contact.name)}<p>Contact Person: <i>{$contact.name}</i></p>{/if}
+			{if isset($contact.email)}<p>{$contact.email}</p>{/if}
+			{if isset($contact.phone)}<p>{$contact.phone}</p>{/if}
+		</td>
+		<td>
+			{if isset($delivery)}<p>{$delivery}</p>{/if}
+			{if isset($contact.address)}<p>{print_address  addr=$contact.address}</p>{/if}
+		</td>
+	</tr>
+</table>
+</div>

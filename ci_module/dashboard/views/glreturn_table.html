@@ -1,0 +1,26 @@
+<table class="table table-striped clearfix block border_ccc">
+
+
+	<tbody>
+	{if $items|@count }
+	{assign var=total value=0}
+	{foreach $items AS $ite}
+		{$total = $total + $ite->total }
+		<tr>
+			<td style="width: 200px;" class="titlecolor" >{$ite->class_name}</td>
+			<td class="text-right">{number_format num=$ite->total}</td>
+		</tr>
+	{/foreach}
+
+	{else}
+		<tr><td colspan="{$items|@count}" class="center" >No Items</td> </tr>
+	{/if}
+	{if $total >0}
+	<tr>
+		<td class="titlecolor">Calculated Return</td>
+		<td class="text-right" >{number_format num=$total}</td>
+
+	</tr>
+	{/if}
+	</tbody>
+</table>

@@ -1,0 +1,19 @@
+.alert .note_msg {
+	color: #32c5d2;
+}
+.alert .note_msg:BEFORE {
+	font-family: 'FontAwesome';
+	content: "\f0a4";
+	font-size: 120%;
+	margin-right: 5px;
+}
+.alert .err_msg {
+	color: #e7505a;
+	&:BEFORE {
+		font-family: 'FontAwesome';
+		content: "\f071";
+		font-size: 120%;
+		margin-right: 5px;
+	}
+}
+

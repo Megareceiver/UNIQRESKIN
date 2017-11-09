@@ -1,0 +1,9 @@
+<div class="footer container">
+	<table class="no-border" >
+		<tr>
+		<td width="33.3%" class="border center sign" >Item Code</td>
+		<td width="33.4%" ></td>
+		<td width="33.3%" class="border center sign" >Customer Confirmation</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,35 @@
+<div class="clearfix portlet light portlet-fit portlet-form" >
+	<div class="form-body form-horizontal clearfix" >
+		<div class="row justify-content-center">
+		{if !isset($area_width)}
+		{$area_width = 8}
+		{/if}
+		<div class="col-md-{$area_width} col-12" >
+		{if isset($fields)}{foreach $fields AS $name=>$field}
+
+			{if $field.type !='HIDDEN' }
+
+				{formInputGroup field=$field name=$name}
+
+			{else}
+				{formInput type=$field.type name=$name field=$field}
+			{/if}
+			{/foreach}
+	{/if}
+		</div>
+		</div>
+	</div>
+	{if isset($submit)}
+	<div class="form-actions" >
+		{page_button_back}
+		{foreach $submit AS $name => $title}
+			{if $title|is_array}
+				{submit_button name=$name title=$title.0 atype=$title.1}
+			{else}
+				{submit_button name=$name title=$title atype=1}
+			{/if}
+
+		{/foreach}
+	</div>
+	{/if}
+</div>

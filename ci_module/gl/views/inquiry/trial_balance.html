@@ -1,0 +1,82 @@
+{assign var=numberWidth value=10}
+{assign var=classNum value=1}
+{assign var=groupNum value=1}
+
+<table class="table table-striped" >
+	<thead>
+		<tr>
+			<th colspan="2" ></th>
+			<th colspan="2" class="center border_left" >Brought Forward</th>
+			<th colspan="2" class="center border_left">This Period</th>
+			<th colspan="2" class="center border_left" >Balance</th>
+		</tr>
+		<tr>
+			<th style="width: 5%;">Account</th>
+			<th>Account Name</th>
+			<th class="right border_left" style="width: {$numberWidth}%;">Debit</th>
+			<th class="right border_left" style="width: {$numberWidth}%;">Credit</th>
+			<th class="right border_left" style="width: {$numberWidth}%;">Debit</th>
+			<th class="right border_left" style="width: {$numberWidth}%;">Credit</th>
+			<th class="right border_left" style="width: {$numberWidth}%;">Debit</th>
+			<th class="right border_left" style="width: {$numberWidth}%;">Credit</th>
+		</tr>
+	</thead>
+	<tbody>
+		{if isset($accounts_groups_classes) && $accounts_groups_classes|@count > 1 }
+			{foreach $accounts_groups_classes AS $class}
+			<tr class="table_header1" ><td colspan="8" >Class - {$classNum} - {$class->class_name}</td></tr>
+				{if $class->types|@count > 1 }{foreach $class->types AS $type}
+					<tr class="table_header2" ><td colspan="8" >Group - {$groupNum} - {$type->name}</td></tr>
+					{if $type->accounts|@count > 1 }{foreach $type->accounts AS $acc}
+						{if !empty($smarty.get.bug) && $smarty.get.bug && $acc->total['debit']==0 && $acc->total['credit']==0 }
+						{else}
+						<tr>
+							<td>{$acc->account_code}</td>
+							<td>{$acc->account_name}</td>
+							<td class="right border_left" >{number_format num=$acc->previous['debit'] }</td>
+							<td class="right border_left">{number_format num=$acc->previous['credit'] }</td>
+							<td class="right border_left">{number_format num=$acc->current['debit'] }</td>
+							<td class="right border_left">{number_format num=$acc->current['credit'] }</td>
+							<td class="right border_left">{number_format num=$acc->total['debit'] }</td>
+							<td class="right border_left">{number_format num=$acc->total['credit'] }</td>
+						</tr>
+						{/if}
+
+					{/foreach}{/if}
+
+				{$groupNum=$groupNum+1}
+				{/foreach}{/if}
+			{$classNum=$classNum+1}
+			{/foreach}
+			{if $balance==1}
+			<tr class="table_header1" >
+				<td colspan="2">Total - {date_format time=$dateto}</td>
+
+				<td class="right border_left" >{number_format num=$total.previous.debit }</td>
+				<td class="right border_left" >{number_format num=$total.previous.credit }</td>
+				<td class="right border_left" >{number_format num=$total.current.debit }</td>
+				<td class="right border_left" >{number_format num=$total.current.credit }</td>
+				<td class="right border_left" >{number_format num=$total.total.debit }</td>
+				<td class="right border_left" >{number_format num=$total.total.credit }</td>
+			</tr>
+			{/if}
+			<tr class="table_header1" >
+				<td colspan="2">Ending Balance - {date_format time=$dateto}</td>
+
+				<td class="right border_left" >{if $ending.previous.debit >= 0 }{number_format num=$ending.previous.debit }{/if}</td>
+				<td class="right border_left" ></td>
+				<td class="right border_left" >
+					{if $ending.current.debit > 0 }
+						<a href="{$uri_check}">{number_format num=$ending.current.debit }</a>
+					{elseif $ending.current.debit == 0}
+						0.00
+					{/if}
+
+				</td>
+				<td class="right border_left" ></td>
+				<td class="right border_left" >{if $ending.total.debit >= 0 }{number_format num=$ending.total.debit }{/if}</td>
+				<td class="right border_left" ></td>
+			</tr>
+		{/if}
+	</tbody>
+</table>

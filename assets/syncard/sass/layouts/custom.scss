@@ -1,0 +1,123 @@
+@import '../global/_variables'; // global metronic framework variables
+@import 'layout/_shortcut_key';
+@import 'layout/_form_background';
+@import 'layout/_dropdown';
+
+@import 'layout/_form_body';
+@import 'layout/_inputs';
+@import 'style/setup-wizard';
+@import 'style/dialog';
+@import 'style/loading';
+@import 'layout/menu_fix';
+
+
+button.btn {
+	cursor: pointer;
+}
+
+.input-group-sm {
+	min-height: 34px;
+}
+
+input.text_right {
+	text-align: right;
+}
+.text-bold {
+	font-weight:bold;
+}
+textarea.form-control {
+	resize: vertical;
+}
+
+.inputdate > i {
+	color: #555555;
+}
+
+.md-checkbox-list {
+	min-height: 20px;
+}
+
+.top15 {
+	margin-top: 15px;
+}
+
+.add_new_inquiry {
+	position: absolute;
+	float: right;
+	top: 0;
+	right: 15px;
+	margin: 14px 0;
+}
+
+[class^="col-"] > [class^="input-group"],
+[class^="col-"] fieldset > [class^="input-group"] {
+	/*
+	&:FIRST-CHILD {
+		margin-top: 0px;
+	}
+	margin-top: 10px;
+	*/
+
+}
+
+
+.portlet.light.portlet-fit {
+	> .portlet-title {
+		padding: 10px 15px 0 15px;
+		min-height: auto;
+		margin: 0;
+	}
+	.caption {
+		padding : 5px;
+	}
+	.caption > i  {
+		margin-top : 0px;
+
+	}
+
+}
+.mobile_fix_top {
+	margin-top: auto;
+}
+
+table .column_fix {
+	position: relative;
+	background-color: red;
+	border: 1px solid #e7ecf1;
+}
+
+
+@media (max-width: $screen-sm-max) {
+	.mobile_fix_top {
+		/*
+		margin-top: 10px;
+		*/
+		margin-bottom: 15px;
+	}
+}
+
+
+
+table .table_actions {
+	border: none;
+	background: transparent;
+	font-size: 20px;
+	cursor: pointer;
+	&:HOVER i {
+		color : #444d58 !important;
+	}
+}
+
+
+.bootstrap-select.show .dropdown-menu {
+	display: block;
+}
+
+.text-info.disable {
+	color: #ddd !important;
+}
+@media (min-width: $screen-sm-max) {
+	.table-responsive {
+		overflow: visible;
+	}
+}

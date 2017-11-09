@@ -1,0 +1,25 @@
+<div class="row borderall" >
+	{assign var=leftCol value='5'}
+	<div class="col-md-5">
+		{binput key='customer_id' leftCol=$leftCol }
+		{binput key='branch_id' leftCol=$leftCol }
+		{binput key='ref' leftCol=$leftCol}
+		{binput key='customer_ref' leftCol=$leftCol}
+		{binput key='cust_ref' leftCol=$leftCol}
+		{binput key='Location2' leftCol=$leftCol}
+
+
+	</div>
+	<div class="col-md-3">
+		{$leftCol = 7}
+		{binput key='credit' leftCol=$leftCol}
+		{binput key='default_discount' leftCol=$leftCol }
+	</div>
+	<div class="col-md-4">
+		{$leftCol = 5}
+		{binput key='payment' leftCol=$leftCol}
+		{binput key='sales_type' leftCol=$leftCol}
+		{binput key='OrderDate' leftCol=$leftCol}
+	</div>
+
+</div>

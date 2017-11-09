@@ -1,0 +1,84 @@
+body, table, table td, p {
+	font-size: 9pt;
+}
+
+
+.bugcss {
+	background-color: red;
+}
+
+.line_title {
+	width: 85px;
+
+
+}
+
+.page_title {
+    font-size: 20pt;
+    color: #ddd;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-right: 10px;
+}
+
+.textcenter {
+	text-align: center;
+}
+.textleft {
+	text-align: left;
+}
+.textitalic {
+	font-style: italic;
+}
+
+.textright {
+	text-align: right;
+}
+.textbold {
+	font-weight: bold;
+}
+
+/*
+Table common
+*/
+table.common {
+    border: 1px solid #999;
+
+    width: 100%;
+}
+table.common td {
+	border: 1px solid #999;
+}
+.color_header td {
+	background-color: #dee7eb;
+
+}
+
+.paymen_terms {
+	line-height: 30px;
+	font-style: italic;
+}
+
+/* table items */
+
+table.items {
+    border: 1px solid #999;
+
+    width: 100%;
+}
+
+table.items td {
+	border: 1px solid #999;
+}
+
+table.items_footer td {
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
+}
+
+
+
+
+
+/* clearn , overwrite*/

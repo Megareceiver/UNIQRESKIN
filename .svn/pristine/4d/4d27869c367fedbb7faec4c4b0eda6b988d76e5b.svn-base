@@ -1,0 +1,13 @@
+<LedgerEntry>
+	<TransactionDate>2015-12-18</TransactionDate>
+	<AccountID>{$account}</AccountID>
+	<AccountName>{$account_name}</AccountName>
+	<TransactionDescription>{$memo_}</TransactionDescription>
+	<Name></Name>
+	<TransactionID>{$counter}</TransactionID>
+	<SourceDocumentID>{$type_no}</SourceDocumentID>
+	<SourceType>{$type_name}</SourceType>
+	<Debit>{number_format num=$debit}</Debit>
+	<Credit>{number_format num=$credit}</Credit>
+	<Balance>{number_format num=$total}</Balance>
+</LedgerEntry>

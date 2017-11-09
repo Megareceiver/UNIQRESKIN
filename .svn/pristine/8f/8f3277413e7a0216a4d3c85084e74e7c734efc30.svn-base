@@ -1,0 +1,15 @@
+<Purchase>
+	<SupplierName>{$supp_name}</SupplierName>
+	<SupplierBRN></SupplierBRN>
+	<InvoiceDate>{$tran_date}</InvoiceDate>
+	<InvoiceNumber>{$trans_no}</InvoiceNumber>
+	<ImportDeclarationNo></ImportDeclarationNo>
+	<LineNumber>{$line_no}</LineNumber>
+	<ProductDescription>{$item_name}</ProductDescription>
+	<PurchaseValueMYR>{$price}</PurchaseValueMYR>
+	<GSTValueMYR>{$gst_value}</GSTValueMYR>
+	<TaxCode>{$tax_code}</TaxCode>
+	<FCYCode>{$currence}</FCYCode>
+	<PurchaseFCY>0.00</PurchaseFCY>
+	<GSTFCY>0.00</GSTFCY>
+</Purchase>

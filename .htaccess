@@ -1,0 +1,61 @@
+
+<IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteBase /
+
+        # Removes index.php from ExpressionEngine URLs
+        RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+        #RewriteCond %{REQUEST_URI} !/system/.* [NC]
+        RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
+
+        # Directs all EE web requests through the site index file
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule ^(.*)$ /index.php/$1 [L]
+</IfModule>
+
+
+#<FilesMatch "\.(ico|pdf|jpg|jpeg|png|gif|html|htm|xml|txt|xsl|js|css)$">
+#Header set Cache-Control "max-age=31536050"
+#</FilesMatch>
+
+# BEGIN GZIP
+#<ifmodule mod_deflate.c>
+#AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+#</ifmodule>
+# END GZIP
+
+#<IfModule mod_filter.c>
+#    AddOutputFilterByType DEFLATE "application/atom+xml" \
+#                                  "application/javascript" \
+#                                  "application/json" \
+#                                  "application/ld+json" \
+#                                  "application/manifest+json" \
+#                                  "application/rdf+xml" \
+#                                  "application/rss+xml" \
+#                                  "application/schema+json" \
+#                                  "application/vnd.geo+json" \
+#                                  "application/vnd.ms-fontobject" \
+#                                  "application/x-font-ttf" \
+#                                  "application/x-javascript" \
+#                                  "application/x-web-app-manifest+json" \
+#                                  "application/xhtml+xml" \
+#                                  "application/xml" \
+#                                  "font/eot" \
+#                                  "font/opentype" \
+#                                  "image/bmp" \
+#                                  "image/svg+xml" \
+#                                  "image/vnd.microsoft.icon" \
+#                                  "image/x-icon" \
+#                                  "text/cache-manifest" \
+#                                  "text/css" \
+#                                  "text/html" \
+#                                  "text/javascript" \
+#                                  "text/plain" \
+#                                  "text/vcard" \
+#                                  "text/vnd.rim.location.xloc" \
+#                                  "text/vtt" \
+#                                  "text/x-component" \
+#                                  "text/x-cross-domain-policy" \
+#                                  "text/xml"
+#</IfModule>

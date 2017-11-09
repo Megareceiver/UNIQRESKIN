@@ -1,0 +1,70 @@
+
+/*
+ * GST grouping detail
+ */
+table.gst-grouping-header,
+table.gst-grouping {
+	width: 100%;
+	position: relative;
+}
+
+table.gst-grouping-header .hover,
+table.gst-grouping .hover {
+	background-color: #ddd;
+}
+table.gst-grouping-header td,
+table.gst-grouping td {
+	overflow: hidden;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	vertical-align: inherit;
+}
+table.gst-grouping-header thead td:nth-child(1),
+table.gst-grouping thead td:nth-child(1),
+table.gst-grouping tbody td:nth-child(1)
+ {
+	width: 7%;
+ 	/* max-width: 7%; */
+}
+table.gst-grouping-header thead td:nth-child(2),
+table.gst-grouping-header thead td:nth-child(3),
+table.gst-grouping tbody td:nth-child(2),
+table.gst-grouping tbody td:nth-child(3){
+	width: 6%;
+}
+table.gst-grouping-header thead td:nth-child(4),
+table.gst-grouping tbody td:nth-child(4){
+	width: 5%;
+}
+table.gst-grouping-header thead td:nth-child(5),
+table.gst-grouping tbody td:nth-child(5){
+	width: 3%;
+}
+table.gst-grouping-header thead td:nth-child(6),
+table.gst-grouping-header thead td:nth-child(7),
+table.gst-grouping tbody td:nth-child(6),
+table.gst-grouping tbody td:nth-child(7)
+{
+	width: 12%;
+
+}
+
+table.gst-grouping-header thead td:nth-child(8),
+table.gst-grouping tbody td:nth-child(8),
+table.gst-grouping-header thead td:nth-child(9),
+table.gst-grouping tbody td:nth-child(9),
+table.gst-grouping-header thead td:nth-child(10),
+table.gst-grouping tbody td:nth-child(10),
+table.gst-grouping-header thead td:nth-child(11),
+table.gst-grouping tbody td:nth-child(11),
+table.gst-grouping-header thead td:nth-child(12),
+table.gst-grouping tbody td:nth-child(12),
+table.gst-grouping-header thead td:nth-child(13),
+table.gst-grouping tbody td:nth-child(13),
+table.gst-grouping-header thead td:nth-child(14),
+table.gst-grouping tbody td:nth-child(14)
+{
+ 	width: 7%;
+
+}
+

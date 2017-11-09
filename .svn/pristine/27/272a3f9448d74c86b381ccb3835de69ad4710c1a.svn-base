@@ -1,0 +1,96 @@
+<div class="container wrapper">
+	<table class="bo3top" style="width: 130mm;" cellpadding="5">
+		<tr>
+			<td class="page_title" style="width: {$width*0.75}mm;">{$title}</td>
+			<td style="vertical-align: middle;" >{$company.name}</td>
+		</tr>
+		<tr>
+			<td>
+				<table >
+					<tr><td width="20%" class="font9">Print Out Date</td><td class="font9">{$print_time}</td></tr>
+					<tr><td class="font9">Fiscal Year</td><td class="font9">{$fiscal_year}</td></tr>
+					<tr><td class="font9">Period</td><td class="font9">{$period}</td></tr>
+					<tr><td class="font9">Bank Account</td><td class="font9">{$bank_account}</td></tr>
+				</table>
+			</td>
+			<td style="vertical-align: top;"><table>
+				<tr><td class="font9" >{$host}</td></tr>
+				<tr><td class="font9">{$user}</td></tr>
+				<tr><td class="font9">Page : 1</td></tr>
+
+			</table></td>
+
+		</tr>
+	</table>
+
+	<table cellpadding="1" cellspacing="0" style="width: 100%;" >
+		<thead>
+			{assign var=total_w value=($width)*0.15}
+			<tr style="width: 100%;" >
+			{foreach $tables AS $k=>$title}
+			<td style="width:{($width)/100*$title.w}mm;" class="bo3top bo3bottom {if $k=='stock_id' OR $k=='stk_code' }boleft {/if} {if isset($title.class)}{$title.class}{/if}">{$title.title}</td>
+			{/foreach}
+			<td class="textright bo3top bo3bottom" style="width: {$total_w}mm;" >Debit</td>
+			<td class="textright bo3top bo3bottom" style="width: {$total_w}mm;" >Crebit</td>
+			<td class="textright bo3top bo3bottom" style="width: {$total_w}mm;" >Balance</td>
+			</tr>
+		</thead>
+		<tbody>
+
+			{assign var=debit_total value=0}
+			{assign var=crebit_total value=0}
+			{assign var=balance value=$opening}
+
+			<tr><td style="width: {$width*0.4}mm;" ><b>{$bank_account}</b></td>
+				<td style="width: {$width*0.3}mm;"><b>Opening Balance</b></td>
+				<td style="width: {$total_w}mm;" class="textright" >{if $opening >= 0}<b>{number_format num=$opening}</b>{/if}</td>
+				<td style="width: {$total_w}mm;" class="textright" >{if $opening <= 0}<b>{number_format num=abs($opening)}</b>{/if}</td>
+				<td style="width: {$total_w}mm;" class="textright" ></td>
+			</tr>
+			{foreach $trans AS $tran}<tr>
+				{assign var=debit value=0}
+				{assign var=crebit value=0}
+				{foreach $tables AS $field=>$title}
+					<td style="width:{($width)/100*$title.w}mm;" class="{if isset($title.class)}{$title.class}{/if} font9" >
+						{if $field=='trans_date'}
+							{date_format time=$tran->$field}
+						{elseif $field=='type'}
+							{trans_type type=$tran->$field}
+						{else}
+							{$tran->$field}
+						{/if}
+					</td>
+				{/foreach}
+				{if $tran->amount > 0}
+					{$debit = abs($tran->amount) }
+				{else}
+					{$crebit = abs($tran->amount) }
+				{/if}
+				{$debit_total = $debit_total + $debit}
+				{$crebit_total = $crebit_total + $crebit}
+				{$balance = $balance + $tran->amount}
+				<td class="textright font9" style="width: {$total_w}mm;">{number_format num=$debit zero=0}</td>
+				<td class="textright font9" style="width: {$total_w}mm;">{number_format num=$crebit zero=0}</td>
+				<td class="textright font9" style="width: {$total_w}mm;">{number_format num=$balance}</td>
+			</tr>{/foreach}
+			<tr style="background-color: #ddd;">
+				<td valign="baseline" style="width: {$width*0.7}mm; height: 20mmm;  padding-top: 5px;"  class="textright font9" >Total Debit / Credit</td>
+				<td style="vertical-align: middle; width: {$total_w}mm; height: 20mmm;  padding-top: 5px;" class="textright font9" >{number_format num=$debit_total zero=0}</td>
+				<td style="vertical-align: middle; width: {$total_w}mm; height: 20mmm;  padding-top: 5px;" class="textright font9" >{number_format num=$crebit_total zero=0}</td>
+				<td style="vertical-align: middle; width: {$total_w}mm; height: 20mmm;  padding-top: 5px;" class="textright font9" ></td>
+			</tr>
+			<tr style="background-color: #eee">
+				<td style="vertical-align: middle; width: {$width*0.7}mm; height: 20mmm;"  class="textright font9" ><b>Ending Balance</b></td>
+				<td style="vertical-align: middle; width: {$total_w}mm; height: 20mmm;" class="textright font9" ></td>
+				<td style="vertical-align: middle; width: {$total_w}mm; height: 20mmm;" class="textright font9" ></td>
+				<td style="vertical-align: middle; width: {$total_w}mm; height: 20mmm;" class="textright font9" >{number_format num=$balance}</td>
+			</tr>
+			<tr style="background-color: #ddd">
+				<td style="width: {$width*0.7}mm; height: 20mmm;"  class="textright font9" >Net Change</td>
+				<td style="width: {$total_w}mm; height: 20mmm;" class="textright font9" ></td>
+				<td style="width: {$total_w}mm; height: 20mmm;" class="textright font9" ></td>
+				<td style="width: {$total_w}mm; height: 20mmm;" class="textright font9" >{number_format num=($debit_total-$crebit_total)}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

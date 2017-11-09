@@ -1,0 +1,63 @@
+<div id="_page_body"><div id="items_table">
+	<table id="item_listview" class="tablestyle" cellspacing="0" cellpadding="2">
+		<thead>
+			<tr>
+				<td style="width:10%" >Transaction#</td>
+				<td style="width:10%" >Date</td>
+				<td style="width:10%" >Type</td>
+				<td style="width:25%" >{if $type=='customer'}Customer{else}Supplier{/if}</td>
+				<td style="width:9%" >Debit</td>
+				<td style="width:9%" >Credit</td>
+				<td style="width:9%" >Debit (Base)</td>
+				<td style="width:9%" >Credit (Base)</td>
+				<td style="width:100px" ></td>
+				<td style="width:100px" ></td>
+			</tr>
+		</thead>
+		<tbody>
+			{if $items}{foreach $items AS $ite}
+				<tr>
+					<td>{$ite->trans_no}</td>
+					<td>{date_format time=$ite->tran_date}</td>
+					<td>{trans_type type=$ite->type}</td>
+					<td>{$ite->name}</td>
+					<td>{$ite->debit}</td>
+					<td>{$ite->credit}</td>
+					<td>{$ite->debit}</td>
+					<td>{$ite->credit}</td>
+
+					<td>
+						<a class="ajaxsubmit" href="/maintenance/opening/{$type}?edit={$ite->id}" >{if abs($ite->allocation) >0}View{else}Edit{/if}</a>
+					</td>
+					<td>{if abs($ite->allocation) == 0 }
+						<button class="remove inputsubmit" title="remove item" value="{$ite->id}" type="button" ><span>Remove</span></button>
+					{/if}</td>
+				</tr>
+			{/foreach}{/if}
+		</tbody>
+
+		{if $items|@count < $total->total}
+		<tfoot><tr>
+			{function name=pagelink type='sale' page=1}
+				{if $page <=0 } {$page = 1} {/if}
+				href="/maintenance/opening/{$type}?p={$page}"
+			{/function}
+
+
+			<td colspan="10" style="text-align: right; padding: 5px 0;">
+				{*
+				<a {pagelink type=$type page=$page-1} class="ajaxsubmit pagepading">First</a>
+				<a {pagelink type=$type page=$page-1} class="ajaxsubmit pagepading">Previous</a>
+				<a {pagelink type=$type page=$page+1} class="ajaxsubmit pagepading">Next </a>
+				<a {pagelink type=$type page=$lastpage} class="ajaxsubmit pagepading" >Last </a>
+				*}
+				{page_padding total=$total->total page=$page}
+			</td>
+
+		</tr></tfoot>
+
+		{/if}
+	</table>
+
+	<a title="Add new item to document" class="ajaxsubmit" href="?new=1"><img height="12" src="../../themes/template/images/ok.gif"> Add </a>
+</div></div>

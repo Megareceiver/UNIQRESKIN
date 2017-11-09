@@ -1,0 +1,14 @@
+<div class="container wrapper" >
+<table cellpadding="3" cellspacing="0" width="100%" >
+	<tbody>
+		<tr>
+			<td style="width: 30%; height: 23mm" class="textcenter borderall"><h4>Prepared By</h4></td>
+			<td style="width: 5%;"></td>
+			<td style="width: 30%;" class="textcenter borderall"><h4>Approved By</h3></td>
+			<td style="width: 5%;"></td>
+			<td style="width: 30%;" class="textcenter borderall"><h4>Received By</h3></td>
+		</tr>
+
+	</tbody>
+	</table>
+</div>

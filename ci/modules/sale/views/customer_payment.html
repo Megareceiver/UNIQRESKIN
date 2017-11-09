@@ -1,0 +1,40 @@
+<p class="text-center" >{$title}</p>
+<div class="row atborder" style="margin: 0">
+	<div class="col-lg-6 col-sm-6 col-xs-12" style="padding: 0;" >
+		<div class="table_title col-full"><span>From Customer</span>{$tran->DebtorName}</div>
+		<div class="table_title col-full"><span>Customer Currency</span>{$tran->curr_code}</div>
+		<div class="table_title col-full"><span>Into Bank Account</span>{$tran->bank_account_name} [{$tran->bank_curr_code}]</div>
+		<div class="table_title col-full"><span>Cheque No.</span>{$tran->cheque}</div>
+	</div>
+	<div class="col-lg-3 col-sm-3 col-xs-12" style="padding: 0;">
+		<div class="table_title col-full"><span>Reference</span>{$tran->reference}</div>
+		<div class="table_title col-fullx"><span>Amount</span>{$tran->Total}</div>
+		<div class="table_title col-full"><span>Bank Amount</span>{$tran->alloc}</div>
+	</div>
+	<div class="col-lg-3 col-sm-3 col-xs-12" style="padding: 0;" >
+		<div class="table_title col-full"><span>Date of Deposit</span>{$tran->tran_date}</div>
+		<div class="table_title col-full"><span>Discount</span>{$tran->ov_discount}</div>
+		<div class="table_title col-full"><span>Payment Type</span>{$tran->BankTransType}</div>
+	</div>
+	<div class="col-lg-12 col-sm-12 col-xs-12" style="padding: 0;" >
+	</div>
+</div>
+
+<p class="text-center" style="margin-top: 10px;" >Allocations</p>
+<table class="table">
+	<thead>
+      <tr>
+        <th>Type</th>
+        <th>Number</th>
+        <th>Date</th>
+        <th>Total Amount</th>
+        <th>Left to Allocate</th>
+        <th>This Allocation</th>
+      </tr>
+    </thead>
+    <tbody>
+	<tr>
+
+	</tr>
+    </tbody>
+</table>

@@ -1,0 +1,16 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>Transaction Type</th>
+			<th class="right" width="20%">GL Balance</th>
+		</tr>
+	</thead>
+	<tbody>
+	{if isset($gl_trans) && $gl_trans|@count > 0 }{foreach $gl_trans AS $gl}
+		<tr>
+			<td>{trans_type type=$gl->type}</td>
+			<td class="right">{number_format num=$gl->total}</td>
+		</tr>
+	{/foreach}{/if}
+	</tbody>
+</table>

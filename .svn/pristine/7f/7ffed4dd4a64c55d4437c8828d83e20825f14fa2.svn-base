@@ -1,0 +1,24 @@
+<div class="container wrapper">
+<table style="width: 100%;" cellpadding="0" cellspacing="0" >
+	<tr style="line-height: 30px;">
+		<td width="12px"></td>
+		<td width="50%;">Order To</td>
+		<td width="50%;">Deliver To</td>
+	</tr>
+	<tr>
+		<td width="12px"></td>
+		<td>
+			{if ($name)}<p>{$name}</p>{/if}
+			{if ($contact.name)}<p>Contact Person: <i>{$contact.name}</i></p>{/if}
+			{if ($contact.email)}<p>{$contact.email}</p>{/if}
+			{if ($contact.phone)}<p>{$contact.phone}</p>{/if}
+		</td>
+		<td>
+			{if ($company.name)}<p>{$company.name}</p>{/if}
+			{if ($company.email) }<p>{$company.email}</p>{/if}
+			{if ($company.phone)}<p>{$company.phone}</p>{/if}
+			{if ($company.address)}<p>{print_address  addr=$company.address}</p>{/if}
+		</td>
+	</tr>
+</table>
+</div>

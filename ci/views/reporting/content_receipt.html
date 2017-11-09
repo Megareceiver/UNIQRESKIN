@@ -1,0 +1,56 @@
+{function space num=0}
+	{while $num > 0} &nbsp;{$num = $num -1 }{/while}
+{/function}
+<div class="container wrapper">
+	{if isset($payment_terms)}<p class="paymen_terms" >{space num=2}Payment Terms: {$payment_terms}</p>{/if}
+	<table class="items" cellpadding="3" cellspacing="0">
+		<tbody>
+			<tr class="color_header" >
+				<td width="85%" class=" borderall" >
+					<table cellpadding="3" cellspacing="0">
+						<tr>
+							{foreach $table AS $title}
+							<td width="{$title.w}%" class="textbold {if isset($title.class)}{$title.class}{/if}" >{$title.title}</td>
+							{/foreach}
+						</tr>
+					</table>
+				</td>
+				<td class="textright borderall" style="width: {$amount_w}px;" ><b>Total</b></td>
+
+			</tr>
+				<tr><td class="boleft">&nbsp; As advance / full / part / payment towards</td><td class="boleft boright" ></td></tr>
+				{assign var=total_allocated value=0}
+
+				{foreach $items AS $item}
+					{$total_allocated = $total_allocated+$item->amt}
+				<tr>
+				<td class="boleft" >
+					<table cellpadding="3" cellspacing="0">
+						<tr>
+							{foreach $table AS $field=>$title}
+							<td width="{$title.w}%" class="{if isset($title.ite_class)}{$title.ite_class}{elseif isset($title.class)}{$title.class}{/if}" >
+								{if $field=='left_alloc' OR $field=='total' }
+									{number_format num=$item->$field}
+								{elseif $field=='tran_date' OR $field=='due_date' }
+									{date_format time=$item->$field}
+								{elseif $field=='type'}
+									{trans_type type=$item->$field}
+								{elseif isset($item->$field) }
+									{$item->$field}
+								{/if}
+							</td>
+							{/foreach}
+						</tr>
+					</table>
+				</td>
+				<td class="textright boleft boright" >
+					{number_format num=$total_allocated  amount=1}
+				</td>
+				</tr>
+				{/foreach}
+
+		</tbody>
+	</table>
+
+</div>
+

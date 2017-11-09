@@ -1,0 +1,63 @@
+<table class="table">
+	<thead>
+      <tr>
+        <th>{$page_title}</th>
+        <th>Reference</th>
+        <th>Date</th>
+        <th>Person/Item</th>
+      </tr>
+    </thead>
+    <tbody>
+	<tr>
+		<td>{$tran_name}</td>
+        <td>{$reference}</td>
+        <td>{$tran_date}</td>
+        <td>{$person}</td>
+	</tr>
+    </tbody>
+</table>
+
+{if isset($repost)}
+<p style="text-align: right;">
+	<a class="inputsubmit" href="{$repost}"><img width="12" src="../../themes/template/images/ok.gif">RE-POST</a>
+</p>
+{else}
+<br>
+{/if}
+{if $table && isset($trans)}
+<table class="table table-striped">
+	<thead><tr>
+		{foreach $table AS $k=>$th}
+        <th {if $k=='credit' || $k=='debit'}class="text-right"{/if}>{$th.title}</th>
+		{/foreach}
+	</tr></thead>
+    <tbody>
+
+		{assign var=credit value=0}
+		{assign var=debit value=0}
+    	{foreach $trans AS $ite}<tr>
+	    	{foreach $table AS $k=>$th}
+	    		{if $k=='credit' && $ite->amount < 0 }
+					<td class="text-right">{number_format num=abs($ite->amount) amount=true}</td>
+					{$credit = $credit -$ite->amount }
+				{elseif $k=='debit' && $ite->amount > 0 }
+					<td class="text-right">{number_format num=abs($ite->amount) amount=true}</td>
+					{$debit = $debit + $ite->amount }
+	    		{else}
+	    		<td>{$ite->$k}</td>
+	    		{/if}
+
+	    	{/foreach}
+    	</tr>{/foreach}
+
+    </tbody>
+    <tfoot>
+    	<tr>
+    		<td colspan="2"><strong>Total</strong></td>
+    		<td class="text-right" ><strong>{number_format num=$debit amount=true}</strong></td>
+    		<td class="text-right"><strong>{number_format num=$credit amount=true}</strong></td>
+    		<td></td>
+    	</tr>
+    </tfoot>
+</table>
+{/if}

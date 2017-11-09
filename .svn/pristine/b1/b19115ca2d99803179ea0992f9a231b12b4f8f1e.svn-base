@@ -1,0 +1,85 @@
+
+@font-face {
+    font-family: "segoeui";
+    src: url("../fonts/segoeui.ttf");
+}
+
+body {font-family:"segoeui";font-size:13px;color:#000;}
+/*body.login { background:#f5faf5; } */
+body.login {
+	background: transparent url("../images/_UNIQ365-BG.jpg");
+}
+
+html,body,p,a,ul,li,table,div,tbody,table{margin:0;padding:0;}
+a{text-decoration:none;}
+li{   list-style: outside none none;}
+/*   login  */
+
+
+.login .wrapper{width:400px;margin:auto;}
+.login .logo { padding:80px 0px 20px; text-align: center;}
+.login .logo img {max-width: 200px;}
+.login-input { background:#FFF; padding:30px;border-bottom:1px solid #b5b8c9;}
+.login-input input{width:328px;height:25px;}
+.login-input p{margin-bottom:5px;}
+.input-user{margin-bottom:10px;}
+.login-btn{background:#e3f1e5;height:80px;border-top:1px solid #FFF;}
+.btn-check{margin-top:35px;margin-left:45px;}
+.btn-check p,.btn-check input{float:left;}
+.btn-check p{font-size:11px;margin-left:10px;line-height:16px;}
+
+input.btnlogin {
+	margin-top:25px;
+	background:#33ccff;
+	color:#FFF;font-size:16px;
+	padding:15px 30px;line-height:0;
+}
+
+.company-name, .company-license {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+/* dung chung */
+
+
+.btn a:hover{background:#108067;}
+.border-b5b8c9, input,select{border:1px solid #b5b8c9;}
+.login .footer{margin-top:55px;text-align:center;}
+input,select{height:23px!important;}
+input{padding-left:5px;}
+.clear{clear:both;}
+/*  home */
+
+.home .menu-header{background:#000;height:32px;}
+.home .menu-header .menu-header-auto,.home .header,.container{width:970px;margin:auto;}
+.home .menu-header .menu-header-auto ul{float:right;}
+.home .menu-header .menu-header-auto ul li{float:left;}
+.home .menu-header .menu-header-auto ul li a{color:#ededed;padding:0px 25px;line-height:32px;}
+.home .menu-header .menu-header-auto ul li a:last-child{padding-right:0px;}
+.home .menu-header .menu-header-auto ul li a.active{color:#2eb544;}
+
+.home .header{height:108px;}
+.home .header a img{margin-top:20px;float:left;}
+.home .header .search-info{float:right;}
+.home .header .search-info  p.company-name{margin-top:10px;font-weight:bold;font-size:16px; text-align: right;margin-bottom:16px;}
+.home .header .search-info .search,.home .header .search-info .search .search-btn{float:left;}
+.home .header .search-info .search{height:23px;margin-bottom:16px;}
+.home .header .search-info .search input,.home .header .search-info .search .search-btn a{float:left;}
+.home .header .search-info .search input{width:214px;}
+.home .header .search-info .help p{ text-align: right;}
+.search-btn a{font-size:13px;line-height:11px;margin-left:13px;padding:4px 9px 7px 9px;}
+
+.home .menu{height:40px;}
+
+.container .add-new{border-bottom:1px dashed  #b7baca;float:left;width:100%;padding-bottom:10px;}
+.container .add-new p{float:left;}
+.container .add-new a{float:right;}
+.container .h2 {color:#3eb34e;font-size:24px;}
+.add-btn a{line-height:14px;font-size:14px;padding:8px 30px;}
+.container .table1{margin-top:25px;}
+.container .table1 table{width:100%;}
+.table-width1{width:220px;}
+.table-width2{width:95px;}
+.table-width3{width:145px;}
+.table-width4{width:115px;}

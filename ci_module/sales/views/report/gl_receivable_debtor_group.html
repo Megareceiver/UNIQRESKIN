@@ -1,0 +1,77 @@
+<table class="table table-striped clearfix {$class}">
+<thead><tr>
+	<th>#</th>
+	<th class="textleft">Tran Type</th>
+
+	<th class="textleft" width="10%">Tran No</th>
+	<th class="textleft" width="10%">Reference</th>
+	<th class="center" width="10%">Tran Date</th>
+	<th class="textright" width="15%">GL Amount</th>
+	<th class="textright" width="15%">Tran Amount</th>
+	<th class="textright" width="15%">Balance</th>
+</tr></thead>
+{if $trans|@count > 0 }
+	{assign var=tran_amount value=0}
+	{assign var=gl_amount value=0}
+	{assign var=balance value=0}
+
+	<tbody>
+		{foreach $trans AS $k=>$debtor}
+			{assign var=debtorbalance value=0}
+			{assign var=debtor_tran_amount value=0}
+			{assign var=debtor_gl_amount value=0}
+
+			{*
+			<tr style="height: 30px; background-color: #ddd;">
+				<td class="center" style="font-weight: bold; line-height: 30px;" >{$k+1}</td>
+				<td colspan="6" style="font-weight: bold; line-height: 30px;">{$debtor.debtor->name}</td>
+			</tr>
+			*}
+			{if $debtor.trans|@count > 0 }{foreach $debtor.trans AS $kk=>$tran}
+				{$debtorbalance = $debtorbalance +$tran->tran_amount-$tran->alloc}
+				{$debtor_tran_amount = $debtor_tran_amount + $tran->tran_amount}
+				{$debtor_gl_amount = $debtor_gl_amount + $tran->gl_amount}
+
+
+				{assign var=view_item value=1}
+				{if $check==1 AND $tran->gl_amount == $tran->tran_amount}{$view_item=0}{/if}
+
+				{if $view_item==1 && $total_only!= 1}
+				<tr style="{if abs($tran->gl_amount-$tran->tran_amount) > 1 }background-color: red; {/if}">
+					<td class="center">{$k+1}.{$kk +1}</td>
+					<td>{trans_type type=$tran->type}</td>
+					<td >{anchor uri="sales/view/view_invoice.php?trans_type=10&trans_no="|cat:$tran->trans_no title=$tran->trans_no}</td>
+					<td >{$tran->reference}</td>
+					<td class="center" >{date_format time=$tran->tran_date}</td>
+
+					<td class="textright">{number_format num=$tran->gl_amount}</td>
+					<td class="textright">{number_format num=$tran->tran_amount}</td>
+					<td class="textright">{number_format num=$debtorbalance }</td>
+				</tr>
+				{/if}
+
+			{/foreach}{/if}
+			{$balance = $balance + $debtorbalance}
+			{$gl_amount = $gl_amount + $debtor_gl_amount}
+			{$tran_amount = $tran_amount + $debtor_tran_amount}
+			<tr style="height: 30px; {if $total_only != 1 }background-color: #eee; {/if}font-weight: bold;">
+				<td></td>
+				<td colspan="4">Grand Total : {anchor uri="sales/gl-receivable/customer-analysis/"|cat:$debtor.debtor->debtor_no title=$debtor.debtor->name}</td>
+				<td class="textright">{number_format num=$debtor_gl_amount}</td>
+				<td class="textright">{number_format num=$debtor_tran_amount}</td>
+				<td class="textright">{number_format num=$debtorbalance}</td>
+			</tr>
+		{/foreach}
+	</tbody>
+	<tfoot>
+		<tr>
+			<td></td>
+			<td colspan="4">Grand Total</td>
+			<td class="textright">{number_format num=$gl_amount}</td>
+			<td class="textright">{number_format num=$tran_amount}</td>
+			<td class="textright">{number_format num=$balance}</td>
+		</tr>
+	</tfoot>
+{/if}
+
+</table>

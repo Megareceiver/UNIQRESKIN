@@ -1,0 +1,50 @@
+{function space num=0}
+	{while $num > 0} &nbsp;{$num = $num -1 }{/while}
+{/function}
+
+{function collumspace}
+	<td width="15px"></td>
+{/function}
+
+
+<div class="container wrapper">
+	<table style="width: 100%;" class="header"  cellpadding="0" cellspacing="0" >
+		<tr valign="bottom" >
+			<td width="65%;"  >
+				<table cellpadding="0" cellspacing="0" >
+					{if isset($company.logo)}
+						<tr>{collumspace}<td colspan="2"><img src="{$company.logo}" alt="A2000 solusion" height="50" border="0" ></td></tr>
+						<tr>{collumspace}<td colspan="2"><b>{$company.name}</b>{if isset($company.coy_no)} -{$company.coy_no} {/if}</td></tr>
+					{else}
+						<tr><td colspan="3"><h2 style="font-weight: bold; line-height: 43.5px;">{space num=2}{$company.name}</h2></td></tr>
+						{if isset($company.coy_no)}
+						<tr class="textitalic" >{collumspace}<td class="line_title" >Company Number</td><td>{$company.coy_no}</td></tr>
+						{/if}
+					{/if}
+
+					{if isset($company.address)}
+						<tr>{collumspace}<td colspan="2">{print_address  addr=$company.address}</td></tr>
+					{/if}
+					{if isset($company.phone)}
+
+						<tr class="textitalic" >{collumspace}<td class="line_title" >Phone</td><td>{$company.phone}</td></tr>
+					{/if}
+					{if isset($company.fax)}
+						<tr class="textitalic" >{collumspace}<td class="line_title" >Fax</td><td>{$company.fax}</td></tr>
+					{/if}
+					{if isset($company.email)}
+						<tr class="textitalic" >{collumspace}<td class="line_title" >Email</td><td>{$company.email}</td></tr>
+					{/if}
+					{if isset($company.gst_no)}
+						{$title_h = $title_h + 13}
+						<tr class="textitalic" >{collumspace}<td class="line_title" >Our GST No.</td><td>{$company.gst_no}</td></tr>
+					{/if}
+				</table>
+			</td>
+			<td width="35%" >
+				<span class="page_title" align="right" style="line-height: 100px;" >{$title}</span>
+			</td>
+		</tr>
+	</table>
+</div>
+

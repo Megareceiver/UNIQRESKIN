@@ -1,0 +1,41 @@
+<div class="row borderall top15">
+	<h4 class="textcenter titleb">Sales Invoice Items</h4>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th width="10%">Item Code</th>
+				<th width="25%">Item Description</th>
+				<th width="10%" >Tax</th>
+				<th width="5%" >Quantity</th>
+				<th>Unit</th>
+				<th width="12%">Price after Tax</th>
+				<th width="9%" >Discount %</th>
+				<th>Total</th>
+				<th width="5%"></th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr>
+			  <td>{formInput name="" }</td>
+			  <td>{formInput name="product" type="products" }</td>
+			  <td>{formInput name="tax" type="gst" group=2 }</td>
+			  <td>{formInput name="qty" class="number" }</td>
+			  <td>unit</td>
+			  <td>{formInput name="price" class="number" }</td>
+			  <td>{formInput name="discount" class="number" }</td>
+			  <td></td>
+			  <td>{submit_button title='Add' atype=1}</td>
+
+			</tr>
+		</tbody>
+		<tfoot>
+
+
+			<tr>
+
+			  <td colspan="6"></td>
+			  <td colspan="3">{binput key='Location' }</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>

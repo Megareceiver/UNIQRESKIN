@@ -1,0 +1,12 @@
+<div class="row">
+	{if isset($app) AND $app|count > 0}{foreach $app AS $name=>$a}
+	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3" >
+		<a class="portlet light text-center homeblock" href="{site_url uri=$a[0]}" >
+			{*<span class="dashboard-home-{$name}" ></span>*}
+			<span class="home-icon" ><i class="fa fa-{$a[3]}"></i></span>
+			<h4>{$a[1]}</h4>
+			<span>{$a[2]}</span>
+		</a>
+	</div>
+	{/foreach}{/if}
+</div>

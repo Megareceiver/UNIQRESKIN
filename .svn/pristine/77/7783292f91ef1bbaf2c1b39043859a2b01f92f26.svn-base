@@ -1,0 +1,21 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+class Admin_Revenue_Model extends CI_Model {
+    function __construct(){
+        parent::__construct();
+    }
+
+    function get_row($id=0){
+        if( !is_numeric($id) ){
+            $id = 0;
+        }
+        $this->db->where('t.id',$id)->from('sys_revenue_type AS t')->select('t.*');
+        $this->db->join('chart_master AS gl','gl.account_code=t.gl_account','LEFT')->select('gl.account_name AS gl_description');
+
+        $result = $this->db->get();
+        if( $result->num_rows() > 0 ){
+            return $result->row();
+        } else {
+            return array();
+        }
+    }
+}

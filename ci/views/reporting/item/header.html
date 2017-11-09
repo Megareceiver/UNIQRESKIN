@@ -1,0 +1,16 @@
+<table class="items" cellpadding="3" cellspacing="0" >
+		<thead class="" >
+			<tr class=" " >
+				{assign var=col value=1}
+				{foreach $table AS $k=>$title}
+				<td style=" width: {$title.w*$content_w/100}mm;" class="{if $k=='item_code' OR ( $title.boleft==1 OR $col==1 ) }boleft {/if}bobottom botop color_header textbold {if isset($title.class)}{$title.class}{/if}">
+					{$title.title}
+				</td>
+				{$col = $col + 1}
+				{/foreach}
+				<td class="textright borderall color_header" style="width: 27.25mm;" ><b>{$amount_title}</b></td>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+</table>

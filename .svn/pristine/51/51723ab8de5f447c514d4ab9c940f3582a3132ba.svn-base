@@ -1,0 +1,48 @@
+
+<div class="container wrapper" >
+	<table cellpadding="3" cellspacing="0" width="100%" class="bobottom  boright" >
+		{if isset($order.comment) && $order.comment!='' }
+		<thead>
+			{$height = $height-5}
+			<tr>
+				<td class="boright boleft" style="width: 15%" ></td>
+				<td style="width: 70%;">{$order.comment}</td>
+				<td class="boleft" style="width: {$amount_w}mm;"></td>
+			</tr>
+		</thead>
+		{/if}
+		<tbody>
+
+			<tr>
+				<td class="boright boleft" style="height: {$height}mm; width: {$width-$amount_w}mm;" ></td>
+				<td class="boleft" style="width: {$amount_w}mm;"></td>
+			</tr>
+			<tr>
+				<td style=" width: {$width-$amount_w}mm;" class="textright boleft" >Total Allocated</td>
+				<td class="textright boleft" style="width: {$amount_w}mm;" >{number_format num=$order.total amount=1}</td>
+			</tr>
+			<tr>
+				<td style="width: {$width-$amount_w}mm;" class="textright boleft" >Left to Allocate</td>
+				<td class="textright boleft" style="width: {$amount_w}mm;" >{number_format num=$order.left_alloc amount=1}</td>
+			</tr>
+
+			<tr>
+				<td style=" width: {$width-$amount_w}mm;" class="textright boleft" ><b>TOTAL REMITTANCE</b></td>
+				<td  class="textright boleft" style="width: {$amount_w}mm;" ><b>{number_format num=abs($order.total-$order.left_alloc)  amount=1}</b></td>
+			</tr>
+
+		</tbody>
+	</table>
+	<table cellpadding="3" cellspacing="0" width="100%" class="" >
+		<tbody>
+			<tr><td colspan="4" style="line-height: 40px;"><b>{$order.curr_code}</b>: <i>{$order.total_words}</i></td></tr>
+
+
+		</tbody>
+	</table>
+	<p class="textcenter">
+		<i>All amounts stated in - {$order.curr_code}
+			<br>Bank: N/A, Bank Account: N/A
+			<br>* Subject to Realisation of the Cheque</i>
+	</p>
+</div>

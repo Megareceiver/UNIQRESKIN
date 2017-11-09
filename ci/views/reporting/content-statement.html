@@ -1,0 +1,100 @@
+<div class="container wrapper">
+	<table style="width: 100%" cellpadding="0" cellspacing="0" >
+		<tr>
+			<td width="25%" valign="top" class="textright" >
+
+					{if isset($company.logo)}
+						<img src="{$company.logo}" alt="A2000 solusion" height="70" border="0" >
+					{else}
+						<h2>{$company.name}</h2>{if isset($company.coy_no)} -{$company.coy_no} {/if}
+					{/if}
+
+			</td>
+			<td width="60%" >
+				<p class="textcenter page_statement" >{$company.name}</p>
+				{if isset($company.address) AND $company.address !='' } <p class="textcenter" >{$company.address}</p> {/if}
+				<p class="textcenter font13" >Tel: {$company.phone}  Fax: {$company.fax}</p>
+
+			</td>
+		</tr>
+	</table>
+	<p class="textcenter" > <h2>{$title}</h2> </p>
+	<table style="width: 100%;" cellpadding="3" cellspacing="0" >
+		<tr>
+			<td width="15%" class="textright" ><b>A/C No. </b>:</td><td width="55%"> {$order.debtor_no}</td>
+			<td width="15%" class="textright"><b>Statement Date </b>:</td><td width="15%"> {$order.date}</td>
+		</tr>
+		<tr>
+			<td class="textright"><b>Debtor </b>:</td><td> {$order.debtor}</td>
+			<td class="textright"><b>Terms </b>:</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="textright"><b>Address </b>:</td><td>{$order.contact.address}</td>
+			<td class="textright" ><b>Page: </b></td><td>{$page_number}</td>
+		</tr>
+	</table>
+	<p></p>
+	<table class="items" cellpadding="3" cellspacing="0">
+		<tbody>
+			<tr class="color_header" >
+				<td width="85%" class=" borderall" >
+					<table cellpadding="3" cellspacing="0">
+						<tr>
+							{foreach $table AS $title}
+							<td width="{$title.w}%" class="textbold {if isset($title.class)}{$title.class}{/if}" >{$title.title}</td>
+							{/foreach}
+						</tr>
+					</table>
+				</td>
+				<td class="textright borderall" width="15%"><b>Balance</b></td>
+
+			</tr>
+				{assign var=balance value=0}
+				{foreach $items AS $item}
+				<tr>
+				<td >
+					<table cellpadding="3" cellspacing="0">
+						{assign var=debit value=0} {assign var=credit value=0}
+
+						{if isset($item->deb_type)}
+
+							{if $item->deb_type=='IN' }
+								{$debit = $debit + $item->TotalAmount}
+								{$balance = $balance + $item->TotalAmount}
+							{else}
+								{$credit = $credit + $item->TotalAmount}
+								{$balance = $balance - $item->TotalAmount}
+							{/if}
+						{/if}
+						<tr {if $item->deb_type=='OR'}style="font-style: italic;"{/if}>
+
+
+							{foreach $table AS $field=>$title}
+
+							<td width="{$title.w}%" class="{if isset($title.ite_class)}{$title.ite_class}{elseif isset($title.class)}{$title.class}{/if}" >
+								{if $field=='tran_date'}
+										{date_format time=$item->tran_date}
+								{elseif $field=='trans_type'}
+									{trans_type type=$item->trans_type}
+								{elseif $field=='debit'} {number_format num=$debit zero=false}
+								{elseif $field=='credit'} {number_format num=$credit zero=false}
+								{elseif isset($item->$field) }
+									{$item->$field}
+								{/if}
+							</td>
+							{/foreach}
+						</tr>
+					</table>
+				</td>
+				<td class="textright" >
+					{number_format num=$balance}
+				</td>
+				</tr>
+				{/foreach}
+				{assign var=balance_page value=$balance scope="global"}
+
+
+		</tbody>
+	</table>
+</div>

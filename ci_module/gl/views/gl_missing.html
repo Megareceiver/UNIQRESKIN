@@ -1,0 +1,39 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th style="width: 10%">Type</th>
+			<th style="width: 5%" >#</th>
+			<th style="width: 5%" class="center" >Date</th>
+			<th style="width: 10%" class="center" >Account</th>
+			<th>Person/Item</th>
+			<th style="width: 10%" class="right" >Debit</th>
+			<th style="width: 10%" class="right" >Credit</th>
+		</tr>
+	</thead>
+	<tbody>
+	{assign var=debit value=0}
+	{assign var=credit value=0}
+		{if !isset($items) || $items|@count <= 0 }
+		<tr><td colspan="7" class="center" >No Items</td></tr>
+		{else}
+			{foreach $items AS $tran}
+				<tr>
+					<td>{trans_type type=$tran->type}</td>
+					<td>{tran_detail_view type=$tran->type tran_no=$tran->type_no title=$tran->type_no}</td>
+					<td class="center" >{date_format time=$tran->tran_date}</td>
+					<td class="center" >{$tran->account}</td>
+					<td></td>
+					<td class="right" >{if $tran->amount > 0}{number_format num=$tran->amount }{$debit = $debit + $tran->amount}{/if}</td>
+					<td class="right" >{if $tran->amount < 0}{number_format num=ABS($tran->amount) }{$credit = $credit + ABS($tran->amount) }{/if}</td>
+				</tr>
+			{/foreach}
+		{/if}
+	</tbody>
+	<tfoot>
+		<tr>
+			<td class="right" colspan="5" > Balance : {number_format num=($debit-$credit) }</td>
+			<td class="right" >{number_format num=$debit }</td>
+			<td class="right" >{number_format num=$credit }</td>
+		</tr>
+	</tfoot>
+</table>

@@ -1,0 +1,30 @@
+<div class="container wrapper">
+<table style="width: 100%;" cellpadding="0" cellspacing="0" >
+	<tr style="line-height: 30px;">
+		<td width="12px"></td>
+		<td width="50%;">Charge To</td>
+		<td width="50%;">Delivered To</td>
+	</tr>
+	<tr>
+		<td width="12px"></td>
+		<td>
+			{if isset($name)}<p>{$name}</p>{/if}
+
+			{if isset($contact.name) && $contact.name!=''}<p>Contact Person: <i>{$contact.name}</i></p>{/if}
+			{if isset($contact.email) && $contact.email !='' }<p>{$contact.email}</p>{/if}
+			{if isset($contact.phone) && $contact.phone !='' }<p>{$contact.phone}</p>{/if}
+			{if isset($address) && $address!='' }
+				<p>{print_address addr=$address}</p>
+			{/if}
+		</td>
+		<td>
+			{if isset($delivery) && $delivery !='' }<p>{$delivery}</p>{/if}
+			{if isset($contact.address) && $contact.address!='' }
+				<p>{print_address addr=$contact.address}</p>
+			{elseif isset($delivery_address) && $delivery_address!=''}
+				<p>{print_address addr=$delivery_address}</p>
+			{/if}
+		</td>
+	</tr>
+</table>
+</div>

@@ -1,0 +1,85 @@
+body {
+	font-family: Verdana,Arial,sans-serif;
+}
+
+table.table thead, table.table tfoot {
+	background-color: #eaeaea;
+}
+
+table.table {
+	border: 1px solid #ddd;
+	color: #333;
+}
+table.table tbody td {
+	border: none;
+}
+
+.row .table_title,
+.row .table_title_full {
+	font-size: 12px;
+	padding-left: 155px;
+	line-height: 32px;
+	position: relative;
+	display: inline-block;
+	clear: both;
+	min-height: 33px;
+	> span {
+		background-color: #dee7ec;
+		font-weight: bold;
+		padding: 7px;
+		line-height: 18px;
+		position: absolute;
+		left: 0;
+		width: 150px;
+	}
+}
+
+.row .table_title_color {
+	font-size: 12px;
+	min-height: 33px;
+	line-height: 32px;
+
+	h6 {
+		background-color: #dee7ec;
+		margin: 0;
+		line-height: 32px;
+		font-weight: bold;
+		margin: 2px 0 2px 2px;
+	}
+
+}
+
+/*
+* accounting stlyle
+*/
+.atborder {
+	border: 1px solid #ddd;
+}
+
+/*
+ * button
+ */
+.ajaxsubmit, .navibutton, .inputsubmit {
+    -moz-user-select: none;
+    background-color: #2eb544;
+	color: #fff;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.42857;
+    margin: auto 3px;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.ajaxsubmit:hover,
+.navibutton:hover,
+.inputsubmit:hover {
+  color: #ffffff;
+  background-color: #007d3d;
+  border-color: #006933;
+}

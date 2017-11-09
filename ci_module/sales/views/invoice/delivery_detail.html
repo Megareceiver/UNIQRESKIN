@@ -1,0 +1,16 @@
+<div class="row borderall top15" >
+	<h4  class="textcenter titleb">Delivery Details</h4>
+{assign var=leftCol value='4'}
+	<div class="col-md-6">
+		{binput key='Location' leftCol=$leftCol }
+		{binput key='delivery_date'  leftCol=$leftCol}
+		{binput key='deliver_to'  leftCol=$leftCol}
+		{binput key='delivery_address' leftCol=$leftCol }
+	</div>
+	<div class="col-md-6">
+		{binput key='phone'  }
+		{binput key='cust_ref'  }
+		{binput key='Comments'  }
+		{binput key='ship_via'  }
+	</div>
+</div>

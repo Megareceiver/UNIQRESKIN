@@ -1,0 +1,24 @@
+.printing_background {
+
+	height: 300px;
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	text-align: right;
+
+	overflow : hidden;
+
+	> i {
+		font-size: 300px;
+		margin-top: 190px;
+		opacity: 0.2;
+		color: #ddd;
+		-ms-transform: rotate(-30deg); /* IE 9 */
+	    -webkit-transform: rotate(-30deg); /* Safari */
+	    transform: rotate(-30deg);
+
+
+
+	}
+}

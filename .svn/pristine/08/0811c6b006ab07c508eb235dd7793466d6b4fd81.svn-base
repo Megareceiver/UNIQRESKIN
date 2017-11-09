@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title><?php echo $heading;?></title>
+</head>
+<body style="background-color: #f7f7f7;">
+	<div style="margin: 0 auto;text-align: center; width: 400px; margin-top: 150px;">
+	<img title="Cannot connect Database, please contact administrator!" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABIAQMAAABvIyEEAAAABlBMVEUAAABTU1OoaSf/AAAAAXRSTlMAQObYZgAAAENJREFUeF7tzbEJACEQRNGBLeAasBCza2lLEGx0CxFGG9hBMDDxRy/72O9FMnIFapGylsu1fgoBdkXfUHLrQgdfrlJN1BdYBjQQm3UAAAAASUVORK5CYII=">
+	<p><?php echo $message?></p>
+	</div>
+</body>
+</html>

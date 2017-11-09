@@ -1,0 +1,13 @@
+<div class="row clearfix form-inline {$formclass} ">
+{if isset($items)}{foreach $items AS $name=>$field}
+
+{if $field.type !='HIDDEN' }
+<div class="form-group">
+    <label for="exampleInputEmail1">{$field.title}</label>
+    {formInput type=$field.type name=$name field=$field}
+</div>
+{else}
+	{formInput type=$field.type name=$name field=$field}
+{/if}
+{/foreach}{/if}
+</div>

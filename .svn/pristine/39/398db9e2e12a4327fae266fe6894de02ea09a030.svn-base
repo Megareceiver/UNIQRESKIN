@@ -1,0 +1,52 @@
+
+<div id="atmodal" class="bootbox modal fade modal-header" role="dialog">
+	<div class="modal-dialog modal-lg" role="document" style="width: 600px;">
+		{*
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h2 class="modal-title">{$title}</h2>
+			</div>
+			<div class="modal-body">{if isset($fields)}{foreach $fields AS
+				$name=>$field} {if $field.type !='HIDDEN' } {formInputGroup
+				field=$field name=$name} {else} {formInput type=$field.type
+				name=$name field=$field} {/if} {/foreach} {/if}</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+			</div>
+		</div>
+		*}
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="modal-title">{$title}</h2>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<div class="containter">
+				{if isset($fields)}
+					{foreach $fields AS $name=>$field}
+						{if !isset($field.type)}
+							{$field.type = 'text'}
+						{/if}
+
+						{if $field.type !='HIDDEN' }
+							{formInputGroup field=$field name=$name}
+						{else}
+							{formInput type=$field.type name=$name field=$field}
+						{/if}
+					{/foreach}
+				{/if}
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+				<i class="fa fa-rotate-left"></i> 
+				Close
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+

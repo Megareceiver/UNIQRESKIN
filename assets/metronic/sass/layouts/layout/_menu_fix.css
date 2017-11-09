@@ -1,0 +1,9 @@
+.page-header-menu {
+	.navbar-nav .nav-item.opened > .dropdown-menu {
+		display : block;
+	
+		.dropdown-submenu.opened > .dropdown-menu {
+			display : block;
+		}
+	}
+}

@@ -1,0 +1,113 @@
+{assign var=groupNum value=0}
+{assign var=classColWidth value=55}
+{assign var=groupColWidth value=65}
+{assign var=accountColWidth value=80}
+{assign var=numberWidth value=15}
+{assign var=lineHeight value=36}
+<table class="table borderrignt_none" style="width: 11%; float: left;">
+	<thead>
+		<tr style="height: {$lineHeight*2 + 2}px; " >
+			<th class="center" >Class</th>
+			<th class="center" >Group</th>
+			<th>Line</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		{if $accClass|@count > 0 }{foreach $accClass AS $l1=>$class}
+			<tr>
+				<td style="background-color: #{$classBackground[$l1]};" class="center" >
+					{text2img text="Class "|cat:$class->class_name backcolor=$classBackground[$l1] }
+				</td>
+				<td style="padding: 0" colspan="2">
+					{if $class->types|@count > 0 }<table class="subtable" >{foreach $class->types AS $l2=>$type}
+						{if $groupNum > $groupBackground|@count }{$groupNum = 0}{/if}
+						{assign var=accTotal value=$type->account|@count}
+
+						{assign var=accHeight value=($lineHeight+1)*$accTotal}
+						{if $l1 > 0}{$accHeight = $accHeight}{/if}
+						<tr style="background-color: #{$groupBackground[$groupNum]};" >
+							<td class="center paddingnone"> {*background-color: #{$groupBackground[$groupNum]}; height: {$accHeight}px; *}
+								{text2img text=$type->name backcolor=$groupBackground[$groupNum] maxHeight=($accTotal*36) }
+							</td>
+							<td style="padding: 0" >
+								{if $accTotal >0}<table class="subtable">{for $k=1 to $accTotal}<tr><td>{$k}</td></tr>{/for}</table>{/if}
+							</td>
+						</tr>
+						{$groupNum = $groupNum +1 }
+					{/foreach}</table>{/if}
+				</td>
+			</tr>
+		{/foreach}{/if}
+	</tbody>
+</table>
+<table class="table table-striped" style="width: 91.5%; position: absolute; right: 0">
+	<thead>
+		<tr>
+			<th colspan="3" ></th>
+			<th colspan="2" class="center" >This Period</th>
+			<th colspan="2" class="center" >Balance</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th style="width: {$accountColWidth}px;" >Account</th>
+			<th>Account Name</th>
+			<th class="right" style="width: {$numberWidth}%;">Debit</th>
+			<th class="right" style="width: {$numberWidth}%;">Credit</th>
+			<th class="right" style="width: {$numberWidth}%;">Debit</th>
+			<th class="right" style="width: {$numberWidth}%;">Credit</th>
+		</tr>
+	</thead>
+	<tbody>
+	{assign var=accCount value=0}
+	{if $accClass|@count > 0 }{foreach $accClass AS $l1=>$class}
+				{if $class->types|@count > 0}
+					{foreach $class->types AS $l2=>$atype}
+						{if $groupNum > $groupBackground|@count }{$groupNum = 0}{/if}
+								{if $atype->account|@count > 0}
+									{foreach $atype->account AS $glAcc}
+										{assign var=check value=0}
+										{if $glAcc->account_code|in_array:$journalAcc }
+											{$accCount = $accCount +1}
+											{$check = 1}
+										{/if}
+										<tr>
+											<td>{if $check}{$accCount}{/if}</td>
+											<td style="width: {$accountColWidth}px">{$glAcc->account_code}</td>
+											<td nowrap>{$glAcc->account_name}</td>
+											<td class="right" >{number_format num=$glAcc->balance_current->debit}</td>
+											<td class="right" >{number_format num=$glAcc->balance_current->credit}</td>
+											<td class="right" >{number_format num=0}</td>
+											<td class="right" >{number_format num=0}</td>
+										</tr>
+										{$current.credit = $current.credit + $glAcc->balance_current->credit}
+										{$current.debit = $current.debit + $glAcc->balance_current->debit}
+									{/foreach}
+
+								{/if}
+
+						{$groupNum = $groupNum +1 }
+					{/foreach}
+
+				{/if}
+
+
+	{/foreach}{/if}
+
+	</tbody>
+	<tfoot>
+		<tr>
+			<th colspan="2">Total - {$dateto}</th>
+			<th class="right">{number_format num=$current.debit}</th>
+			<th class="right">{number_format num=$current.credit}</th>
+			<th class="right">{number_format num=0}</th>
+			<th class="right">{number_format num=0}</th>
+		</tr>
+		<tr>
+			<th colspan="2">Ending Balance - {$dateto}</th>
+			<th colspan="2" class="right">{number_format num=$current.debit - $current.credit}</th>
+			<th colspan="2" class="right">{number_format num=0}</th>
+		</tr>
+	</tfoot>
+</table>
+

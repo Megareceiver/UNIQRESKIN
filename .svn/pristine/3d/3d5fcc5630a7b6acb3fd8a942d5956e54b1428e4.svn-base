@@ -1,0 +1,52 @@
+<div class="container">
+<div class="row clearfix form-inline">
+	<div class="col-md-offset-2 col-md-8 form">
+
+
+	<div class="col-md-12 clearfix no-padding">
+		{assign var=date_begin value=$fields.date_begin}
+		<div class="form-group col-md-5 ">
+			<label for="exampleInputEmail1">{$date_begin.title}</label>
+		    {formInput type=$date_begin.type name='date_begin' field=$date_begin}
+		</div>
+		{assign var=date_end value=$fields.date_end}
+		<div class="form-group col-md-6 ">
+			<label for="exampleInputEmail1">{$date_end.title}</label>
+		    {formInput type=$date_end.type name='date_end' field=$date_end}
+		</div>
+
+	</div>
+
+
+	{if isset($fields)}{foreach $fields AS $name=>$field}
+		{if $name=='date_begin' OR $name =='date_end'}{continue}{/if}
+		{if $field.type !='HIDDEN' }
+		<div class="form-group">
+		    <label for="exampleInputEmail1">{$field.title}</label>
+		    {formInput type=$field.type name=$name field=$field}
+		</div>
+		{else}
+		{formInput type=$field.type name=$name field=$field}
+		{/if}
+		{/foreach}
+	{/if}
+	<div class="form-actions" >
+
+	{if isset($submit)}
+		{foreach $submit AS $name => $title}
+			{if $title|is_array}
+				{submit_button name=$name title=$title.0 atype=$title.1}
+			{else}
+				{submit_button name=$name title=$title atype=1}
+			{/if}
+
+		{/foreach}
+	{/if}
+	</div>
+
+
+	</div>
+
+</div>
+
+</div>

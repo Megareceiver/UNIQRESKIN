@@ -1,0 +1,68 @@
+{if isset($table)}
+	<table width=100% cellpadding=2 cellspacing=0 class="table table-striped table-bordered table-hover table-responsive" >
+	<thead><tr>
+	{foreach $table AS $field=>$title}
+		{if $title|is_array}
+			<td {if isset($title.1)} class="{$title.1}" {/if} style="{if isset($title.2)} width:{$title.2}%; {/if}">{$title.0}</td>
+		{else}
+			<td>{$title}</td>
+		{/if}
+
+	{/foreach}
+	</tr></thead>
+
+	{if $items|@count }
+	<tbody>
+
+	{foreach $items AS $ite}
+		<tr>
+		{foreach $table AS $field=>$title}
+			{if $title|is_array}
+				<td {if isset($title.1)} class="{$title.1}" {/if} style="{if isset($title.2)}width:{$title.2}%;{/if}">
+
+			{else}
+				<td>
+			{/if}
+
+			{if $field=='items_action'}
+				{tempFunction func=$title.2 item=$ite}
+			{elseif isset($title.3) && isset($title.4) && isset($ite->$title.4)}
+
+				{tempFunction func=$title.3 item=$ite->$title.4 }
+			{else}
+				{if $title|is_array}
+					{if isset($title.3) AND $title.3=='date'}
+						{date_format time=$ite->$field}
+					{elseif isset($title.3) AND $title.3=='number'}
+						{number_format num=$ite->$field amount=1}
+					{elseif isset($title.3) AND $title.3=='trans_type'}
+						{trans_type type=$ite->$field}
+					{else}
+						{$ite->$field}
+					{/if}
+				{else}
+					{$ite->$field}
+				{/if}
+			{/if}
+
+			</td>
+		{/foreach}
+
+		</tr>
+
+	{/foreach}
+
+	{else}
+		<tr><td colspan="{$table|@count}" class="center" >No Items</td> </tr>
+	{/if}
+	</tbody>
+	{if $items|@count > 0 && $page_padding}
+	<tfoot><tr>
+		<td colspan="4">
+			{assign var=to_end value=$page*$smarty.const.page_padding_limit }
+			Records {($page-1)*$smarty.const.page_padding_limit + 1}- {if $to_end > $total}{$total}{else}{$to_end}{/if} of {$total}</td>
+		<td class="text_right" colspan="{$table|@count-3}">{table_page_padding ajax=1 page=$page}</td>
+	</tr></tfoot>
+	{/if}
+	</table>
+{/if}

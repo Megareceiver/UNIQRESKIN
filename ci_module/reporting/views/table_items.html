@@ -1,0 +1,14 @@
+<table class="items" cellpadding="3" cellspacing="0">
+	<tbody>
+		<tr class="color_header" >
+			{assign var=k value=0}
+			{foreach $table AS $title}
+			<td width="{pdf_column_w w=$title.w}" class="botop bobottom textbold {if isset($title.class)}{$title.class}{/if} {if $k==0}boleft{/if}" >{$title.title}</td>
+			{$k = $k+1}
+			{/foreach}
+
+			<td class="textright borderall textbold boleft" style="width: {$amount_w}mm;">Balance</td>
+
+		</tr>
+	</tbody>
+</table>

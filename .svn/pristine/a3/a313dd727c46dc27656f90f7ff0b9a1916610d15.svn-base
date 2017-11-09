@@ -1,0 +1,110 @@
+body, table {
+	font-size: 14px;
+	font-family: sans-serif;
+}
+table { width: 100%; }
+.container {
+	width: 290mm;
+    height: 297mm;
+    margin: 0 auto;
+}
+.center {
+	text-align: center;
+}
+a {
+    text-decoration: none;
+}
+.page_title {
+    font-size: 30px;
+    color: #ddd;
+    font-weight: bold;
+}
+.payment_term {
+	padding-left: 15px;
+	height: 45px;
+	line-height: 45px;
+	font-style: italic;
+}
+.footer {
+	font-style: italic;
+	text-align: center;
+	margin-top: 10px;
+}
+.header {
+    min-height: 150px;
+
+}
+.header p {
+	margin: 4px 0 0 0;
+}
+.lable_header {
+	width: 100px;
+	display: inline-block;
+	
+}
+
+.delivery {
+	
+}
+
+
+table.common{
+    border: 1px solid #999;
+    border-spacing: 0;
+    width: 100%;
+}
+table.common td {
+	border: 1px solid #999;
+}
+table.common tr.row {
+	height: 35px;
+}
+
+table.common thead tr {
+    background-color: #dee7eb;
+    
+    border: none;
+    
+    font-size: 13px;
+    height: 35px;
+    
+}
+.table_item tbody {
+	height: 100%;
+	clear: both;
+}
+
+.table_items thead td {
+	
+	margin: 0;
+	
+}
+
+.table_items tr.setbottom {
+	
+}
+
+
+
+
+table td{ 
+	padding: 2px;
+}
+table .border-left {
+	border-left: 1px solid #000;
+}
+
+.header_title {
+    width: 80px;
+   
+    font-style: italic;
+    
+}
+
+.line1 {
+	background: transparent url("../images/pdf_line1.png") repeat-x;
+	height: 10px;
+	width: 100%;
+	margin: 10px 0 5px 0;
+}
+

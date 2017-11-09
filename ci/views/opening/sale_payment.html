@@ -1,0 +1,25 @@
+<div class="row clearfix form-horizontal form-group-at">
+	<div class="col-md-6 border-h-r">
+		{if isset($customer)}
+			{formInputGroup type='CUSTOMER' name='customer' title="Customer Name" field=$customer }
+			{formInputGroup type='BRANCH' name='branch' title="Branch" field=$branch }
+			{assign var=payment_title value='Deposit' }
+		{/if}
+
+		{if isset($supplier)}
+			{formInputGroup type='SUPPLIER' name='supplier' title="Supplier Name" field=$supplier }
+			{assign var=payment_title value='Payment' }
+		{/if}
+
+		{formInputGroup type='TEXT' name='ref' title="Purchase Invoice #" value=$ref.value }
+
+		{inputHidden name='id' value=$id }
+
+	</div>
+	<div class="col-md-6">
+
+		{formInputGroup type='TEXT' name='tran_date' title="Date" disabled=1 value=$tran_date.value }
+
+		{formInputGroup type='NUMBER' name='payment' title=$payment_title value=$payment.value}
+	</div>
+</div>

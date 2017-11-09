@@ -1,0 +1,27 @@
+.f5-header {
+	background-color: black;
+	color: #fff;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 5px 10px;
+}
+
+input.num {
+	text-align: right;
+	width: calc(100% - 30px);
+
+}
+#gstform5 .container{
+	padding-left : 0px;
+}
+
+#gstform5 .row {
+	margin: 10px 0 0 0;
+	> [class ^='col-'] {
+		padding-left : 5px;
+		padding-right : 5px;
+	}
+	.line-step {
+		line-height: 25px;
+	}
+}

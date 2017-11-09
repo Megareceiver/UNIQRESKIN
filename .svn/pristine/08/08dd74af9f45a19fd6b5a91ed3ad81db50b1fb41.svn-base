@@ -1,0 +1,49 @@
+<table class="table table-striped clearfix {$class}">
+<thead><tr>
+	<th>#</th>
+	<th>Customer</th>
+	<th>Currency</th>
+	<th class="textright">Current</th>
+	<th class="textright">1-30 Days</th>
+	<th class="textright">31-60 Days</th>
+	<th class="textright">Over 60 Days</th>
+	<th class="textright">Total Balance</th>
+</tr></thead>
+{if $trans|@count > 0 }
+	{assign var=balance value=0}
+	{assign var=orver_60 value=0}
+	{assign var=orver_3060 value=0}
+	<tbody>
+		{foreach $trans AS $k=>$tran}
+			{if $tran->balance != 0}
+			<tr>
+				<td>{$k+1}</td>
+				<td>{$tran->name}</td>
+				<td>{$tran->curr_code}</td>
+				<td></td>
+				<td></td>
+				<td class="textright">{number_format num=$tran->overdue1-$tran->overdue2}</td>
+				<td class="textright">{number_format num=$tran->overdue2}</td>
+				<td class="textright">{number_format num=$tran->balance}</td>
+			</tr>
+			{/if}
+			{$balance = $balance + $tran->balance}
+			{$orver_60 = $orver_60 + $tran->balance}
+			{$orver_3060 = $orver_3060 + $tran->overdue1-$tran->overdue2}
+		{/foreach}
+	</tbody>
+	<tfoot>
+		<tr>
+
+			<td colspan="3">Grand Total</td>
+
+			<td></td>
+			<td></td>
+			<td class="textright">{number_format num=$orver_3060}</td>
+			<td class="textright">{number_format num=$orver_60}</td>
+			<td class="textright">{number_format num=$balance}</td>
+		</tr>
+	</tfoot>
+{/if}
+
+</table>

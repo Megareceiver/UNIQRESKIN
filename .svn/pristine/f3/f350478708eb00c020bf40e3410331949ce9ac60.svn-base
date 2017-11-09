@@ -1,0 +1,179 @@
+body, table, table td, p {
+	font-size: 9pt;
+}
+
+
+.fontinvoice, .fontinvoice table, .fontinvoice td, .fontinvoice p, .fontinvoice th {
+	font-size: 7pt;
+}
+.fontinvoice2 td {
+	font-size: 6.5px;
+}
+.container {
+	width: 210mm;
+	margin: 0 auto;
+}
+
+.bugcss {
+	background-color: red;
+}
+
+.line_title {
+	width: 30mm;
+}
+
+.page_title {
+    font-size: 19pt;
+    color: #ddd;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-right: 10px;
+
+}
+.page_statement {
+    font-size: 150%;
+	font-weight: bold;
+    /* text-transform: uppercase; */
+}
+.page_statement span {
+	font-weight: normal;
+	font-size: 10px;
+}
+
+.h4 {
+	font-size: 110%;
+	font-weight: bold;
+
+
+}
+
+.font13 {
+	font-size: 13px;
+}
+
+.font9 {
+	font-size: 9px;
+}
+
+.textcenter {
+	text-align: center;
+}
+.textleft {
+	text-align: left;
+}
+.textitalic {
+	font-style: italic;
+}
+
+.textright {
+	text-align: right;
+}
+.textbold {
+	font-weight: bold;
+}
+
+/*
+Table common
+*/
+table.common {
+    border: 1px solid #999;
+
+    width: 100%;
+}
+table.common td {
+	border: 1px solid #999;
+}
+.color_header td, .color_header {
+	background-color: #dee7eb;
+
+}
+
+.paymen_terms {
+	line-height: 30px;
+	font-style: italic;
+}
+
+/* table items */
+
+
+
+table.items {
+    /*
+    border: 1px solid #999;
+    */
+
+    width: 100%;
+
+}
+
+table.items td {
+	/*
+	border: 1px solid #999;
+	*/
+	vertical-align: middle;
+
+	line-height: 0.6cm;
+
+}
+
+table.items_footer td {
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
+}
+
+/* border table */
+.borderall { border: 1px solid #999; }
+.botop { border-top: 1px solid #999; }
+.boleft { border-left: 1px solid #999;  }
+.boright { border-right: 1px solid #999; }
+.bobottom { border-bottom: 1px solid #999; }
+
+.bo3top { border-top: 2px solid #999; }
+.bo3bottom { border-bottom: 2px solid #999; }
+
+.borderall2 { border: 2px solid #999; }
+.botop2 { border-top: 2px solid #999; }
+.boleft2 { border-left: 2px solid #999;  }
+.boright2 { border-right: 2px solid #999; }
+.bobottom2 { border-bottom: 2px solid #999; }
+
+.statement_footer td {
+	border: 1px solid #999;
+	text-align: right;
+}
+
+.sign_spache {
+	border-bottom: 1px solid #000;
+	line-height: 9px;
+}
+/* clearn , overwrite*/
+
+.tableheader {
+	font-weight: bold;
+	background-color: #eaeaea;
+	color: black;
+	text-align: center;
+	padding: 25px 4px;
+	line-height: 7mm;
+	vertical-align: middle;
+}
+table.tablestyle, table.tablestyle td {
+	font-size: 11pt;
+}
+
+table.header_balance {
+	border-top: 2px solid #666;
+	border-bottom: 2px solid #666;
+
+}
+table.header_balance_supplier th {
+	border-bottom: 1px solid #666;
+	height: 0.6cm;
+	vertical-align: middle;
+}
+.footer_balance_supplier td {
+	border-top: 1px solid #777;
+	border-bottom: 1px solid #777;
+	line-height: 0.6cm;
+}

@@ -1,0 +1,22 @@
+<table cellpadding="1" cellspacing="0" class="header_balance_supplier" >
+	<thead>
+	<tr>
+
+		{foreach $items_view AS $field=>$col}
+
+			{if $field=='type'}
+				<th width="{pdf_column_w w=($items_view.reference.w + $items_view.type.w +  $items_view.tran_date.w + $items_view.due_date.w) content_w=$content_w}" class="{if isset($col.class)}{$col.class}{/if}" ><b>Grand Total</b></th>
+
+			{elseif $field=='debit' OR $field=='credit' OR $field=='allocated' OR $field=='outstanding'}
+
+				<th width="{pdf_column_w w=$col.w content_w=$content_w}" class="{if isset($col.class)}{$col.class}{/if}" >{number_format num=$balance.$field}</th>
+			{elseif $field !='reference' && $field !='tran_date' && $field !='due_date' }
+
+				<th></th>
+			{/if}
+
+		{/foreach}
+	</tr>
+	</thead>
+
+</table>

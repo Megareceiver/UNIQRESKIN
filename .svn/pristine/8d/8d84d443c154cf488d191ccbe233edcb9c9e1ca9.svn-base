@@ -1,0 +1,48 @@
+{assign var=total value=0}
+<div class="container wrapper" >
+	<table cellpadding="3" cellspacing="0" width="100%" class="bobottom  boright" >
+		<tbody>
+			<tr>
+				<td class="boright boleft" style="height: {$height}mm; width: {$width-$amount_w}mm;" ></td>
+				<td class="boleft" style="width: {$amount_w}mm;"></td>
+			</tr>
+			<tr>
+				<td style="width: {$width-$amount_w}mm;" class="textright boleft" >Sub-total</td>
+				<td class="textright boleft" style="width: {$amount_w}mm;" >{number_format num=$sub_total amount=1}</td>
+			</tr>
+			<tr>
+				<td style="width: {$width-$amount_w}mm;" class="textright boleft" >Shipping</td>
+				<td class="textright boleft" style="width: {$amount_w}mm;" >{number_format num=$shipping amount=1}</td>
+			</tr>
+			{foreach $taxes AS $tax}
+			<tr>
+				<td style="width: {$width-$amount_w}mm;" class="textright boleft" >Tax ({$tax.name}) Amount</td>
+				<td style="" class="textright boleft " style="width: {$amount_w}mm;" >{number_format num=$tax.value amount=1}</td>
+			</tr>
+			{/foreach}
+			{if isset($amount_total)}
+			<tr>
+				<td style="width: {$width-$amount_w}mm;" class="textright boleft" ><b>TOTAL CREDIT</b></td>
+				<td  class="textright boleft" style="width: {$amount_w}mm;" ><b>{number_format num=$amount_total amount=1}</b></td>
+			</tr>
+			{/if}
+		</tbody>
+	</table>
+
+</div>
+<p class="textcenter">
+{if isset($type)}
+	{if $type='sale'}
+		<i>Please quote Invoice no. when paying. All amounts stated in - MYR</i><br>
+		<i>Bank: Maybank Berhad, Bank Account: {$bank_account}</i><br>
+		<i style="font-size: 80%;">IMPORTANT:Please reference our invoice number on remittance. All cheques to be crossed and drawn to the order of DEMO SOLUTIONS SDN BHD. If there are any discrepancies, please</i>
+	{/if}
+{else}
+<i>All amounts stated in -<br>Bank: Maybank Berhad, Bank Account: {$bank_account}</i>
+{/if}
+
+
+</p>
+
+
+

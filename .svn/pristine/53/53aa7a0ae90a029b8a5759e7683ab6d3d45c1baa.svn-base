@@ -1,0 +1,25 @@
+<table cellpadding="1" cellspacing="0" class="header_balance_supplier" >
+<tr>
+{foreach $items_view AS $field=>$d}
+<td width="{pdf_column_w w=$d.w content_w=$content_w}"  class="{if isset($d.class)}{$d.class}{/if}" >
+	{if $field=='type'}
+		{trans_type type=$tran->$field}
+	{elseif $field=='tran_date' OR $field=='due_date'}
+		{date_format time=$tran->$field}
+
+	{elseif $field=='reference'}
+		{$tran->reference}
+	{elseif ($field=='credit' || $field=='debit') && isset($tran->$field) }
+
+		{money_exchange num=$tran->$field }
+	{else}
+		{money_exchange num=$tran->$field zero=1}
+	{/if}
+
+</td>
+{/foreach}
+</tr>
+
+
+
+</table>

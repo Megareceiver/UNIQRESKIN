@@ -1,0 +1,66 @@
+{function space num=0}
+	{while $num > 0} &nbsp;{$num = $num -1 }{/while}
+{/function}
+<div class="container wrapper">
+	{if isset($payment_terms)}<p class="paymen_terms" >{space num=2}Payment Terms: {$payment_terms}</p>{/if}
+	<table class="items" cellpadding="3" cellspacing="0">
+		<tbody>
+			<tr class="color_header" >
+				<td style="width: {$width-$amount_w}mm;" class=" borderall" >
+					<table cellpadding="3" cellspacing="0">
+						<tr>
+							{foreach $table AS $title}
+							<td style="width:{($width-$amount_w)/100*$title.w}mm;" class="textbold {if isset($title.class)}{$title.class}{/if}" >{$title.title}</td>
+							{/foreach}
+						</tr>
+					</table>
+				</td>
+				<td class="textright borderall" style="width: {$amount_w}mm;" ><b>Total</b></td>
+
+			</tr>
+
+				{foreach $items AS $item}
+				<tr>
+				<td class="boleft" >
+					<table cellpadding="3" cellspacing="0">
+						<tr>
+							{foreach $table AS $field=>$title}
+							<td width="{$title.w}%" class="{if isset($title.ite_class)}{$title.ite_class}{elseif isset($title.class)}{$title.class}{/if}" >
+								{if $field=='price'}
+									{number_format num=$item->$field}
+								{elseif $field=='unit_price' }
+									{number_format num=$item->$field}
+								{elseif $field=='description'}
+									{if isset($item->long_description) && $item->long_description != ''}
+										{$item->long_description}
+									{else}
+										{$item->description}
+									{/if}
+								{elseif $field=='discount_percent'}
+									{$item->discount_percent*100}%
+
+								{elseif isset($item->$field) }
+									{$item->$field}
+								{/if}
+							</td>
+							{/foreach}
+						</tr>
+					</table>
+				</td>
+				<td class="textright boleft boright" >
+					{if isset($item->price) AND isset($item->qty) }
+						{if isset($item->discount_percent) && $item->discount_percent > 0}
+							{number_format num=$item->price*$item->qty*(1-$item->discount_percent)  amount=1 }
+						{else}
+							{number_format num=$item->price*$item->qty amount=1}
+						{/if}
+					{/if}
+				</td>
+				</tr>
+				{/foreach}
+
+		</tbody>
+	</table>
+
+</div>
+

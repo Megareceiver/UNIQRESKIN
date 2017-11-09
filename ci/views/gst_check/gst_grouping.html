@@ -1,0 +1,256 @@
+
+<p>From : {date_format time=$from} to {date_format time=$to}</p>
+
+<table cellspacing="1" class="gst-grouping-header"  >
+	<thead>
+		<tr>
+			<td>Date</td>
+			<td>Trn</td>
+			<td>Ref</td>
+			<td>Curr</td>
+			<td>Rate</td>
+			<td>Item</td>
+			<td>Suppliers/Customer</td>
+			<td class="textright" >Sales/Purchase Amt</td>
+			<td class="textright" >GST</td>
+			<td class="textright">Sales (Base)</td>
+			<td class="textright">S.GST (Base)</td>
+			<td class="textright">Purchase (Base)</td>
+			<td class="textright">P.GST (Base)</td>
+			<td class="textright">Pay/Claim</td>
+		</tr>
+	</thead>
+	<tbody >
+
+
+		{assign var=gst value=0}
+		{assign var=number value=1}
+		{assign var=sale_gst_amount value=0}
+		{assign var=sale_base_amount value=0}
+		{assign var=purchase_gst_amount value=0.0}
+		{assign var=purchase_base_amount value=0.0}
+
+		{assign var='5b_check' value=','|explode:"SR,DS,AJS"} {assign var=5b value=0}
+		{assign var='6b_check' value=','|explode:"TX,IM,TX-E43,TX-RE,AJP"} {assign var=6b value=0}
+
+
+		{if isset($taxes)} {foreach $taxes AS $tax} {if !empty($tax->items) && $tax->id}
+			<tr class="tax_header">
+				<th>-</th>
+				<th colspan="12" style="font-weight: bold; text-align: left;">{$tax->name} ({$tax->no})</th>
+				<th class="textright" ><span class="glyphicon glyphicon-minus button-hide" ></span></th>
+			</tr>
+			{assign var=sale_base_total value=0}
+			{assign var=sale_gst_total value=0}
+			{assign var=purchase_base_total value=0}
+			{assign var=purchase_gst_total value=0}
+
+
+			{assign var=taxcode value=''}
+
+			{foreach $tax->items AS $o}
+				{assign var=sale_gst value=0}
+				{assign var=sale_base value=0}
+				{assign var=purchase_gst value=0}
+				{assign var=purchase_base value=0}
+				{assign var=price value=0}
+				{assign var=tax_base value=0}
+				{assign var=price_base value=0}
+
+
+				{$price_base = $o->unit_price * $o->quantity * (1-$o->discount_percent) }
+				{if $o->tax_included ==1}
+					{$tax_base = $tax->rate/(100+$tax->rate)*$price_base}
+					{$price_base = $price_base-$tax_base}
+				{else}
+					{$tax_base = $tax->rate*$price_base/100}
+				{/if}
+
+				{if $o->type=='CCN'}
+					{$price_base = -$price_base}
+					{$tax_base = -$tax_base}
+				{/if}
+
+
+				{if $o->type =='S' OR $o->type=='DS' OR $o->type=='CCN' || $o->type=='SBD' }
+					{$sale_base = $price_base*$o->curr_rate }
+					{$sale_gst = $tax_base*$o->curr_rate }
+					{$gst = $gst + $sale_gst }
+				{elseif $o->type=='P' OR $o->type=='BP' OR $o->type=='SCN' || $o->type=='PBD'}
+					{$purchase_base = $price_base * $o->curr_rate }
+					{$purchase_gst = $tax_base*$o->curr_rate }
+					{if $o->type !='BL'}
+						{$gst = $gst - $purchase_gst }
+					{/if}
+				{/if}
+
+				{if isset($tax_code[$tax->gst_03_type])}
+					{$taxcode=$tax_code[$tax->gst_03_type]}
+					{$taxcode = $taxcode.title}
+				{/if}
+
+
+				{if isset($taxcode) &&  $taxcode|in_array:$5b_check}
+
+					{if $o->type=='S' || $o->type=='DS' || $o->type=='CCN' || $o->type=='SBD' }
+	   					{$5b = $5b+$sale_gst}
+	   				{*elseif ($o->type=='P' && $o->order_type ==20) OR $o->type=='BP' *}
+	   				{elseif $o->type=='P' OR $o->type=='BP' OR $o->type=='SCN' || $o->type=='PBD' }
+	   					{$5b = $5b+$purchase_gst}
+	   				{/if}
+
+				{/if}
+
+				{if isset($taxcode) &&  $taxcode|in_array:$6b_check}
+					{if $o->type=='S' OR $o->type=='DS' OR $o->type=='CCN' || $o->type=='SBD'  }
+	   					{$6b = $6b+$sale_gst}
+	   				{elseif $o->type=='P' OR $o->type=='BP' OR $o->type=='SCN' || $o->type=='PBD' }
+	   					{$6b = $6b+$purchase_gst}
+	   				{/if}
+
+				{/if}
+
+				{if ($o->type=='S' OR $o->type=='CCN') AND $tax->sales_gl_code != 2150 }
+					<tr style="background: #3C7;">
+   				{elseif ($o->type=='P' OR $o->type=='SCN') AND $tax->purchasing_gl_code != 1300 }
+					<tr style="background: #3C7;">
+				{else}
+					<tr>
+				{/if}
+					<td >{date_format time=$o->tran_date}</td>
+					<td>
+						{if $o->type=='S'}
+							<a onclick="popitup('../../sales/view/view_invoice.php?trans_no={$o->trans_no}'); return false;" href="#" target="_blank">{$o->trans_no}</a>
+						{elseif $o->type=='P'}
+							<a onclick="popitup('../../purchasing/view/view_supp_invoice.php?trans_no={$o->trans_no}'); return false;" href="#" target="_blank">{$o->trans_no}</a>
+						{elseif $o->type=='BP'}
+							<a onclick="popitup('../../gl/view/gl_payment_view.php?trans_no={$o->trans_no}'); return false;" href="#" target="_blank">{$o->trans_no}</a>
+						{elseif $o->type=='DS'}
+							<a onclick="popitup('../../gl/view/gl_deposit_view.php?trans_no={$o->trans_no}'); return false;" href="#" target="_blank">{$o->trans_no}</a>
+						{elseif $o->type=='CCN'}
+							<a onclick="popitup('../../sales/view/view_credit.php?trans_type=11&trans_no={$o->trans_no}'); return false;" href="#" target="_blank">{$o->trans_no}</a>
+
+						{else}
+							{$o->trans_no}
+						{/if}
+					</td>
+					<td>{$o->reference}</td>
+					<td>{$o->currence}</td>
+					<td>{number_format num=$o->curr_rate}</td>
+					<td>
+						<i>{$o->item_code}</i> <br> {$o->item_name}
+						{if ($o->type=='BP' || $o->type=='DS' || $o->type=='P') AND isset($o->comment) }
+							<br>{$o->comment}
+						{/if}
+					</td>
+					<td>{if isset($o->customername) }{$o->customername}{elseif isset($o->supp_name)}{$o->supp_name}{/if}</td>
+					<td class="textright">{number_format num=$price_base absolute=$abs_value} <span class="txtblue textbold">{$o->type}</span></td>
+					<td class="textright">{number_format num=$tax_base absolute=$abs_value}</td>
+
+					<td class="textright">{number_format num=$sale_base absolute=$abs_value}</td>
+					<td class="textright">{number_format num=$sale_gst absolute=$abs_value}</td>
+
+					<td class="textright">{number_format num=$purchase_base absolute=$abs_value}</td>
+					<td class="textright">{number_format num=$purchase_gst absolute=$abs_value}</td>
+					<td class="textright">
+						{number_format num=$gst}
+
+					</td>
+				</tr>
+
+
+
+				{$number = $number+1}
+				{if ($o->type=='S' OR $o->type=='CCN') AND $tax->sales_gl_code != 2150 }
+   				{elseif ($o->type=='P' OR $o->type=='SCN') AND $tax->purchasing_gl_code != 1300 }
+   				{else}
+   					{$sale_base_total = $sale_base_total+$sale_base }
+					{$sale_gst_total = $sale_gst_total+$sale_gst }
+					{$purchase_base_total = $purchase_base_total+$purchase_base }
+					{$purchase_gst_total = $purchase_gst_total+$purchase_gst }
+   				{/if}
+
+			{/foreach}
+
+
+
+			{$sale_base_amount = $sale_base_amount+$sale_base_total }
+			{$sale_gst_amount = $sale_gst_amount+$sale_gst_total }
+			{$purchase_base_amount = $purchase_base_amount+$purchase_base_total }
+			{$purchase_gst_amount = $purchase_gst_amount+$purchase_gst_total }
+
+			{if $sale_base_total > 0}
+				<tr class="tax_footer" >
+
+					<td colspan="9" class="textright textbold bordertop">Sales</td>
+					<td class="bordertop textright" >{number_format num=$sale_base_total absolute=$abs_value}</td>
+					<td class="bordertop textright">{number_format num=$sale_gst_total absolute=$abs_value}</td>
+					<td class="bordertop textright">0.00</td>
+					<td class="bordertop textright">0.00</td>
+					<td class="bordertop textright"></td>
+				</tr>
+			{/if}
+
+			{if $purchase_base_total > 0}
+				<tr class="tax_footer" >
+
+					<td colspan="9" class="textright textbold bordertop">Purchase</td>
+					<td class="bordertop textright">0.00</td>
+					<td class="bordertop textright">0.00</td>
+					<td class="bordertop textright" >{number_format num=$purchase_base_total absolute=$abs_value}</td>
+					<td class="bordertop textright" >{number_format num=$purchase_gst_total absolute=$abs_value}</td>
+
+					<td class="bordertop textright">--</td>
+				</tr>
+			{/if}
+
+			{if $purchase_base_total > 0 || $sale_base_total > 0 }
+				<tr class="tax_footer" >
+
+					<td colspan="9" class="textright textbold bordertop">{$tax->name}</td>
+					<td class="bordertop textright" >{number_format num=$sale_base_total absolute=$abs_value}</td>
+					<td class="bordertop textright">{number_format num=$sale_gst_total absolute=$abs_value}</td>
+					<td class="bordertop textright" >{number_format num=$purchase_base_total absolute=$abs_value}</td>
+					<td class="bordertop textright" >{number_format num=$purchase_gst_total absolute=$abs_value}</td>
+					<td class="bordertop textright"></td>
+				</tr>
+			{/if}
+			{if $smarty.const.COUNTRY==60 }
+			<tr class="tax_footer" style="background-color: #eaeaea;">
+					<td colspan="12" class="textright textbold">5b (SR,DS,AJS)</td>
+					<td colspan="2" class="textright textbold" >{number_format num=$5b}</td>
+			</tr>
+			<tr class="tax_footer" style="background-color: #eaeaea;">
+					<td colspan="12" class="textright textbold">6b (TX,IM,TX-E43,TX-RE,AJP)</td>
+					<td colspan="2" class="textright textbold" >{number_format num=$6b}</td>
+			</tr>
+			{/if}
+
+		{/if} {/foreach} {/if}
+</tbody>
+
+		<tfoot>
+		<tr style="background-color: #eaeaea;">
+				<td colspan="9" class="textright textbold">GRAND TOTAL</td>
+				<td class="textright textbold" >{number_format num=$sale_base_amount absolute=$abs_value}</td>
+				<td class="textright textbold">{number_format num=$sale_gst_amount absolute=$abs_value}</td>
+				<td class="textright textbold" >{number_format num=$purchase_base_amount absolute=$abs_value}</td>
+				<td class="textright textbold">{number_format num=$purchase_gst_amount absolute=$abs_value}</td>
+				<td class="textright textbold">{number_format num=$gst}</td>
+		</tr>
+		{if $smarty.const.COUNTRY==60 }
+		<tr style="background-color: #eaeaea;">
+				<td colspan="12" class="textright textbold">5b (SR,DS,AJS)</td>
+				<td colspan="2" class="textright textbold" >{number_format num=$5b}</td>
+		</tr>
+		<tr style="background-color: #eaeaea;">
+				<td colspan="12" class="textright textbold">6b (TX,IM,TX-E43,TX-RE,AJP)</td>
+				<td colspan="2" class="textright textbold" >{number_format num=$6b}</td>
+		</tr>
+		<tr style="background-color: #eaeaea;">
+				<td colspan="12" class="textright textbold">{if $5b > $6b}GST Amount Payable{else}GST Amount Claimable{/if}</td>
+				<td colspan="2" class="textright textbold" >{number_format num=abs($6b-$5b)}</td>
+		</tr>
+		{/if}
+		</tfoot>
+</table>

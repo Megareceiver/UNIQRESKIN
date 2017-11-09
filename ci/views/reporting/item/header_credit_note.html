@@ -1,0 +1,14 @@
+<table class="items" cellpadding="3" cellspacing="0" >
+		<thead class="" >
+			<tr class=" " >
+				{foreach $table AS $k=>$title}
+				<td style=" width: {$title.w*$content_w/100}mm;" class="{if $k=='item_code' OR ( isset($title.boleft) AND $title.boleft==1 ) }boleft {/if}bobottom botop color_header textbold {if isset($title.class)}{$title.class}{/if}">
+					{$title.title}
+				</td>
+				{/foreach}
+				<td class="textright borderall color_header" style="width: 27.25mm;" ><b>This Allocation</b></td>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+</table>

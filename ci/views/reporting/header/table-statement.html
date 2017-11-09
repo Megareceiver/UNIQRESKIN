@@ -1,0 +1,29 @@
+<table class="items" cellpadding="3" cellspacing="0">
+		<tbody>
+			<tr class="color_header" >
+				<td width="85%" class=" borderall" >
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							{foreach $table AS $title}
+							<td width="{pdf_column_w w=$title.w}" class="textbold {if isset($title.class)}{$title.class}{/if}" >{$title.title}</td>
+							{/foreach}
+						</tr>
+					</table>
+				</td>
+				<td class="textright borderall textbold" style="width: {$amount_w}mm;">Balance</td>
+
+			</tr>
+				{assign var=balance value=0}
+				{foreach $items AS $item}
+				<tr>
+				<td >
+
+				</td>
+
+				</tr>
+				{/foreach}
+
+
+
+		</tbody>
+	</table>

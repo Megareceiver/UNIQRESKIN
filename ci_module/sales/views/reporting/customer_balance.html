@@ -1,0 +1,47 @@
+<table style="width: 100%;" cellpadding="2" cellspacing="0" >
+	<tr>
+		<td colspan="2" width="75%" ><h2>Customer Balances</h2></td>
+		<td>{$company.name}</td>
+
+	</tr>
+	<tr>
+		<td width="20%">Print Out Date:</td>
+		<td width="55%">{$print_time}</td>
+
+		<td>{$smarty.server.SERVER_NAME}</td>
+	</tr>
+	<tr>
+		<td>Fiscal Year:</td>
+		<td>{$fiscal_year}</td>
+		<td >{$company.name}</td>
+	</tr>
+	<tr>
+		<td>Period:</td>
+		<td>{$pdf.date_begin} - {$pdf.date_end}</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Customer:</td>
+		<td>{$pdf.customer}</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Currency:</td>
+		<td>{$pdf.currency}</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Suppress Zeros:</td>
+		<td>{$pdf.show_zero}</td>
+		<td>Page: {$page_number}</td>
+	</tr>
+</table>
+<table cellpadding="3" cellspacing="0">
+	<tbody>
+		<tr >
+			{foreach $page_header AS $title}
+			<td width="{pdf_column_w w=$title.w}" class="{$title.class} botop2 bobottom2" >{$title.title}</td>
+			{/foreach}
+		</tr>
+	</tbody>
+</table>

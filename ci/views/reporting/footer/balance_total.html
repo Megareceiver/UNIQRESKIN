@@ -1,0 +1,15 @@
+<table cellpadding="1" cellspacing="0" >
+<tr class="footer_balance_supplier" >
+{foreach $items_view AS $field=>$d}
+	{if $field=='type'}
+		<td width="{pdf_column_w w=($items_view.reference.w + $items_view.type.w + $items_view.tran_date.w + $items_view.due_date.w) content_w=$content_w}" colspan="4" ><b>Total</b></td>
+
+	{elseif $field!='reference' && $field!='tran_date' && $field!='due_date' && $field!='reference'}
+		<td width="{pdf_column_w w=$d.w content_w=$content_w}"  class="{if isset($d.class)}{$d.class}{/if}" >
+			{number_format num=$total->$field }
+		</td>
+
+	{/if}
+{/foreach}
+</tr>
+</table>
