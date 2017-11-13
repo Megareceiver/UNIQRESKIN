@@ -92,7 +92,8 @@ function input_date_bootstrap($label, $name, $value = NULL, $disabled = false, $
     $input = '<input type="text" class="form-control date-picker" placeholder="" value="' . $value . '" data-date-format="' . get_instance()->dateformat . '" name="' . $name . '" >';
 
     $color = 'font-blue';
-    $icon = '<i class="fa fa-calendar ' . $color . '"></i>';
+    // $icon = '<i class="fa fa-calendar ' . $color . '"></i>';
+    $icon = '';
     $input = '<div class="input-icon input-icon-sm right inputdate" >' . $icon . $input . '</div>';
 
     if (strlen($label) < 1)

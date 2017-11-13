@@ -81,8 +81,12 @@ class SalesInquirySalesOrders
 
             $Ajax->activate('orders_tbl');
         }
-
-        row_start('inquiry-filter justify-content-center');;
+        /*dropdown*/
+        // echo "<div class='dropdown'>";
+        // echo '<a id="dLabel" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  <span class="caret"></span> </a>'; 
+        // echo '<ul class="dropdown-menu" aria-labelledby="dLabel">';
+        
+        row_start('inquiry-filter justify-content-center');
         col_start(12,'col-md-2');
         input_text_bootstrap( '#', 'OrderNumber', '', null, true);
         col_start(12,'col-md-2');
@@ -97,6 +101,8 @@ class SalesInquirySalesOrders
         col_start(12,'col-md-3');
         locations_bootstrap( _("Location"), 'StockLocation', null, true, true);
 
+        // echo '</ul>';
+        // echo '</div>';
 
         row_start('inquiry-filter justify-content-center');
         col_start(12,'col-md-5');
