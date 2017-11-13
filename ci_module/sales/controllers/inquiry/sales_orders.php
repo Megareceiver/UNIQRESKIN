@@ -21,7 +21,15 @@ class SalesInquirySalesOrders
             box_start();
         }
 
+        /*dropdown*/
+        echo "<div class='dropdown_search' style='display: none;'>";
+
         $this->fillter();
+
+        echo '</div>';
+        echo '<div style="text-align: center">';
+        echo '<a id="dropdown_search">test</a>';
+        echo '</div>';
 
         $this->transactions_table();
 
@@ -81,10 +89,7 @@ class SalesInquirySalesOrders
 
             $Ajax->activate('orders_tbl');
         }
-        /*dropdown*/
-        // echo "<div class='dropdown'>";
-        // echo '<a id="dLabel" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  <span class="caret"></span> </a>'; 
-        // echo '<ul class="dropdown-menu" aria-labelledby="dLabel">';
+        
         
         row_start('inquiry-filter justify-content-center');
         col_start(12,'col-md-2');
@@ -100,9 +105,6 @@ class SalesInquirySalesOrders
         }
         col_start(12,'col-md-3');
         locations_bootstrap( _("Location"), 'StockLocation', null, true, true);
-
-        // echo '</ul>';
-        // echo '</div>';
 
         row_start('inquiry-filter justify-content-center');
         col_start(12,'col-md-5');
@@ -129,8 +131,10 @@ class SalesInquirySalesOrders
         hidden('order_view_mode', $_POST['order_view_mode']);
         hidden('type', $trans_type);
 
-       row_end();
+        row_end();
+
     }
+
 
     function transactions_table()
     {

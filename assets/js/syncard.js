@@ -1,6 +1,6 @@
 /*syncard js*/
 var allText = '';
-$("html").attr('style', 'opacity:1');
+$("html").attr('style', 'opacity:0');
 
 $(function(){
 
@@ -14,7 +14,7 @@ noSelectActive();
 noSelectGl();
 noSelectActiveGl();
 SetupJav();
-
+dropdown_search();
 getAllLanguage();
 selLang();
 //processLang(r_getCookie('uniq365_langIndex'));
@@ -77,6 +77,7 @@ function noSelectActive(){
 	$('body').on('click','table tbody tr #AddItem',function(){
 		setTimeout(function(){
 			noSelect();	
+
 		},500);
 	});
 
@@ -892,4 +893,14 @@ function print_transfervoucher() {
         
         return false;
 	});
+}
+
+
+function dropdown_search(){
+	$("body").on('click', '#dropdown_search', function(){
+        $(".dropdown_search").slideToggle();
+        // console.log('asdf');	
+    });
+    // alert('asdf');	
+
 }
