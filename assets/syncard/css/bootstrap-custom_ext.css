@@ -1,0 +1,55 @@
+.navbar {
+    margin: 0;
+    background-color: #FFF;
+
+	border-radius: 0;
+	border: none;
+	border-bottom: 1px solid #CCC;
+}
+
+.navbar img {
+	width: 35px;
+}
+.navbar .navbar-header {
+	padding: 15.5px;
+	background-color: #0d2331;
+}
+
+.navbar li.droplist-custom {
+	padding: 15px;
+    background: #0d2331;
+    color: #FFF;
+}
+
+.navbar .avatar a { padding: 7px 15px }
+
+.navbar-toggle { border-radius: 0; border-color: #DDD }
+.navbar-toggle .icon-bar { background-color: #DDD }
+
+
+/* RESPONSIVE ================================================================ */
+/* extra small */
+@media (max-width: 767px) {
+	
+}
+
+/* extra small to small */
+@media (max-width: 991px) {
+	.navbar .navbar-header { padding: 0; }
+	.navbar .navbar-header a { display: inline-block; padding: 15.5px }
+
+	.navbar .avatar { float: none !important; border-top: 1px solid #CCC; }
+}
+
+/* small */
+@media (min-width: 768px) and (max-width: 991px) {
+	
+}
+/* medium */
+@media (min-width: 992px) and (max-width: 1199px) {
+	
+}
+/* large */
+@media (min-width: 1200px) {
+	
+}

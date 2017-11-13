@@ -1,0 +1,39 @@
+.menu-style{
+	height: 100px;
+	/*width: 24%;*/
+	display: table-cell;
+ 	border: 1px solid black;
+  	text-align: center;
+  	vertical-align: middle;
+  	/*margin: 1px;*/
+}
+.menu-style .menu-icon{
+	float:left;
+
+}
+
+
+
+/* RESPONSIVE ================================================================ */
+/* extra small */
+@media (max-width: 767px) {
+	
+}
+
+/* extra small to small */
+@media (max-width: 991px) {
+	
+}
+
+/* small */
+@media (min-width: 768px) and (max-width: 991px) {
+	
+}
+/* medium */
+@media (min-width: 992px) and (max-width: 1199px) {
+	
+}
+/* large */
+@media (min-width: 1200px) {
+	
+}
