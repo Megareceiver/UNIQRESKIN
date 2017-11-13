@@ -22,25 +22,29 @@ class SalesInquirySalesOrders
         }
 
         /*dropdown*/
-        echo "<div class='dropdown_search' style='display: none;'>";
+       
+        echo "<div class='col-md-3 dropdown_search' style='display: ;'>";
 
-        $this->fillter();
+            $this->fillter();
 
         echo '</div>';
-        echo '<div style="text-align: center">';
-        echo '<a id="dropdown_search">test</a>';
+           
+        echo '<div class="col-md-9">';
+            echo '<div style="text-align: left; margin: 10px;">';
+                echo '<a id="dropdown_search"><i class="fa fa-chevron-left"></i></a>';
+            echo '</div>';
+            $this->transactions_table();
+            if (!@$_GET['popup']){
+                box_footer_start();
+                submit('Update', _("Update"), true, '', true);
+                box_footer_end();
+                box_end();
+                end_form();
+            }
+
         echo '</div>';
 
-        $this->transactions_table();
 
-
-        if (!@$_GET['popup']){
-            box_footer_start();
-            submit('Update', _("Update"), true, '', true);
-            box_footer_end();
-            box_end();
-            end_form();
-        }
 
     }
 
@@ -92,32 +96,32 @@ class SalesInquirySalesOrders
         
         
         row_start('inquiry-filter justify-content-center');
-        col_start(12,'col-md-2');
+        col_start(12,'col-md-12');
         input_text_bootstrap( '#', 'OrderNumber', '', null, true);
-        col_start(12,'col-md-2');
+        col_start(12,'col-md-12');
         input_text_bootstrap(_("Ref"), 'OrderReference', '', null,true);
 
         if ($show_dates) {
-            col_start(12,'col-md-2');
+            col_start(12,'col-md-12');
             input_date_bootstrap("From", 'OrdersAfterDate', NULL, false, false, - 30);
-            col_start(12,'col-md-2');
+            col_start(12,'col-md-12');
             input_date_bootstrap( "To", 'OrdersToDate', NULL);
         }
-        col_start(12,'col-md-3');
+        col_start(12,'col-md-12');
         locations_bootstrap( _("Location"), 'StockLocation', null, true, true);
 
         row_start('inquiry-filter justify-content-center');
-        col_start(12,'col-md-5');
+        col_start(12,'col-md-12');
         stock_items_bootstrap( _("Product"), 'SelectStockFromList', null, true, true);
 
         if (! @$_GET['popup']){
-            col_start(12,'col-md-3');
+            col_start(12,'col-md-12');
             customer_list_bootstrap( _("Customer"), 'customer_id', input_val('customer_id'), true, true);
         }
 
 
         if ($trans_type == ST_SALESQUOTE){
-            col_start(12,'col-md-2');
+            col_start(12,'col-md-12');
             if( !isMobile() ){
                 bootstrap_set_label_column(6);
             }
@@ -125,7 +129,7 @@ class SalesInquirySalesOrders
             check_bootstrap('Show All', 'show_all');
         }
 
-        col_start(12,'col-md-1');
+        col_start(12,'col-md-12');
         submit_bootstrap( 'SearchOrders', _("Search"), _('Select documents'), 'default');
 
         hidden('order_view_mode', $_POST['order_view_mode']);

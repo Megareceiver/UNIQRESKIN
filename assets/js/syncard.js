@@ -1,6 +1,6 @@
 /*syncard js*/
 var allText = '';
-$("html").attr('style', 'opacity:0');
+$("html").attr('style', 'opacity:1');
 
 $(function(){
 
@@ -15,8 +15,8 @@ noSelectGl();
 noSelectActiveGl();
 SetupJav();
 dropdown_search();
-getAllLanguage();
-selLang();
+// getAllLanguage();
+// selLang();
 //processLang(r_getCookie('uniq365_langIndex'));
 	// popitup();
 
@@ -897,8 +897,12 @@ function print_transfervoucher() {
 
 
 function dropdown_search(){
-	$("body").on('click', '#dropdown_search', function(){
-        $(".dropdown_search").slideToggle();
+	// $("body").on('click', '#dropdown_search', function(){
+ //        $(".dropdown_search").slideToggle();
+ //        // console.log('asdf');	
+ //    });
+ 	$("body").on('click', '#dropdown_search', function(){
+        $(".dropdown_search").toggle('slide');
         // console.log('asdf');	
     });
     // alert('asdf');	
