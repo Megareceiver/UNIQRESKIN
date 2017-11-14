@@ -23,7 +23,42 @@
 .input-group-sm	.row{
 	padding: 10px;
 }
+.form-actions{
+	margin-top: 20px;
+	padding: 10px;
+	background: #D3D3D3;
+}
+.form-actions{
+	margin-bottom: 15px;
+}
+.form-actions .ajaxsubmit{
+	margin-left: 20px;
+	float: right;
+	background: #23527c;
+	color: #FFF;s
+}
+.form-body{
+	padding-bottom: 20px;
+}
+.container{
+	background: #4684A3;
+	margin: unset;
+	display: block;
+	width: 100%;
+	padding: 10px;
+}
+.container a{
+	color: #FFF;
+}
+[name=SearchOrders]{
+	margin-top: 15px;
+	float: right;
+}
+.input-group-sm{
+	padding-right: 5px;
+	padding-left: 15px;
 
+}
 
 /* RESPONSIVE ================================================================ */
 /* extra small */
