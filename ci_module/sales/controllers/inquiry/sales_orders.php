@@ -29,20 +29,22 @@ class SalesInquirySalesOrders
 
         echo '</div>';
            
-        echo '<div class="col-md-9">';
+        echo '<div class="col-md-9" style="margin-bottom: 10px;">';
             echo '<div style="text-align: left; margin: 10px;">';
                 echo '<a id="dropdown_search"><i class="fa fa-chevron-left"></i></a>';
             echo '</div>';
             $this->transactions_table();
-            if (!@$_GET['popup']){
-                box_footer_start();
-                submit('Update', _("Update"), true, '', true);
-                box_footer_end();
-                box_end();
-                end_form();
-            }
-
         echo '</div>';
+        echo '<div class="clearfix"></div>';
+            if (!@$_GET['popup']){
+                echo '<div class="col-md-12">';
+                    box_footer_start();
+                    submit('Update', _("Update"), true, '', true);
+                    box_footer_end();
+                    box_end();
+                    end_form();
+                echo '</div>';
+            }
 
 
 
@@ -121,7 +123,7 @@ class SalesInquirySalesOrders
 
 
         if ($trans_type == ST_SALESQUOTE){
-            col_start(12,'col-md-12');
+            col_start(12,'col-md-6');
             if( !isMobile() ){
                 bootstrap_set_label_column(6);
             }
@@ -129,7 +131,7 @@ class SalesInquirySalesOrders
             check_bootstrap('Show All', 'show_all');
         }
 
-        col_start(12,'col-md-12');
+        col_start(12,'col-md-6');
         submit_bootstrap( 'SearchOrders', _("Search"), _('Select documents'), 'default');
 
         hidden('order_view_mode', $_POST['order_view_mode']);
