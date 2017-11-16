@@ -131,6 +131,7 @@
 	border-radius: unset;
 }
 .jumbotron{
+	 background-size: cover;
 	 background: url(/assets/images/jumbotron.jpeg) no-repeat;
 	 margin-bottom: 50px;
 	 border-radius: unset !important;
