@@ -1,3 +1,9 @@
+.row.head{
+	margin-bottom: unset !important;
+}
+.page-header, .page-content{
+	padding-top: unset !important;
+}
 .menu-style{
 	height: 250px;
 	padding-top: 30px;
@@ -96,7 +102,7 @@
 	padding: 10px;
 }
 .container a{
-	color: #FFF;
+	color: #000;
 }
 [name=SearchOrders]{
 	margin-top: 15px;
@@ -108,9 +114,30 @@
 
 }
 .page-footer{
+	padding-bottom: 15px;
 	border-top: 1px solid;
 }
-
+.scroll-to-top{
+	position: fixed;
+	bottom: 10px;
+	right: 15px;
+	z-index: 8;
+}
+.icon-arrow-up{
+	font-size: 35px;
+	/*position: absolute;*/
+}
+.alert{
+	border-radius: unset;
+}
+.jumbotron{
+	 background: url(/assets/images/jumbotron.jpeg) no-repeat;
+	 margin-bottom: 50px;
+	 border-radius: unset !important;
+	 height: 275px;
+	 color: #FFF;
+	 text-shadow: 2px 1px #7C7C7C;
+}
 /* RESPONSIVE ================================================================ */
 /* extra small */
 @media (max-width: 767px) {
