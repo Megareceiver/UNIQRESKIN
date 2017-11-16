@@ -1,4 +1,4 @@
-<?php
+Deliver from Location<?php
 
 class SalesEntryOrder
 {
@@ -290,7 +290,7 @@ class SalesEntryOrder
 
         if ($order->payment_terms['cash_sale']) { // Direct payment sale
             $Ajax->activate('items_table');
-            display_heading(_('Cash payment'));
+            display_heading(_('Cash paymeasdft'));
 
             start_table(TABLESTYLE2, "width=60%");
 

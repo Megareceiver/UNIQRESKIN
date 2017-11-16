@@ -7,6 +7,9 @@
   	/*margin: 1px;*/
 
 }
+.page-container-bg-solid{
+	overflow-x: hidden;
+}
 .menu-style .menu-icon{
 	float:left;
 	height: 100%;
@@ -26,19 +29,29 @@
 .form-actions{
 	margin-top: 20px;
 	padding: 10px;
-	background: #D3D3D3;
-}
-.form-actions{
+	border-bottom: 1px solid #000;
 	margin-bottom: 15px;
 }
 .form-actions .ajaxsubmit{
 	margin-left: 20px;
 	float: right;
 	background: #23527c;
-	color: #FFF;s
+	color: #FFF;
+}
+.form-actions a{
+	background: #AAA;
 }
 .form-body{
 	padding-bottom: 20px;
+}
+.form-control, .btn{
+	border-radius: unset;
+}
+.form-control:focus {
+    outline: unset;
+    /*border-color: unset;*/
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
 }
 .container{
 	background: #4684A3;

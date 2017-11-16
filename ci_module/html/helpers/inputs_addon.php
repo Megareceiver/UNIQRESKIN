@@ -117,7 +117,7 @@ function input_ref ($label, $name, $value = null, $title = null,
         $submit_on_change = false, $size = NULL, $max = NULL, $help = NULL)
 {
     $class_add = $submit_on_change ? "ajaxsubmit" : NULL;
-    return input_text_iconright_bootstrap($label, $name, $value, 'fa-key', 
+    return input_text_iconright_bootstrap($label, $name, $value, '', 
             $help, $class_add);
 }
 

@@ -1,5 +1,6 @@
 /*syncard js*/
 var allText = '';
+var table_flex = '';
 $("html").attr('style', 'opacity:1');
 
 $(function(){
@@ -903,7 +904,17 @@ function dropdown_search(){
  //    });
  	$("body").on('click', '#dropdown_search', function(){
         $(".dropdown_search").toggle('slide');
-        // console.log('asdf');	
+        // console.log('asdf');
+        if(table_flex == ''){
+        	$('#table-flex').addClass('col-md-12');
+        	$('#table-flex #dropdown_search i').addClass('fa-chevron-right');
+        	table_flex = '1';
+        }else{
+        	$('#table-flex').removeClass('col-md-12');
+        	$('#table-flex #dropdown_search i').removeClass('fa-chevron-right');
+        	table_flex = '';
+        }
+        console.log(table_flex);
     });
     // alert('asdf');	
 

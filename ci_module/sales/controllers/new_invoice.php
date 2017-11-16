@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+Deliver from Location<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 //	Entry/Modify Sales Quotations
 //	Entry/Modify Sales Order

@@ -29,7 +29,7 @@ class SalesInquirySalesOrders
 
         echo '</div>';
            
-        echo '<div class="col-md-9" style="margin-bottom: 10px;">';
+        echo '<div id="table-flex" name="9" class="col-md-9" style="margin-bottom: 10px;">';
             echo '<div style="text-align: left; margin: 10px;">';
                 echo '<a id="dropdown_search"><i class="fa fa-chevron-left"></i></a>';
             echo '</div>';
