@@ -55,7 +55,7 @@ if ( ! function_exists('url_title')) {
 
 if ( ! function_exists('anchor')){
 
-	function anchor($uri = '', $title = '', $attributes = '', $counter){
+	function anchor($uri = '', $title = '', $attributes = '', $counter=0){
 		$title = (string) $title;
 		$caret = '';
 		if ( ! is_array($uri)){
