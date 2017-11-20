@@ -67,7 +67,6 @@ function start_table($class = false, $attributes = "", $padding = '2', $spacing 
     }
 
     $attributes['class'] .= ' table-responsive';
-
     echo "<table " . _parse_attributes($attributes) . ">\n";
 }
 

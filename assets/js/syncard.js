@@ -907,14 +907,14 @@ function dropdown_search(){
         // console.log('asdf');
         if(table_flex == ''){
         	$('#table-flex').addClass('col-md-12');
-        	$('#table-flex #dropdown_search i').addClass('fa-chevron-right');
+        	$('#table-flex #dropdown_search span').html('Show search');
         	table_flex = '1';
         }else{
         	$('#table-flex').removeClass('col-md-12');
-        	$('#table-flex #dropdown_search i').removeClass('fa-chevron-right');
+        	$('#table-flex #dropdown_search span').html('Hide search');
         	table_flex = '';
         }
-        console.log(table_flex);
+        // console.log(table_flex);
     });
     // alert('asdf');	
 

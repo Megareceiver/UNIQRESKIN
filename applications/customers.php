@@ -15,21 +15,21 @@ class customers_app extends application
 	{
 		$this->application("orders", _($this->help_context = "SALES"),true,'');
 
-		$this->add_module(_("Dashboard"),'fa fa-home','sales/dashboard');
-		$this->add_module(_("Operations"),'fa fa-pencil');
-		$this->add_lapp_function(1, _("Sales Quotation"), "sales/inquiry/sales_orders_view.php?type=32", 'SA_SALESTRANSVIEW', MENU_INQUIRY,'file-pdf-o');
-		$this->add_lapp_function(1, _("Sales Order"), "sales/inquiry/sales_orders_view.php?type=30", 'SA_SALESTRANSVIEW', MENU_INQUIRY,'calculator');
+		$this->add_module(_("Dashboard"),'','sales/dashboard');
+		$this->add_module(_("Operations"),'');
+		$this->add_lapp_function(1, _("Sales Quotation"), "sales/inquiry/sales_orders_view.php?type=32", 'SA_SALESTRANSVIEW', MENU_INQUIRY,'');
+		$this->add_lapp_function(1, _("Sales Order"), "sales/inquiry/sales_orders_view.php?type=30", 'SA_SALESTRANSVIEW', MENU_INQUIRY,'');
 
-		$this->add_lapp_function(1, _("Direct Delivery"),"sales/inquiry/customer_inquiry.php?filtertype=5", 'SA_SALESDELIVERY', MENU_TRANSACTION,'truck');
+		$this->add_lapp_function(1, _("Direct Delivery"),"sales/inquiry/customer_inquiry.php?filtertype=5", 'SA_SALESDELIVERY', MENU_TRANSACTION,'');
 
-		$this->add_lapp_function(1, _("Direct Invoice"),"sales/inquiry/customer_inquiry.php?filtertype=1", 'SA_SALESINVOICE', MENU_TRANSACTION,'envelope');
-		$this->add_lapp_function(1, _("Sales Invoice"),"sales/invoice?NewInvoice=1", 'SA_SALESINVOICE', MENU_TRANSACTION,'envelope');
+		$this->add_lapp_function(1, _("Direct Invoice"),"sales/inquiry/customer_inquiry.php?filtertype=1", 'SA_SALESINVOICE', MENU_TRANSACTION,'');
+		$this->add_lapp_function(1, _("Sales Invoice"),"sales/invoice?NewInvoice=1", 'SA_SALESINVOICE', MENU_TRANSACTION,'');
 
 		$this->add_lapp_function(1, _("Delivery Against Sales Orders"),
-			"sales/inquiry/sales_orders_view.php?OutstandingOnly=1", 'SA_SALESDELIVERY', MENU_TRANSACTION,'truck');
+			"sales/inquiry/sales_orders_view.php?OutstandingOnly=1", 'SA_SALESDELIVERY', MENU_TRANSACTION,'');
 
 		$this->add_lapp_function(1, _("Invoice Against Sales Delivery"),
-			"sales/inquiry/sales_deliveries_view.php?OutstandingOnly=1", 'SA_SALESINVOICE', MENU_TRANSACTION,'envelope');
+			"sales/inquiry/sales_deliveries_view.php?OutstandingOnly=1", 'SA_SALESINVOICE', MENU_TRANSACTION,'');
 
 //		$this->add_rapp_function(1, _("Copy Delivery"),
 //			"sales/inquiry/sales_orders_view.php?DeliveryTemplates=Yes", 'SA_SALESDELIVERY', MENU_TRANSACTION,'copy');
@@ -38,11 +38,11 @@ class customers_app extends application
 //		$this->add_rapp_function(1, _("Create and Print Recurring Invoice"),
 //			"sales/create_recurrent_invoices.php?", 'SA_SALESINVOICE', MENU_TRANSACTION,'repeat');
 		$this->add_rapp_function(1, _("Customer Payments"),
-			"sales/customer_payments.php?", 'SA_SALESPAYMNT', MENU_TRANSACTION,'money');
+			"sales/customer_payments.php?", 'SA_SALESPAYMNT', MENU_TRANSACTION,'');
 		$this->add_rapp_function(1, _("Customer Credit Notes"),
-			"sales/credit_note_entry.php?NewCredit=Yes", 'SA_SALESCREDIT', MENU_TRANSACTION,'rotate-left ');
+			"sales/credit_note_entry.php?NewCredit=Yes", 'SA_SALESCREDIT', MENU_TRANSACTION,'');
 		$this->add_rapp_function(1, _("Allocate Customer Payments or Credit Notes"),
-			"sales/allocations/customer_allocation_main.php?", 'SA_SALESALLOC', MENU_TRANSACTION,'chain');
+			"sales/allocations/customer_allocation_main.php?", 'SA_SALESALLOC', MENU_TRANSACTION,'');
 
 		if( config_ci('kastam')){
 		    $this->add_lapp_function(1, _("Bad Debt Processing"), "admin/bad_deb.php?type=customer",'SA_SALESALLOC',MENU_TRANSACTION,'retweet');
@@ -50,75 +50,75 @@ class customers_app extends application
 
 
 
-		$this->add_module(_("Inquiry"),'fa fa-search');
+		$this->add_module(_("Inquiry"),'');
 
 		$this->add_lapp_function(2, _("Customer Transaction"),
-			"sales/inquiry/customer_inquiry.php?", 'SA_SALESTRANSVIEW', MENU_INQUIRY,'list-ul');
+			"sales/inquiry/customer_inquiry.php?", 'SA_SALESTRANSVIEW', MENU_INQUIRY,'');
 		$this->add_lapp_function(2, _("Customer Allocation"),
-			"sales/inquiry/customer_allocation_inquiry.php?", 'SA_SALESALLOC', MENU_INQUIRY,'list-ul');
+			"sales/inquiry/customer_allocation_inquiry.php?", 'SA_SALESALLOC', MENU_INQUIRY,'');
 
 // 		$this->add_lapp_function(1, _("Check Transactions"),
 // 		    "index.php/sales/inquiry/check", 'SA_SALESALLOC', MENU_INQUIRY,'list-ul');
 
 
-		$this->add_module(_("Reports"),'fa fa-file-text-o');
+		$this->add_module(_("Reports"),'');
 
 		$this->add_lapp_function(3, _("Customer Ledger"),
-			"reporting/reports_main.php?Class=0&REP_ID=101", 'SA_CUSTOMER', MENU_ENTRY,'file-text');
+			"reporting/reports_main.php?Class=0&REP_ID=101", 'SA_CUSTOMER', MENU_ENTRY,'');
 		$this->add_lapp_function(3, _("Aged Customer Analysis"),
-			"reporting/reports_main.php?Class=0&REP_ID=102", 'SA_CUSTOMER', MENU_ENTRY,'file-text');
+			"reporting/reports_main.php?Class=0&REP_ID=102", 'SA_CUSTOMER', MENU_ENTRY,'');
 		$this->add_lapp_function(3, _("Customer Detail Listing"),
-			"reporting/reports_main.php?Class=0&REP_ID=103", 'SA_CUSTOMER', MENU_ENTRY,'file-text');
+			"reporting/reports_main.php?Class=0&REP_ID=103", 'SA_CUSTOMER', MENU_ENTRY,'');
 		$this->add_lapp_function(3, _("Sales Summary Report"),
-			"reporting/reports_main.php?Class=0&REP_ID=114", 'SA_CUSTOMER', MENU_ENTRY,'file-text');
+			"reporting/reports_main.php?Class=0&REP_ID=114", 'SA_CUSTOMER', MENU_ENTRY,'');
 		$this->add_lapp_function(3, _("Price Listing"),
-			"reporting/reports_main.php?Class=0&REP_ID=104", 'SA_CUSTOMER', MENU_ENTRY,'file-text');
+			"reporting/reports_main.php?Class=0&REP_ID=104", 'SA_CUSTOMER', MENU_ENTRY,'');
 		$this->add_lapp_function(3, _("Order Status Listing"),
-			"reporting/reports_main.php?Class=0&REP_ID=105", 'SA_CUSTOMER', MENU_ENTRY,'file-text');
+			"reporting/reports_main.php?Class=0&REP_ID=105", 'SA_CUSTOMER', MENU_ENTRY,'');
 		$this->add_lapp_function(3, _("Salesman Listing"),
-			"reporting/reports_main.php?Class=0&REP_ID=106", 'SA_CUSTOMER', MENU_ENTRY,'file-text');
+			"reporting/reports_main.php?Class=0&REP_ID=106", 'SA_CUSTOMER', MENU_ENTRY,'');
 
-		$this->add_module(_("Document Printing"),'fa fa-print');
+		$this->add_module(_("Document Printing"),'');
 		$this->add_lapp_function(4, _("Print Invoices"),
-			"reporting/reports_main.php?Class=0&REP_ID=107", 'SA_CUSTOMER', MENU_ENTRY,'file-pdf-o');
+			"reporting/reports_main.php?Class=0&REP_ID=107", 'SA_CUSTOMER', MENU_ENTRY,'');
 
 		$this->add_lapp_function(4, _("Print Credit Notes"),
-			"reporting/reports_main.php?Class=0&REP_ID=113", 'SA_CUSTOMER', MENU_ENTRY,'file-pdf-o');
+			"reporting/reports_main.php?Class=0&REP_ID=113", 'SA_CUSTOMER', MENU_ENTRY,'');
 
 		$this->add_lapp_function(4, _("Print Deliveries"),
-			"reporting/reports_main.php?Class=0&REP_ID=110", 'SA_CUSTOMER', MENU_ENTRY,'file-pdf-o');
+			"reporting/reports_main.php?Class=0&REP_ID=110", 'SA_CUSTOMER', MENU_ENTRY,'');
 
-		$this->add_lapp_function(4, _("Print Statements"), "index.php/customer/printing/statements", 'SA_CUSTOMER', MENU_ENTRY,'file-pdf-o');
+		$this->add_lapp_function(4, _("Print Statements"), "index.php/customer/printing/statements", 'SA_CUSTOMER', MENU_ENTRY,'');
 // 		$this->add_lapp_function(3, _("Print Statements"),
 // 			"reporting/reports_main.php?Class=0&REP_ID=108", 'SA_CUSTOMER', MENU_ENTRY);
 
 		$this->add_lapp_function(4, _("Print Sales Orders"),
-			"reporting/reports_main.php?Class=0&REP_ID=109", 'SA_CUSTOMER', MENU_ENTRY,'file-pdf-o');
+			"reporting/reports_main.php?Class=0&REP_ID=109", 'SA_CUSTOMER', MENU_ENTRY,'');
 		$this->add_lapp_function(4, _("Print Sales Quotations"),
-			"reporting/reports_main.php?Class=0&REP_ID=111", 'SA_CUSTOMER', MENU_ENTRY,'file-pdf-o');
+			"reporting/reports_main.php?Class=0&REP_ID=111", 'SA_CUSTOMER', MENU_ENTRY,'');
 		$this->add_lapp_function(4, _("Print Receipts"),
-			"reporting/reports_main.php?Class=0&REP_ID=112", 'SA_CUSTOMER', MENU_ENTRY,'file-pdf-o');
+			"reporting/reports_main.php?Class=0&REP_ID=112", 'SA_CUSTOMER', MENU_ENTRY,'');
 		//$this->add_lapp_function(2, _("Add and Manage Customers"),
 		//	"sales/manage/customers.php?", 'SA_CUSTOMER', MENU_ENTRY);
 		//$this->add_lapp_function(2, _("Recurrent Invoices"),
 		//	"sales/manage/recurrent_invoices.php?", 'SA_SRECURRENT', MENU_MAINTENANCE);
 
 
-		$this->add_module(_("Housekeeping"),'fa fa-gear');
+		$this->add_module(_("Housekeeping"),'');
 
-		$this->add_lapp_function(5, _("Customer Maintenance"), "sales/manage/customers.php?", 'SA_CUSTOMER', MENU_ENTRY,'male');
+		$this->add_lapp_function(5, _("Customer Maintenance"), "sales/manage/customers.php?", 'SA_CUSTOMER', MENU_ENTRY,'');
 		$this->add_lapp_function(5, _("Customer Branches"),
-			"sales/manage/customer_branches.php?", 'SA_CUSTOMER', MENU_ENTRY,'envelope-square');
+			"sales/manage/customer_branches.php?", 'SA_CUSTOMER', MENU_ENTRY,'');
 		$this->add_lapp_function(5, _("Sales Groups"),
-			"sales/manage/sales_groups.php?", 'SA_SALESGROUP', MENU_MAINTENANCE,'group ');
+			"sales/manage/sales_groups.php?", 'SA_SALESGROUP', MENU_MAINTENANCE,'');
 		$this->add_rapp_function(5, _("Sales Types"),
-			"sales/manage/sales_types.php?", 'SA_SALESTYPES', MENU_MAINTENANCE,'star-half-o');
+			"sales/manage/sales_types.php?", 'SA_SALESTYPES', MENU_MAINTENANCE,'');
 		$this->add_rapp_function(5, _("Sales Persons"),
-			"sales/manage/sales_people.php?", 'SA_SALESMAN', MENU_MAINTENANCE,'male');
+			"sales/manage/sales_people.php?", 'SA_SALESMAN', MENU_MAINTENANCE,'');
 		$this->add_rapp_function(5, _("Sales Areas"),
-			"sales/manage/sales_areas.php?", 'SA_SALESAREA', MENU_MAINTENANCE,'map-o');
+			"sales/manage/sales_areas.php?", 'SA_SALESAREA', MENU_MAINTENANCE,'');
 		$this->add_rapp_function(5, _("Credit Status Setup"),
-			"sales/manage/credit_status.php?", 'SA_CRSTATUS', MENU_MAINTENANCE,'rotate-left');
+			"sales/manage/credit_status.php?", 'SA_CRSTATUS', MENU_MAINTENANCE,'');
 
 
 		$this->add_extensions();

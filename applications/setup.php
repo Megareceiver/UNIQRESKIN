@@ -15,72 +15,72 @@ class setup_app extends application
 	{
 		$this->application("system", _($this->help_context = "SETUP"),true,'');
 
-		$this->add_module(_("Company"),'fa fa-fax');
-		$this->add_lapp_function(0, _("Import Data"),"admin/import.php?", 'SA_SETUPCOMPANY', MENU_SETTINGS,'cloud-download');
-		$this->add_lapp_function(0, _("Company Setup"),"admin/company_preferences.php?", 'SA_SETUPCOMPANY', MENU_SETTINGS,'gear');
+		$this->add_module(_("Company"),'');
+		$this->add_lapp_function(0, _("Import Data"),"admin/import.php?", 'SA_SETUPCOMPANY', MENU_SETTINGS,'');
+		$this->add_lapp_function(0, _("Company Setup"),"admin/company_preferences.php?", 'SA_SETUPCOMPANY', MENU_SETTINGS,'');
 		$this->add_lapp_function(0, _("User Accounts Setup"),
-			"admin/users.php?", 'SA_USERS', MENU_SETTINGS,'male');
+			"admin/users.php?", 'SA_USERS', MENU_SETTINGS,'');
 		$this->add_lapp_function(0, _("Access Setup"),
-			"admin/security_roles.php?", 'SA_SECROLES', MENU_SETTINGS,'user-secret');
+			"admin/security_roles.php?", 'SA_SECROLES', MENU_SETTINGS,'');
 		$this->add_lapp_function(0, _("Display Setup"),
-			"admin/display_prefs.php?", 'SA_SETUPDISPLAY', MENU_SETTINGS,'desktop');
+			"admin/display_prefs.php?", 'SA_SETUPDISPLAY', MENU_SETTINGS,'');
 		$this->add_lapp_function(0, _("Forms Setup"),
-			"admin/forms_setup.php?", 'SA_FORMSETUP', MENU_SETTINGS,'check-square-o');
+			"admin/forms_setup.php?", 'SA_FORMSETUP', MENU_SETTINGS,'');
 		$this->add_rapp_function(0, _("Taxes"),
-			"taxes/tax_types.php?", 'SA_TAXRATES', MENU_MAINTENANCE,'share-square-o');
+			"taxes/tax_types.php?", 'SA_TAXRATES', MENU_MAINTENANCE,'');
 		//$this->add_rapp_function(0, _("Tax Groups"),
 		//	"taxes/tax_groups.php?", 'SA_TAXGROUPS', MENU_MAINTENANCE);
 		//$this->add_rapp_function(0, _("Item Tax Types"),
 		//	"taxes/item_tax_types.php?", 'SA_ITEMTAXTYPE', MENU_MAINTENANCE);
 		$this->add_rapp_function(0, _("System and General GL Setup"),
-			"admin/gl_setup.php?", 'SA_GLSETUP', MENU_SETTINGS,'sitemap');
+			"admin/gl_setup.php?", 'SA_GLSETUP', MENU_SETTINGS,'');
 // 		$this->add_rapp_function(0, _("Fiscal Years"), "admin/fiscalyears.php?", 'SA_FISCALYEARS', MENU_MAINTENANCE);
-		$this->add_rapp_function(0, _("Fiscal Years"), "admin/fiscal-years", 'SA_FISCALYEARS', MENU_MAINTENANCE,'thumb-tack');
+		$this->add_rapp_function(0, _("Fiscal Years"), "admin/fiscal-years", 'SA_FISCALYEARS', MENU_MAINTENANCE,'');
 
 // 		$this->add_rapp_function(0, _("Print Profiles"),
 // 			"admin/print_profiles.php?", 'SA_PRINTPROFILE', MENU_MAINTENANCE);
 		if( config_ci('mobile_document')){
 // 		    $this->add_rapp_function(0, _("MSIC code"), "admin/msic.php", 'SA_PRINTPROFILE', MENU_MAINTENANCE);
-		    $this->add_rapp_function(0, _("Expense Type"),"admin/expense-type", 'SA_PRINTPROFILE', MENU_MAINTENANCE,"cloud-upload");
-		    $this->add_rapp_function(0, _("Revenue Type"),"admin/revenue-type", 'SA_PRINTPROFILE', MENU_MAINTENANCE,"cloud-download");
+		    $this->add_rapp_function(0, _("Expense Type"),"admin/expense-type", 'SA_PRINTPROFILE', MENU_MAINTENANCE,"");
+		    $this->add_rapp_function(0, _("Revenue Type"),"admin/revenue-type", 'SA_PRINTPROFILE', MENU_MAINTENANCE,"");
 
 		}
 
-		$this->add_module(_("Miscellaneous"), 'fa fa-star');
+		$this->add_module(_("Miscellaneous"), '');
 		$this->add_lapp_function(1, _("Payment Terms"),
-			"admin/payment_terms.php?", 'SA_PAYTERMS', MENU_MAINTENANCE,'file-word-o');
+			"admin/payment_terms.php?", 'SA_PAYTERMS', MENU_MAINTENANCE,'');
 		$this->add_lapp_function(1, _("Shipping Company"),
-			"admin/shipping_companies.php?", 'SA_SHIPPING', MENU_MAINTENANCE,'truck');
+			"admin/shipping_companies.php?", 'SA_SHIPPING', MENU_MAINTENANCE,'');
 
-		$this->add_rapp_function(1, _("Points of Sale"), "sales/manage/sales_points.php?", 'SA_POSSETUP', MENU_MAINTENANCE,'money');
-		$this->add_rapp_function(1, _("Printers"), "admin/printers.php?", 'SA_PRINTERS', MENU_MAINTENANCE,'print');
-		$this->add_rapp_function(1, _("Contact Categories"), "admin/crm_categories.php?", 'SA_CRMCATEGORY', MENU_MAINTENANCE,'phone-square');
+		$this->add_rapp_function(1, _("Points of Sale"), "sales/manage/sales_points.php?", 'SA_POSSETUP', MENU_MAINTENANCE,'');
+		$this->add_rapp_function(1, _("Printers"), "admin/printers.php?", 'SA_PRINTERS', MENU_MAINTENANCE,'');
+		$this->add_rapp_function(1, _("Contact Categories"), "admin/crm_categories.php?", 'SA_CRMCATEGORY', MENU_MAINTENANCE,'');
 
 
 
-		$this->add_module(_("Maintenance"), 'fa fa-gear');
-		$this->add_lapp_function(2, _("Void a Transaction"),"admin/void_transaction.php?", 'SA_VOIDTRANSACTION', MENU_MAINTENANCE,'trash');
+		$this->add_module(_("Maintenance"), '');
+		$this->add_lapp_function(2, _("Void a Transaction"),"admin/void_transaction.php?", 'SA_VOIDTRANSACTION', MENU_MAINTENANCE,'');
 		$this->add_lapp_function(2, _("View or Print Transactions"),
-			"admin/view_print_transaction.php?", 'SA_VIEWPRINTTRANSACTION', MENU_MAINTENANCE,'search-plus');
+			"admin/view_print_transaction.php?", 'SA_VIEWPRINTTRANSACTION', MENU_MAINTENANCE,'');
 		$this->add_lapp_function(2, _("Attach Documents"),
-			"admin/attachments.php?filterType=20", 'SA_ATTACHDOCUMENT', MENU_MAINTENANCE,'chain');
+			"admin/attachments.php?filterType=20", 'SA_ATTACHDOCUMENT', MENU_MAINTENANCE,'');
 		//$this->add_lapp_function(2, _("Repost Transaction"),"sales/repost.php", 'SA_ATTACHDOCUMENT', MENU_MAINTENANCE);
 
 		$this->add_lapp_function(2, _("Audit Trail"),
-				"admin/audit-trail", 'SA_VIEWPRINTTRANSACTION', MENU_MAINTENANCE,'search');
+				"admin/audit-trail", 'SA_VIEWPRINTTRANSACTION', MENU_MAINTENANCE,'');
 		if( config_ci('kastam')){
-		    $this->add_lapp_function(2, _("Fix Posting"),"gl/fix_posting.php", 'SA_ATTACHDOCUMENT', MENU_MAINTENANCE,'edit ');
-		    $this->add_lapp_function(2, _("Bad debt"),"admin/bad_deb.php", 'SA_ATTACHDOCUMENT', MENU_MAINTENANCE,'trash-o');
+		    $this->add_lapp_function(2, _("Fix Posting"),"gl/fix_posting.php", 'SA_ATTACHDOCUMENT', MENU_MAINTENANCE,'');
+		    $this->add_lapp_function(2, _("Bad debt"),"admin/bad_deb.php", 'SA_ATTACHDOCUMENT', MENU_MAINTENANCE,'');
 		}
 
 // 		$this->add_rapp_function(2, _("Install/Activate Extensions"), "admin/inst_module.php?", 'SA_CREATEMODULES', MENU_MAINTENANCE);
 
-		$this->add_module(_("Opening Balances"), 'fa fa-hourglass-half');
-		$this->add_lapp_function(3, _("Bank Account"), "maintenance/opening/bank", 'SA_VOIDTRANSACTION', MENU_MAINTENANCE,'bank ');
-		$this->add_lapp_function(3, _("System GL Accounts"),"opening/gl", 'SA_VIEWPRINTTRANSACTION', MENU_MAINTENANCE,'briefcase');
-		$this->add_lapp_function(3, _("Inventory"),"admin/opening.php?type=inventory", 'SA_VOIDTRANSACTION', MENU_MAINTENANCE,'building-o');
-		$this->add_lapp_function(3, _("Customer"),"opening/customer", 'SA_VOIDTRANSACTION', MENU_MAINTENANCE,'group');
-		$this->add_lapp_function(3, _("Supplier"),"opening/supplier", 'SA_VOIDTRANSACTION', MENU_MAINTENANCE,'group');
+		$this->add_module(_("Opening Balances"), '');
+		$this->add_lapp_function(3, _("Bank Account"), "maintenance/opening/bank", 'SA_VOIDTRANSACTION', MENU_MAINTENANCE,'');
+		$this->add_lapp_function(3, _("System GL Accounts"),"opening/gl", 'SA_VIEWPRINTTRANSACTION', MENU_MAINTENANCE,'');
+		$this->add_lapp_function(3, _("Inventory"),"admin/opening.php?type=inventory", 'SA_VOIDTRANSACTION', MENU_MAINTENANCE,'');
+		$this->add_lapp_function(3, _("Customer"),"opening/customer", 'SA_VOIDTRANSACTION', MENU_MAINTENANCE,'');
+		$this->add_lapp_function(3, _("Supplier"),"opening/supplier", 'SA_VOIDTRANSACTION', MENU_MAINTENANCE,'');
 // 		$this->add_lapp_function(3, _("Customer"),"admin/opening_balance_items.php?type=cus", 'SA_VOIDTRANSACTION', MENU_MAINTENANCE);
 // 		$this->add_lapp_function(3, _("Supllier"),"admin/opening_balance_items.php?type=sup", 'SA_VOIDTRANSACTION', MENU_MAINTENANCE);
 		/*

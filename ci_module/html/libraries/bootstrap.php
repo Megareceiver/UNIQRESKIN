@@ -205,6 +205,38 @@ class HtmlBootstrapLib
         $this->box_started = true;
         $this->box_form_start();
     }
+    function box_start_col_md_8($title = NULL, $icon = NULL, $new_row=false, $box_id=NULL)
+    {
+        $this->col_started = false;
+
+        if ($this->box_started) {
+            $this->box_end();
+        }
+        // echo '<div class="clearfix portlet box"><div class="portlet-body form-body form-horizontal clearfix">';
+
+        $html = NULL;
+        if( $new_row ){
+            $html.= '<div class="row"><div class="col-md-offset-2 col-md-8">';
+        }
+
+        $html.= '<div class="clearfix portlet light portlet-fit portlet-form" '.(strlen($box_id) > 0 ? 'id="'.$box_id.'"' : NULL).' >';
+
+        if (strlen($title) > 0) {
+            if( !$icon ){
+                $icon = 'icon-settings';
+            }
+            $box_title = '<div class="caption font-green">';
+            $box_title .= '';
+            $box_title .= '<span class="caption-subject bold uppercase"><i class="fa '.$icon.'"></i> ' . $title . '</span>';
+            $box_title .= '</div>';
+
+            $html.= '<div class="portlet-title">' . $box_title . '</div>';
+        }
+
+        echo $html;
+        $this->box_started = true;
+        $this->box_form_start();
+    }
     function box_end($new_row=true)
     {
         if ($this->box_form_started) {

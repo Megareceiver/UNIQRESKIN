@@ -14,12 +14,12 @@ class PurchasesTranEntry
     function form(){
 
         start_form();
-        box_start();
+        box_start_col_md_8();
         $this->order->form_header();
-        echo "<br>";
+        // echo "<br>";
 
 
-        box_start('Order Items');
+        box_start_col_md_8('Order Items');
         $this->order->form_items();
 
         row_start('justify-content-center');

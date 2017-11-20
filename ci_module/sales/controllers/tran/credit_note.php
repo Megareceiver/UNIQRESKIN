@@ -13,28 +13,38 @@ class SalesTranCreditNote
     function form()
     {
         start_form();
-        hidden('cart_id');
-        box_start();
-        $customer_error = $this->form_header($_SESSION['Items']);
+            hidden('cart_id');
+            echo "<div class='iyeu' style='padding-left: 15px; padding-right: 15px;'>";
+            box_start_col_md_8();
+                $customer_error = $this->form_header($_SESSION['Items']);
 
-        if ($customer_error == "") {
-            box_start(_("Credit Note Items"));
-            $this->form_items($_SESSION['Items']);
-            box_start();
-            $this->form_details($_SESSION['Items']);
-            // display_credit_items(_("Credit Note Items"), $_SESSION['Items']);
-//             credit_options_controls($_SESSION['Items']);
-            // echo "</td></tr>";
-            // end_table();
-        } else {
-            display_error($customer_error);
-        }
+                if ($customer_error == "") {
+                    echo '<div class="row">'; 
+                    
+                    box_start(_("Credit Note Items"));
+                    $this->form_items($_SESSION['Items']);
+                    box_end();
+                
+                    echo '</div>'; 
 
-        box_footer_start();
-        submit('Update', _("Update"));
-        submit('ProcessCredit', _("Process Credit Note"), true, null, 'default');
-        box_footer_end();
-        box_end();
+                    box_start_col_md_8();
+                    $this->form_details($_SESSION['Items']);
+                    // display_credit_items(_("Credit Note Items"), $_SESSION['Items']);
+        //             credit_options_controls($_SESSION['Items']);
+                    // echo "</td></tr>";
+                    // end_table();
+                    box_end();
+
+                } else {
+                    display_error($customer_error);
+                }
+                    echo "</div>";
+                box_start();
+                box_footer_start();
+                submit('Update', _("Update"));
+                submit('ProcessCredit', _("Process Credit Note"), true, null, 'default');
+                box_footer_end();
+            box_end();
         end_form();
     }
 

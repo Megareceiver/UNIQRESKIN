@@ -56,8 +56,9 @@ function form_group_bootstrap($label, $input, $columns = '3-9', $help = NULL,$at
         $input .= "<span class=\"help-block clearfix\"> $help</span>";
     }
 
-    $html .= "<div class=\"col-$input_col align-items-center $input_list_fix_mobile \">$input</div>";
-    $html .='</div>';
+        $html .= "<div class=\"col-$input_col align-items-center $input_list_fix_mobile \">$input</div>";
+        $html .='</div>';
+
     // }
 //     $html .= '</div>';
 
@@ -136,6 +137,11 @@ function box_start($title = NULL, $icon = NULL, $new_row = true, $box_id = NULL)
 {
     get_instance()->bootstrap->box_start($title, $icon, $new_row, $box_id);
 }
+function box_start_col_md_8($title = NULL, $icon = NULL, $new_row = true, $box_id = NULL)
+{
+    get_instance()->bootstrap->box_start_col_md_8($title, $icon, $new_row, $box_id);
+}
+
 
 function box_end($new_row = true)
 {

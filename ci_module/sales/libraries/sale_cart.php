@@ -319,6 +319,253 @@ class SalesSaleCartLib
         return $customer_error;
     }
 
+
+ function display_order_header_col_md_12(&$order, $editable=FALSE)
+    {
+        global $Ajax, $SysPrefs, $idate;
+
+        $customer_error = "";
+        $change_prices = 0;
+
+        row_start();
+        col_start(12,'col-md-12');
+        if( !isMobile() ){
+            bootstrap_set_label_column(4);
+        }
+        
+        if (isset($order) && ! $editable) {
+            // can't change the customer/branch if items already received on this order
+            label_row(null, $order->customer_name . " - " . $order->deliver_to);
+            hidden('customer_id', $order->customer_id);
+            hidden('branch_id', $order->Branch);
+            hidden('sales_type', $order->sales_type);
+            if ($order->trans_type != ST_SALESORDER && $order->trans_type != ST_SALESQUOTE) {
+                hidden('dimension_id', $order->dimension_id); // 2008-11-12 Joe Hunt
+                hidden('dimension2_id', $order->dimension2_id);
+            }
+        } else {
+            customer_list_bootstrap(_("Customer"), 'customer_id', null, false, true, false, true);
+
+            if ($order->customer_id != get_post('customer_id', - 1)) {
+                // customer has changed
+                $Ajax->activate('branch_id');
+            }
+            customer_branches_bootstrap(_("Branch"), $_POST['customer_id'], 'branch_id', null, false, true, true, true);
+//             customer_branches_list_row(_("Branch:"), $_POST['customer_id'], 'branch_id', null, false, true, true, true);
+
+            if (($order->customer_id != get_post('customer_id', - 1)) || ($order->Branch != get_post('branch_id', - 1)) || list_updated('customer_id')) {
+
+                if (! isset($_POST['branch_id']) || $_POST['branch_id'] == "") {
+                    // ignore errors on customer search box call
+                    if ($_POST['customer_id'] == '')
+                        $customer_error = _("No customer found for entered text.");
+                    else
+                        $customer_error = _("The selected customer does not have any branches. Please create at least one branch.");
+                    unset($_POST['branch_id']);
+                    $order->Branch = 0;
+                } else {
+
+                    $old_order = (PHP_VERSION < 5) ? $order : clone ($order);
+
+                    $customer_error = $this->get_customer_details_to_order($order, $_POST['customer_id'], $_POST['branch_id']);
+                    $_POST['Location'] = $order->Location;
+                    $_POST['deliver_to'] = $order->deliver_to;
+                    $_POST['delivery_address'] = $order->delivery_address;
+                    $_POST['phone'] = $order->phone;
+                    $_POST['delivery_date'] = $order->due_date;
+
+                    if (! in_array($order->trans_type, array(
+                        ST_SALESQUOTE,
+                        ST_SALESORDER
+                    )) && ($order->pos['cash_sale'] != $order->pos['credit_sale']) && (($order->payment_terms['cash_sale'] && ! $order->pos['cash_sale']) || (! $order->payment_terms['cash_sale'] && ! $order->pos['credit_sale']))) {
+                        // force payment terms refresh if terms are editable
+                        // and pos have no permitions for terms selected in customer record.
+                        // Terms are set to first terms in allowed category below.
+                        display_warning(sprintf(_("Customer's payment terms '%s' cannot be selected on this POS"), $order->payment_terms['terms']));
+                        $order->payment = '';
+                    } elseif (get_post('payment') !== $order->payment) {
+                        $_POST['payment'] = $order->payment;
+                        $Ajax->activate('delivery');
+                        $Ajax->activate('payment');
+                    } else {
+                        if ($order->trans_type == ST_SALESINVOICE) {
+                            $_POST['delivery_date'] = $order->due_date;
+                            $Ajax->activate('delivery_date');
+                        }
+                        $Ajax->activate('Location');
+                        $Ajax->activate('deliver_to');
+                        $Ajax->activate('phone');
+                        $Ajax->activate('delivery_address');
+                    }
+                    // change prices if necessary
+                    // what about discount in template case?
+                    if ($old_order->customer_currency != $order->customer_currency) {
+                        $change_prices = 1;
+                    }
+                    if ($old_order->sales_type != $order->sales_type) {
+                        // || $old_order->default_discount!=$order->default_discount
+                        $_POST['sales_type'] = $order->sales_type;
+                        $Ajax->activate('sales_type');
+                        $change_prices = 1;
+                    }
+                    if ($old_order->dimension_id != $order->dimension_id) {
+                        $_POST['dimension_id'] = $order->dimension_id;
+                        $Ajax->activate('dimension_id');
+                    }
+                    if ($old_order->dimension2_id != $order->dimension2_id) {
+                        $_POST['dimension2_id'] = $order->dimension2_id;
+                        $Ajax->activate('dimension2_id');
+                    }
+                    unset($old_order);
+                }
+                set_global_customer($_POST['customer_id']);
+            } else { // changed branch
+                $row = get_customer_to_order($_POST['customer_id']);
+                if ($row['dissallow_invoices'] == 1)
+                    $customer_error = _("The selected customer account is currently on hold. Please contact the credit control personnel to discuss.");
+            }
+        }
+        input_ref('Reference', 'ref', null, _('Reference number unique for this document type'));
+        // ref_row(_("Reference") . ':', 'ref', _('Reference number unique for this document type'), null, '');
+
+        // if( defined('COUNTRY') && COUNTRY==65 ){
+        // $ci->finput->text('Customer Reference','customer_ref',null,'row_echo');
+        // }
+        hidden('customer_ref');
+        $ref2_changed = input_post("cust_ref2");
+        if( $ref2_changed ){
+            $order->cust_ref = $ref2_changed;
+        }
+        $ref_changed = input_post("cust_ref");
+        if( $ref_changed ){
+            $order->cust_ref = $ref_changed;
+        }
+ 
+        if( in_ajax() AND ($ref_changed OR $ref2_changed)){
+            $_POST['cust_ref'] = $_POST['cust_ref2'] =  $order->cust_ref;
+            $Ajax->activate('_page_body');
+        }
+
+        if (! $order->payment_terms['cash_sale']) {
+            input_ref(_("Customer Reference"), 'cust_ref2', $order->cust_ref, _('Customer reference number for this order (if any)'));
+            locations_bootstrap(_("Deliver from Location"), 'Location2', null, false, true);
+        }
+
+        col_start(12,'col-md-12');
+        if( !isMobile() ){
+            bootstrap_set_label_column(3);
+        }
+
+
+        if ($order->pos['cash_sale'] || $order->pos['credit_sale']) {
+            // editable payment type
+            if (get_post('payment') !== $order->payment) {
+                $order->payment = get_post('payment');
+                $order->payment_terms = get_payment_terms($order->payment);
+                $order->due_date = get_invoice_duedate($order->payment, $order->document_date);
+                if ($order->payment_terms['cash_sale']) {
+                    $_POST['Location'] = $order->Location = $order->pos['pos_location'];
+                    $order->location_name = $order->pos['location_name'];
+                }
+                $Ajax->activate('items_table');
+                $Ajax->activate('delivery');
+            }
+            $paymcat = ! $order->pos['cash_sale'] ? PM_CREDIT : (! $order->pos['credit_sale'] ? PM_CASH : PM_ANY);
+            // all terms are available for SO
+            $sale_payment_category = (in_array($order->trans_type, array(
+                ST_SALESQUOTE,
+                ST_SALESORDER
+            )) ? PM_ANY : $paymcat);
+            sale_payments_bootstrap(_('Payment'), 'payment', $sale_payment_category);
+        } else {
+            input_label(_('Payment'), null, $order->payment_terms['terms']);
+        }
+
+        if ($editable) {
+            sales_types_bootstrap(_("Price List"), 'sales_type', null, true);
+        } else {
+            input_label(_("Price List "), NULL, $order->sales_type_name);
+        }
+
+        if ($order->sales_type != $_POST['sales_type']) {
+            $myrow = get_sales_type($_POST['sales_type']);
+            $order->set_sales_type($myrow['id'], $myrow['sales_type'], $myrow['tax_included'], $myrow['factor']);
+            $Ajax->activate('sales_type');
+            $change_prices = 1;
+        }
+        /*
+         * END column 3
+         */
+
+        if ($editable) {
+            if (! isset($_POST['OrderDate']) || $_POST['OrderDate'] == "")
+                $_POST['OrderDate'] = $order->document_date;
+
+            input_date_bootstrap('Date', 'OrderDate');
+
+            if (isset($_POST['_OrderDate_changed']) || list_updated('payment')) {
+                if (! is_company_currency($order->customer_currency) && (get_base_sales_type() > 0)) {
+                    $change_prices = 1;
+                }
+                $Ajax->activate('_ex_rate');
+
+                if ($order->trans_type == ST_SALESINVOICE) {
+                    $_POST['delivery_date'] = get_invoice_duedate(get_post('payment'), get_post('OrderDate'));
+                } else
+                    $_POST['delivery_date'] = add_days(get_post('OrderDate'), $SysPrefs->default_delivery_required_by());
+                $Ajax->activate('items_table');
+                $Ajax->activate('delivery_date');
+            }
+
+            if ($order->trans_type != ST_SALESORDER && $order->trans_type != ST_SALESQUOTE) { // 2008-11-12 Joe Hunt added dimensions
+                $dim = get_company_pref('use_dimension');
+                if ($dim > 0)
+                    dimensions_bootstrap(_("Dimension"), 'dimension_id', null, true, ' ', false, 1, false);
+                else
+                    hidden('dimension_id', 0);
+                if ($dim > 1)
+                    dimensions_bootstrap(_("Dimension") . " 2:", 'dimension2_id', null, true, ' ', false, 2, false);
+                else
+                    hidden('dimension2_id', 0);
+            }
+        } else {
+            input_label('Date', null, $order->document_date);
+            hidden('OrderDate', $order->document_date);
+        }
+
+        col_start(12,'col-md-3');
+        if( !isMobile() ){
+            bootstrap_set_label_column(7);
+        }
+
+
+        if (! is_company_currency($order->customer_currency) && in_array($order->trans_type, array(
+            ST_SALESINVOICE,
+            ST_CUSTDELIVERY
+        ))) {
+            label_row(_("Customer Currency:"), $order->customer_currency);
+            exchange_rate_display(get_company_currency(), $order->customer_currency, ($editable ? $_POST['OrderDate'] : $order->document_date));
+        }
+        customer_credit_bootstrap($_POST['customer_id'], $order->credit);
+        input_label(_("Customer Discount"), null, ($order->default_discount * 100) . "%");
+        bootstrap_set_label_column(0);
+        row_end();
+
+        if ($change_prices != 0) {
+            foreach ($order->line_items as $line_no => $item) {
+                $line = &$order->line_items[$line_no];
+                $line->price = get_kit_price($line->stock_id, $order->customer_currency, $order->sales_type, $order->price_factor, get_post('OrderDate'));
+                // $line->discount_percent = $order->default_discount;
+            }
+            $Ajax->activate('items_table');
+        }
+
+        return $customer_error;
+    }
+
+
+
+
     function display_order_summary(&$order, $editable_items = false)
     {
         div_start('items_table',$trigger = null, $non_ajax = false, $attributes = ' class="pb-4" ');
@@ -476,6 +723,73 @@ class SalesSaleCartLib
         if ( $order->payment_terms['cash_sale'] ) { // Direct payment sale
             $Ajax->activate('items_table');
             col_start(12,'col-md-8');
+            locations_bootstrap(_("Deliver from Location"), 'Location', null, false, true);
+            if (list_updated('Location'))
+                $Ajax->activate('items_table');
+
+            $cash_sales_invoice = get_gl_account(get_company_pref('cash_sales_invoice'));
+            input_label(_("Cash account"), null, $cash_sales_invoice['account_name']);
+            input_textarea(_("Comments:"), "Comments", $order->Comments);
+            hidden('delivery_date', $order->due_date);
+        } else {
+            
+            col_start(12,'col-md-6');
+            if( !isMobile() ){
+                bootstrap_set_label_column(4);
+            }
+            locations_bootstrap( _("Deliver from Location"), 'Location', null, false, true );
+//             locations_list_row(_("Deliver from Location:"), 'Location', null, false, true);
+
+            if (list_updated('Location'))
+                $Ajax->activate('items_table');
+
+            input_date_bootstrap($delname, 'delivery_date',null);
+//             date_row($delname, 'delivery_date', $order->trans_type == ST_SALESORDER ? _('Enter requested day of delivery') : $order->trans_type == ST_SALESQUOTE ? _('Enter Valid until Date') : '');
+            input_text(_("Deliver To"), 'deliver_to',$order->deliver_to);
+//             text_row(_("Deliver To:"), 'deliver_to', $order->deliver_to, 40, 40, _('Additional identifier for delivery e.g. name of receiving person'));
+
+            input_textarea( _("Address"), 'delivery_address', $order->delivery_address );
+
+            col_start(12,'col-md-6');
+            input_text( _("Contact Phone Number"), 'phone', $order->phone );
+            input_ref(_("Customer Reference"), 'cust_ref', $order->cust_ref, _('Customer reference number for this order (if any)'));
+            input_textarea( _("Comments"), "Comments", $order->Comments );
+            shippers_bootstrap( _("Shipping Company"), 'ship_via', $order->ship_via);
+
+        }
+        row_end();
+        div_end();
+    }
+
+     function display_delivery_details_offset_2(&$order)
+    {
+        global $Ajax;
+        if ( $order->payment_terms['cash_sale'] ){
+            box_start( _('Cash payment') );
+        } else {
+            if ($order->trans_type == ST_SALESINVOICE) {
+                $title = _("Delivery Details");
+                $delname = _("Due Date") . ':';
+            } elseif ($order->trans_type == ST_CUSTDELIVERY) {
+                $title = _("Invoice Delivery Details");
+                $delname = _("Invoice before") . ':';
+            } elseif ($order->trans_type == ST_SALESQUOTE) {
+                $title = _("Quotation Delivery Details");
+                $delname = _("Valid until") . ':';
+            } else {
+                $title = _("Order Delivery Details");
+                $delname = _("Required Delivery Date") . ':';
+            }
+            box_start($title);
+        }
+        div_start('delivery',$trigger = null, $non_ajax = false, $attributes = 'class="pb-2" ');
+
+        row_start('justify-content-center');
+
+
+        if ( $order->payment_terms['cash_sale'] ) { // Direct payment sale
+            $Ajax->activate('items_table');
+            col_start(12,'col-md-offset-2 col-md-8');
             locations_bootstrap(_("Deliver from Location"), 'Location', null, false, true);
             if (list_updated('Location'))
                 $Ajax->activate('items_table');

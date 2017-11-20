@@ -235,7 +235,7 @@ if( !defined('COMPANY_DIR') ) {
 }
 if( !defined('AT_ASSEETS') ) {
     define('AT_ASSEETS', '//'.$_SERVER['SERVER_NAME'].'/assets/');
-    define('COUNTRY', 65);
+    define('COUNTRY', 60);
 }
 
 ?>

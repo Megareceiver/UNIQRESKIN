@@ -4,6 +4,10 @@
 .page-header, .page-content{
 	padding-top: unset !important;
 }
+.dropdown-menu li{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 .menu-style{
 	height: 250px;
 	padding-top: 30px;
@@ -13,6 +17,7 @@
   	padding: 30px 20px 20px 20px;
   	padding-bottom: 10px;
   	color: #000;
+  	font-size: 12px;
 
 }
 .menu-number{
@@ -70,7 +75,7 @@
 .form-actions{
 	margin-top: 20px;
 	padding: 10px;
-	border-bottom: 1px solid #000;
+	border-bottom: 1px solid #ADADAD;
 	margin-bottom: 15px;
 }
 .form-actions .ajaxsubmit{
@@ -131,13 +136,17 @@
 	border-radius: unset;
 }
 .jumbotron{
-	 background-size: cover;
 	 background: url(/assets/images/jumbotron.jpeg) no-repeat;
 	 margin-bottom: 50px;
 	 border-radius: unset !important;
-	 height: 275px;
+	 height: 320px;
 	 color: #FFF;
 	 text-shadow: 2px 1px #7C7C7C;
+	 background-size: cover;
+}
+.control-label{
+	margin-top: 15px !important;
+	margin-bottom: 10px !important;
 }
 /* RESPONSIVE ================================================================ */
 /* extra small */

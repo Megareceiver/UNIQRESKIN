@@ -25,8 +25,9 @@ class SalesTranOrder
         start_form();
 
         hidden('cart_id');
-        box_start();
-        $customer_error = $this->cart->display_order_header($_SESSION['Items'], ($_SESSION['Items']->any_already_delivered() == 0));
+        box_start_col_md_8();
+        // $customer_error = $this->cart->display_order_header($_SESSION['Items'], ($_SESSION['Items']->any_already_delivered() == 0));
+        $customer_error = $this->cart->display_order_header_col_md_12($_SESSION['Items'], ($_SESSION['Items']->any_already_delivered() == 0));
 
         if ($customer_error == "") {
             switch ($_SESSION['Items']->trans_type) {
@@ -45,7 +46,8 @@ class SalesTranOrder
             }
 
             $this->cart->display_order_summary($_SESSION['Items'], true);
-            $this->cart->display_delivery_details($_SESSION['Items']);
+            // $this->cart->display_delivery_details($_SESSION['Items']);
+            $this->cart->display_delivery_details_offset_2($_SESSION['Items']);
 
             box_footer_start();
             $this->form_buttons();

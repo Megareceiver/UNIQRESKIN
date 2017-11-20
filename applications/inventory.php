@@ -15,66 +15,66 @@ class inventory_app extends application
 	{
 		$this->application("stock", _($this->help_context = "PRODUCTS"),true,'');
 
-		$this->add_module(_("Operations"), 'fa fa-pencil');
+		$this->add_module(_("Operations"), '');
 		$this->add_lapp_function(0, _("Inventory Location Transfers"),
-			"inventory/transfers.php?NewTransfer=1", 'SA_LOCATIONTRANSFER', MENU_TRANSACTION,'random');
+			"inventory/transfers.php?NewTransfer=1", 'SA_LOCATIONTRANSFER', MENU_TRANSACTION,'');
 		$this->add_lapp_function(0, _("Inventory Adjustments"),
-			"inventory/adjustments.php?NewAdjustment=1", 'SA_INVENTORYADJUSTMENT', MENU_TRANSACTION,'pencil-square-o');
+			"inventory/adjustments.php?NewAdjustment=1", 'SA_INVENTORYADJUSTMENT', MENU_TRANSACTION,'');
 
-		$this->add_module(_("Inquiry"), 'fa fa-search');
+		$this->add_module(_("Inquiry"), '');
 		$this->add_lapp_function(1, _("Inventory Item Movements"),
-			"inventory/inquiry/stock_movements.php?", 'SA_ITEMSTRANSVIEW', MENU_INQUIRY,'list-ul');
+			"inventory/inquiry/stock_movements.php?", 'SA_ITEMSTRANSVIEW', MENU_INQUIRY,'');
 		$this->add_lapp_function(1, _("Inventory Item Status"),
-			"inventory/inquiry/stock_status.php?", 'SA_ITEMSSTATVIEW', MENU_INQUIRY,'list-ul');
+			"inventory/inquiry/stock_status.php?", 'SA_ITEMSSTATVIEW', MENU_INQUIRY,'');
 
-		$this->add_module(_("Reports"), 'fa fa-file-text-o');
+		$this->add_module(_("Reports"), '');
 		$this->add_rapp_function(2, _("Inventory Valuation Report"),
-			"reporting/reports_main.php?Class=2&REP_ID=301", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'file-text');
+			"reporting/reports_main.php?Class=2&REP_ID=301", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'');
 		$this->add_rapp_function(2, _("Inventory Planning Report"),
-			"reporting/reports_main.php?Class=2&REP_ID=302", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'file-text');
+			"reporting/reports_main.php?Class=2&REP_ID=302", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'');
 		$this->add_rapp_function(2, _("Stock Check Sheets"),
-			"reporting/reports_main.php?Class=2&REP_ID=303", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'file-text');
+			"reporting/reports_main.php?Class=2&REP_ID=303", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'');
 		$this->add_rapp_function(2, _("Inventory Sales Report"),
-			"reporting/reports_main.php?Class=2&REP_ID=304", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'file-text');
+			"reporting/reports_main.php?Class=2&REP_ID=304", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'');
 		$this->add_rapp_function(2, _("GNL Valuation Report"),
-			"reporting/reports_main.php?Class=2&REP_ID=305", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'file-text');
+			"reporting/reports_main.php?Class=2&REP_ID=305", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'');
 		$this->add_rapp_function(2, _("Inventory Purchasing Report"),
-			"reporting/reports_main.php?Class=2&REP_ID=306", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'file-text');
+			"reporting/reports_main.php?Class=2&REP_ID=306", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'');
 		$this->add_rapp_function(2, _("Inventory Movement Report"),
-			"reporting/reports_main.php?Class=2&REP_ID=307", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'file-text');
+			"reporting/reports_main.php?Class=2&REP_ID=307", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'');
 		$this->add_rapp_function(2, _("Costed Inventory Movement Report"),
-			"reporting/reports_main.php?Class=2&REP_ID=308", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'file-text');
+			"reporting/reports_main.php?Class=2&REP_ID=308", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'');
 		$this->add_rapp_function(2, _("Item Sales Summary Report"),
-			"reporting/reports_main.php?Class=2&REP_ID=309", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'file-text');
+			"reporting/reports_main.php?Class=2&REP_ID=309", 'SA_ITEMSTRANSVIEW', MENU_REPORT,'');
 
 // 		$this->add_module(_("Document Printing"));
 
-		$this->add_module(_("Housekeeping"), 'fa fa-gear');
+		$this->add_module(_("Housekeeping"), '');
 		$this->add_lapp_function(3, _("Items"),
-			"inventory/manage/items.php?", 'SA_ITEM', MENU_ENTRY,'list-alt');
+			"inventory/manage/items.php?", 'SA_ITEM', MENU_ENTRY,'');
 		$this->add_lapp_function(3, _("Foreign Item Codes"),
-			"inventory/manage/item_codes.php?", 'SA_FORITEMCODE', MENU_MAINTENANCE,'fonticons');
+			"inventory/manage/item_codes.php?", 'SA_FORITEMCODE', MENU_MAINTENANCE,'');
 		$this->add_lapp_function(3, _("Sales Kits"),
-			"inventory/manage/sales_kits.php?", 'SA_SALESKIT', MENU_MAINTENANCE,'clone');
+			"inventory/manage/sales_kits.php?", 'SA_SALESKIT', MENU_MAINTENANCE,'');
 		$this->add_lapp_function(3, _("Item Categories"),
-			"inventory/manage/item_categories.php?", 'SA_ITEMCATEGORY', MENU_MAINTENANCE,'object-group');
+			"inventory/manage/item_categories.php?", 'SA_ITEMCATEGORY', MENU_MAINTENANCE,'');
 		$this->add_lapp_function(3, _("Inventory Locations"),
-			"inventory/manage/locations.php?", 'SA_INVENTORYLOCATION', MENU_MAINTENANCE,'location-arrow');
+			"inventory/manage/locations.php?", 'SA_INVENTORYLOCATION', MENU_MAINTENANCE,'');
 
 		$this->add_lapp_function(3, _("Inventory Movement Types"),
-			"inventory/manage/movement_types.php?", 'SA_INVENTORYMOVETYPE', MENU_MAINTENANCE,'hand-pointer-o');
+			"inventory/manage/movement_types.php?", 'SA_INVENTORYMOVETYPE', MENU_MAINTENANCE,'');
 		$this->add_lapp_function(3, _("Units of Measure"),
-			"inventory/manage/item_units.php?", 'SA_UOM', MENU_MAINTENANCE,'tasks');
+			"inventory/manage/item_units.php?", 'SA_UOM', MENU_MAINTENANCE,'');
 		$this->add_lapp_function(4, _("Reorder Levels"),
-			"inventory/reorder_level.php?", 'SA_REORDER', MENU_MAINTENANCE,'sort-numeric-desc');
+			"inventory/reorder_level.php?", 'SA_REORDER', MENU_MAINTENANCE,'');
 
 
 		$this->add_lapp_function(3, _("Sales Pricing"),
-			"inventory/prices.php?", 'SA_SALESPRICE', MENU_MAINTENANCE,'dollar ');
+			"inventory/prices.php?", 'SA_SALESPRICE', MENU_MAINTENANCE,'');
 		$this->add_lapp_function(3, _("Purchasing Pricing"),
-			"inventory/purchasing_data.php?", 'SA_PURCHASEPRICING', MENU_MAINTENANCE,'dollar ');
+			"inventory/purchasing_data.php?", 'SA_PURCHASEPRICING', MENU_MAINTENANCE,'');
 		$this->add_rapp_function(3, _("Standard Costs"),
-			"inventory/cost_update.php?", 'SA_STANDARDCOST', MENU_MAINTENANCE,'money');
+			"inventory/cost_update.php?", 'SA_STANDARDCOST', MENU_MAINTENANCE,'');
 
 		$this->add_extensions();
 	}

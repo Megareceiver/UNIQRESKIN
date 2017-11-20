@@ -5,25 +5,29 @@ class SalesTranPayment
 
     function __construct()
     {
+        echo "<div class='iyeu' style='padding-left: 40px;'>";
         $this->page_start();
         $this->page_submit();
         $this->page_finish();
 
         $this->document_add();
+        echo "</div>";
     }
 
     function form(){
+        // echo "<div class='iyeu' style='padding-left: 40px; padding-right: 40px;'>";
         $this->form_start();
+
 
         start_form();
         hidden('trans_no');
         hidden('old_ref', $this->old_ref);
 
-        box_start();
+        box_start_col_md_8();
         row_start();
         col_start(4);
         bootstrap_set_label_column(5);
-
+       
         bank_accounts(_("Into Bank Account"), 'bank_account', null, true);
         if ($this->new)
             customer_list_bootstrap(_("From Customer"), 'customer_id', null, false, true);
@@ -88,7 +92,7 @@ class SalesTranPayment
         }
 
 
-        box_start();
+        box_start_col_md_8();
         row_start('justify-content-center');
             col_start(8);
             input_label(_("Customer prompt payment discount"), null, $display_discount_percent);
@@ -96,7 +100,12 @@ class SalesTranPayment
             input_money(_("Amount"), 'amount',null,$cust_currency);
             input_textarea('Memo', 'memo_');
         row_end();
+        box_end();
 
+        // echo "</div>";
+
+
+        box_start();
         box_footer_start();
         if( intval( $document_id = input_get('document')) > 0 ){
             hidden('document_id',$document_id);
@@ -110,6 +119,8 @@ class SalesTranPayment
         box_footer_end();
         box_end();
         end_form();
+        
+
     }
     var $new = 1;
     var $old_ref = NULL;
