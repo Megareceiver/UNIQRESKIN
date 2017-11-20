@@ -54,9 +54,9 @@ $app_title = "UNIQ365";
 $build_version = date("d.m.Y", filemtime("$path_to_root/CHANGELOG.txt"));
 
 // Powered by
-// $power_by = "A2000 Solutions Pte Ltd<br>(Approved Malaysia GST Software by ACCOUNTANT TODAY)";
-// $power_url = "http://accountanttoday.net";
-// $copyright = 'Copyright &copy; 2014 by '.$power_by;
+$power_by = "Uniq Sinergy Pte Ltd";
+$power_url = "http://uniq365.com";
+$copyright = 'Copyright &copy; 2017 by '.$power_by;
 $theme = 'syncard';
 
 /*
