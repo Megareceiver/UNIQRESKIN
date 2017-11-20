@@ -19,7 +19,7 @@ class PurchasesTranEntry
         // echo "<br>";
 
 
-        box_start_col_md_8('Order Items');
+        box_start('Order Items');
         $this->order->form_items();
 
         row_start('justify-content-center');
