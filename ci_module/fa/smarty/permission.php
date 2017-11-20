@@ -86,3 +86,4 @@ class FaPermissionSmarty{
         return anchor($link,$label,'class=" nav-link nav-toggle" ');
     }
 }
+// 

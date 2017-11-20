@@ -4,7 +4,7 @@ var table_flex = '';
 $("html").attr('style', 'opacity:1');
 
 $(function(){
-
+dropdown_menu();
 getItemSelect();
 autocomplete();
 getAccountSelect();
@@ -918,4 +918,15 @@ function dropdown_search(){
     });
     // alert('asdf');	
 
+}
+function dropdown_menu(){
+	$('.dropdown-menu .dropdown-submenu').on("click", function(e){
+	    $('.dropdown-menu .dropdown-submenu').removeClass('open');
+	    $(this).toggleClass('open');
+	    e.stopPropagation();
+	    // e.preventDefault();
+ 	});
+	$('body').on("click", function(e){
+	    $('.dropdown-menu .dropdown-submenu').removeClass('open');
+ 	});
 }

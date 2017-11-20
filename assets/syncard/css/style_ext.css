@@ -148,6 +148,15 @@
 	margin-top: 15px !important;
 	margin-bottom: 10px !important;
 }
+.dropdown-menu li{
+	position: relative;
+}
+.dropdown-submenu.open .dropdown-menu{
+	display: block;
+	top: 0;
+	left: 100%;
+}
+
 /* RESPONSIVE ================================================================ */
 /* extra small */
 @media (max-width: 767px) {
