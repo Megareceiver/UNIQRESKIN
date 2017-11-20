@@ -156,6 +156,9 @@
 	top: 0;
 	left: 100%;
 }
+.alert{
+	    word-wrap: break-word !important;
+}
 
 /* RESPONSIVE ================================================================ */
 /* extra small */

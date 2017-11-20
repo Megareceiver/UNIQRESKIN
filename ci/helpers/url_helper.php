@@ -55,8 +55,9 @@ if ( ! function_exists('url_title')) {
 
 if ( ! function_exists('anchor')){
 
-	function anchor($uri = '', $title = '', $attributes = ''){
+	function anchor($uri = '', $title = '', $attributes = '', $counter){
 		$title = (string) $title;
+		$caret = '';
 		if ( ! is_array($uri)){
 		    if( $uri==null || $uri=='#' ){
 		        $site_url = 'javascript:void(0)';
@@ -79,8 +80,11 @@ if ( ! function_exists('anchor')){
 		if ($attributes != '') {
 			$attributes = _parse_attributes($attributes);
 		}
+		if($counter > 0){
+			$caret = '<span class="caret"></span>';
+		}
 
-		return '<a href="'.$site_url.'"'.$attributes.'>'.$title.'</a>';
+		return '<a href="'.$site_url.'"'.$attributes.'>'.$title.' '.$caret.'</a>';
 	}
 
 	function current_url($url=null,$query=''){

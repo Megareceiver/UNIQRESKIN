@@ -19,6 +19,7 @@ class FaPermissionSmarty{
                 $label = $lnk[0];
                 if( isset($app->fa_icon) AND strlen($app->fa_icon) > 0 ){
                     $label = '<i class="'.$app->fa_icon.'"></i> '. $label;
+                    // $label = '<i class="fa fa-caret"></i> '. $label;
                 }
 
                 if ($_SESSION["wa_current_user"]->can_access_page($app->access) AND $app->label != "") {
@@ -34,6 +35,7 @@ class FaPermissionSmarty{
                 $lnk = access_string($app->name);
                 $label = $lnk[0];
                 if( isset($app->icon) AND strlen($app->icon) > 0 ){
+                    // $label = '<i class="caret"></i> '. $label;
                     $label = '<i class="'.$app->icon.'"></i> '. $label;
                 }
                 //$html = anchor('index.php?application='.$app->id,$label);
@@ -52,7 +54,7 @@ class FaPermissionSmarty{
                     $menu_attribute['class'] .= ' disabled';
                 }
 
-                $html = anchor($uri,$label,$menu_attribute);
+                $html = anchor($uri,$label,$menu_attribute, count($app->modules));
             break;
         }
 
@@ -72,10 +74,12 @@ class FaPermissionSmarty{
         $label = $module->name;
 
         if( count($module->lappfunctions) > 0 OR count($module->rappfunctions) > 0 ){
-            $label .= '<span class="arrow">';
+            // $label .= '<span class="arrow">';
+            $label .= '<span class="caret pull-right" style="margin-top:7px; margin-right:-5px;">';
         }
         if( isset($module->icon) AND strlen($module->icon) > 0 ){
             $label = '<i class="'.$module->icon.'"></i> '. $label;
+            // $label = '<i class="caret"></i> '. $label;
         }
 
         $link = $module->link;
@@ -86,4 +90,4 @@ class FaPermissionSmarty{
         return anchor($link,$label,'class=" nav-link nav-toggle" ');
     }
 }
-// 
+// ;
