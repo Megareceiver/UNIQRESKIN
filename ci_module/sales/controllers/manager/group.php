@@ -74,7 +74,7 @@ class SalesManagerGroup
 
     private function group_item()
     {
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
         if ( $this->id != - 1) {
             if ($this->mode == 'Edit' ) {
                 // editing an existing group
