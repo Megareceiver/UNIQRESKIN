@@ -43,7 +43,7 @@ class GlBudget
         $this->dim = $dim = get_company_pref('use_dimension');
 
         row_start('justify-content-md-center');
-        col_start(12,'col-md-8');
+        col_start(8,"col-md-8 col-md-offset-2");
         fiscalyear_bootstrap(_("Fiscal Year"), 'fyear', null);
         gl_accounts_bootstrap(_("Account Code"), 'account', null);
 
