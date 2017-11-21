@@ -947,11 +947,30 @@ function filter_hack(){
 			show_filter();
 		});
 	}
+	// else if($("[level=level_1].row").length > 0){
+	// 	var button = 
+	// 	'<div class="col-xs-4 col-xs-offset-4 text-center margin-top margin-bottom" style="border-bottom:1px solid #CCC">' +
+	// 		'<button type="button" class="btn btn-xs" id="filterToggle">Show filter</button>' +
+	// 	'</div><div class="clearfix"></div>';
+	// 	$("[level=level_1].row").attr('style', "display:none");
+	// 	$("[level=level_1].row").before(button);
+
+	// 	$('#filterToggle').unbind().on('click', function(){
+	// 		show_filter_2();
+	// 	});
+	// }
 }
 
 function show_filter(){
 	$(".inquiry-filter").slideToggle();
 	if($(".inquiry-filter").is(":visible")){
+		$("#filterToggle").html("Hide Filter");
+	}
+}
+
+function show_filter_2(){
+	$("[level=level_1].row").slideToggle();
+	if($("[level=level_1].row").is(":visible")){
 		$("#filterToggle").html("Hide Filter");
 	}
 }

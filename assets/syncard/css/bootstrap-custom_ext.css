@@ -26,6 +26,16 @@
 .navbar-toggle { border-radius: 0; border-color: #DDD }
 .navbar-toggle .icon-bar { background-color: #DDD }
 
+/*switch*/
+.bootstrap-switch {
+	border: 1px solid #CCC;
+	margin-right: 15px;
+}
+
+/*input*/
+.input-group-sm:last-child {
+	margin-bottom: 15px;
+}
 
 /* RESPONSIVE ================================================================ */
 /* extra small */

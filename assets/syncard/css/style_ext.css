@@ -114,7 +114,7 @@
 
 .form-actions a{
 	background: #FC9A1A;
-	height: 33px;
+	height: 35px;
 	margin-right: 15px;
 }
 
@@ -139,7 +139,7 @@
 button.ajaxsubmit {
 	background: #23527c;
 	color: #FFF;
-	margin-right: 11px;
+	margin: 25px 11px 25px 0;
 }
 
 [name=SearchOrders]{
@@ -231,11 +231,14 @@ legend, .caption {
 }
 
 .inquiry-filter {
+	width: 50%;
+	margin: auto;
 	margin-bottom: 25px;
 }
 
 .inquiry-filter div {
 	width: 100%;
+	margin-bottom: 5px;
 }
 
 #filterToggle {
@@ -243,6 +246,26 @@ legend, .caption {
 	border-bottom: none;
 	margin-bottom: -1px;
 	background-color: #FFF;
+}
+
+[level=level_1].row {
+	width: 50%;
+	margin: auto;
+	margin-bottom: 25px;
+}
+
+[level=level_1].row div {
+	width: 100%;
+	margin: 0;
+	margin-bottom: 5px;
+}
+
+
+/**/
+button.table_actions {
+	background: none;
+	border: 1px solid #CCC;
+
 }
 
 /* RESPONSIVE ================================================================ */

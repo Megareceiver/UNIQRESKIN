@@ -43,8 +43,8 @@ body { font-family: Quicksand !important; }
     padding: 15px;
 }
 
-.dashboard_item:nth-child(odd) {
-    border-right: 1px dashed #CCC;
+.dashboard_item:nth-child(even) {
+    border-left: 1px dashed #CCC;
 }
 
 
