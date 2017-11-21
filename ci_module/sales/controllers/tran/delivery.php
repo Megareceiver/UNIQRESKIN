@@ -55,12 +55,12 @@ class SalesTranDelivery
     {
         global $Refs;
         row_start();
-        col_start(3);
+        col_start(8,"col-md-8 col-md-offset-2");
         input_label(_("Customer"), null, $_SESSION['Items']->customer_name);
         input_label(_("Branch"), null, get_branch_name($_SESSION['Items']->Branch));
         input_label(_("Currency"), null, $_SESSION['Items']->customer_currency);
 
-        col_start(3);
+        // col_start(3);
         if ($_SESSION['Items']->trans_no == 0) {
             $_POST['ref'] = $Refs->get_next(ST_CUSTDELIVERY);
             input_ref(_("Reference"), 'ref');
@@ -71,7 +71,7 @@ class SalesTranDelivery
         input_label(_("For Sales Order"),null, get_customer_trans_view_str(ST_SALESORDER, $_SESSION['Items']->order_no));
         input_label(_("Sales Type"),null, $_SESSION['Items']->sales_type_name);
 
-        col_start(3);
+        // col_start(3);
         if (! isset($_POST['Location'])) {
             $_POST['Location'] = $_SESSION['Items']->Location;
         }
@@ -91,7 +91,7 @@ class SalesTranDelivery
         }
         input_date_bootstrap(_("Date"), 'DispatchDate');
 
-        col_start(3);
+        // col_start(3);
         if (! isset($_POST['due_date']) || ! is_date($_POST['due_date'])) {
             $_POST['due_date'] = get_invoice_duedate($_SESSION['Items']->payment, $_POST['DispatchDate']);
         }
@@ -124,7 +124,7 @@ class SalesTranDelivery
     {
 
         row_start('justify-content-center');
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
 
 //             $_POST['ChargeFreightCost'] = get_post('ChargeFreightCost', price_format($_SESSION['Items']->freight_cost));
             input_money('Shipping Cost', 'ChargeFreightCost',$_SESSION['Items']->freight_cost);
@@ -139,7 +139,7 @@ class SalesTranDelivery
             input_label(_("Amount Total"),NULL, $display_total);
 
             policies_input(_("Action For Balance"), "bo_policy");
-            input_textarea(_("Memo"), 'Comments');
+                
 
         row_end();
 
