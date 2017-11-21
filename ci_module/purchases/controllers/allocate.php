@@ -98,14 +98,14 @@ class PurchasesAllocate
             $_POST['supplier_id'] = get_global_supplier();
 
         row_start('justify-content-center');
-        col_start(6);
+        col_start(8,"col-md-8 col-md-offset-2");
         supplier_list_bootstrap('Select a Supplier', 'supplier_id', $_POST['supplier_id'], true, true);
         set_global_supplier($_POST['supplier_id']);
         if (isset($_POST['supplier_id']) && ($_POST['supplier_id'] == ALL_TEXT)) {
             unset($_POST['supplier_id']);
         }
 
-        col_start(3);
+        // col_start(3);
         bootstrap_set_label_column(7);
         check_bootstrap(_("Show Settled Items"), 'ShowSettled', null, true);
 

@@ -19,7 +19,7 @@ class PurchasesInvoice
             // table_section(1);
         bootstrap_set_label_column(5);
         row_start();
-        col_start(5);
+        col_start(8,"col-md-8 col-md-offset-2");
         if (isset($_POST['invoice_no'])) {
             $trans = get_supp_trans($_POST['invoice_no'], ST_SUPPINVOICE);
             $_POST['supplier_id'] = $trans['supplier_id'];
@@ -61,7 +61,7 @@ class PurchasesInvoice
 
         input_text(_("Reason"), 'reason');
 
-        col_start(4);
+        // col_start(4);
 
         input_date_bootstrap('Date', 'tran_date', null, false, true);
         // date_row(_("Date") . ":", 'tran_date', '', true, 0, 0, 0, "", true);
@@ -84,7 +84,7 @@ class PurchasesInvoice
         }
         
 
-        col_start(3);
+        // col_start(3);
         set_global_supplier($_POST['supplier_id']);
         $supplier_currency = get_supplier_currency($this->cart->supplier_id);
         $company_currency = get_company_currency();
@@ -142,16 +142,16 @@ class PurchasesInvoice
         if ($this->mode == 1) {
             if ($supp_trans->trans_type == ST_SUPPCREDIT && ! isset($_POST['invoice_no'])) {
                 // echo "</td>";
-                col_start(4);
+                col_start(8,"col-md-8 col-md-offset-2");
                 // bootstrap_set_label_column(5);
                 input_date_bootstrap(_("Received between"), 'receive_begin', "", false, null, - 30, 0, 0);
-                col_start(3);
+                // col_start(3);
                 bootstrap_set_label_column(3);
                 input_date_bootstrap(_("and"), 'receive_end', "", false, null, 1, 0, 0);
                 // date_cells(_("Received between"), 'receive_begin', "", null, -30, 0, 0, "valign=middle");
                 // date_cells(_("and"), 'receive_end', '', null, 1, 0, 0, "valign=middle");
 
-                col_start(1);
+                // col_start(1);
                 submit('RefreshInquiry', _("Search"), true, _('Refresh Inquiry'), true);
                 // echo "<td>";
             }
@@ -313,7 +313,7 @@ class PurchasesInvoice
             $qes = has_quick_entries(QE_SUPPINV);
             if ($qes !== false) {
                 row_start('justify-content-end');
-                col_start(4);
+                col_start(8,"col-md-8 col-md-offset-2");
                 input_quick_entries('Quick Entry','qid',null, QE_SUPPINV, true);
 
                 $qid = get_quick_entry(get_post('qid'));
@@ -321,12 +321,12 @@ class PurchasesInvoice
                     unset($_POST['totamount']); // enable default
                     $Ajax->activate('totamount');
                 }
-                col_start(3);
+                // col_start(3);
                 $amount = input_num('totamount', $qid['base_amount']);
                 input_money($qid['base_desc'], 'amount',$amount);
 //                 echo "<input class='amount' type='text' name='totamount' size='7' maxlength='12' dec='$dec' value='$amount'>&nbsp;";
 
-                col_start(1,' class="text-right" ');
+                // col_start(1,' class="text-right" ');
                 submit_bootstrap('go', _("Go"),false, true);
 //                 submit('go', _("Go"), true, false, true);
                 row_end();
