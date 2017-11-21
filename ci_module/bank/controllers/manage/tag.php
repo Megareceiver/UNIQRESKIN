@@ -65,7 +65,7 @@ class BankManageTag
     private function detail()
     {
         row_start('justify-content-md-center');
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
 
         if ($this->selected_id != - 1) { // We've selected a tag
             if ($this->mode == 'Edit') {

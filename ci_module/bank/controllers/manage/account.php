@@ -95,7 +95,7 @@ class BankManageAccount
         global $bank_account_types;
 
         row_start('justify-content-md-center');
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
 
         $is_used = $this->selected_id != - 1 && key_in_foreign_table($this->selected_id, 'bank_trans', 'bank_act');
 
