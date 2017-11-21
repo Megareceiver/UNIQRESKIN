@@ -14,13 +14,12 @@ class SupplierManageSupplier
         box_start("");
         if (db_has_suppliers()){
             row_start();
-            col_start(9);
+            col_start(8,"col-md-8 col-md-offset-2");
             supplier_list_bootstrap(_("Select a supplier"), 'supplier_id', null,_('New supplier'), true, check_value('show_inactive'));
-            col_start(3);
+            // col_start(3);
             bootstrap_set_label_column(6);
             check_bootstrap(_("Show inactive"), 'show_inactive', null, true);
-            col_end();
-            row_end();
+
             if (get_post('_show_inactive_update')) {
                 $Ajax->activate('supplier_id');
                 set_focus('supplier_id');
@@ -64,6 +63,8 @@ class SupplierManageSupplier
                 include_once(ROOT."/purchasing/inquiry/po_search_completed.php");
                 break;
         };
+            col_end();
+            row_end();
 
         tabbed_content_end();
         hidden('popup', @$_REQUEST['popup']);
