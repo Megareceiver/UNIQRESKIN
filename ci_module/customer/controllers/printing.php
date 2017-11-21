@@ -26,7 +26,7 @@ class CustomerPrinting {
         }
         $report_type = $this->ci->finput->array2options(array('outstanding'=>'Only Outstanding','period'=>'Outstanding With Period Transaction'));
 
-
+        col_start(12,"col-md-12 col-md-offset-3");
         $this->report->fields = array(
             'customer'=>array('value'=>'','type'=>'CUSTOMER','title'=>'Customer','value'=>get_cookie('customer')),
             'start_date' => array('type'=>'qdate','title'=>_('Start Date'),'value'=>begin_month() ),
@@ -38,6 +38,7 @@ class CustomerPrinting {
             'comments'=> array('type'=>'TEXTBOX','title'=>'Comments' ),
             'orientation'=>array('type'=>'orientation','title'=>_('Orientation')),
         );
+
 
         $this->report->form('Print Statements');
     }
