@@ -94,7 +94,7 @@ class CrmCategory
         }
 
         row_start('justify-content-md-center');
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
 
         if ( $this->mode == 'Edit' && $myrow['system']) {
             input_label_bootstrap( _("Contact Category Type"), 'type' );
