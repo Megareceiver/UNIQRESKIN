@@ -65,7 +65,7 @@ class MaintenanceVoid
 
     private function filter()
     {
-        col_start(6);
+        col_start(8,"col-md-8 col-md-offset-2");
         systypes(_("Type:"), 'filterType', null, true, $this->not_implemented);
         if (list_updated('filterType'))
             $selected_id = - 1;
@@ -75,11 +75,11 @@ class MaintenanceVoid
         if (! isset($_POST['ToTransNo']))
             $_POST['ToTransNo'] = "999999";
 
-        col_start(2);
+        // col_start(2);
         input_text(_("from"), 'FromTransNo');
-        col_start(2);
+        // col_start(2);
         input_text(_("to"), 'ToTransNo');
-        col_start(2);
+        // col_start(2);
         bootstrap_set_label_column(1);
         submit('ProcessSearch', _("Search"), true, '', 'default', 'search');
     }
@@ -130,8 +130,7 @@ class MaintenanceVoid
     {
         bootstrap_set_label_column(2);
         row_start('justify-content-md-center');
-        col_start(8);
-
+        col_start(8,"col-md-8 col-md-offset-2");
         if ($this->selected_id != - 1) {
             hidden('trans_no', $this->selected_id);
             hidden('selected_id', $this->selected_id);

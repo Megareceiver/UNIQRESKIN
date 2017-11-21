@@ -31,7 +31,7 @@ class MaintenanceTransactions
 
     private function filter()
     {
-        col_start(6);
+        col_start(8,"col-md-8 col-md-offset-2");
         systypes(_("Type:"), 'filterType', null, true);
         // if (list_updated('filterType'))
         // $selected_id = - 1;
@@ -41,11 +41,11 @@ class MaintenanceTransactions
         if (! isset($_POST['ToTransNo']))
             $_POST['ToTransNo'] = "999999";
 
-        col_start(2);
+        // col_start(2);
         input_text(_("from"), 'FromTransNo');
-        col_start(2);
+        // col_start(2);
         input_text(_("to"), 'ToTransNo');
-        col_start(2);
+        // col_start(2);
         bootstrap_set_label_column(1);
         submit('ProcessSearch', _("Search"), true, '', 'default', 'search');
     }
