@@ -17,13 +17,13 @@ class SetupSystemReference
         box_start("Next Reference");
 
         row_start();
-        col_start(6);
+        col_start(8,"col-md-8 col-md-offset-2");
 
         $systypes = get_systypes();
         $i = 0;
         while ($type = db_fetch($systypes)) {
             if ($i ++ == ST_CUSTCREDIT) {
-                col_start(6);
+                col_start(8,"col-md-8 col-md-offset-2");
             }
             input_text($systypes_array[$type["type_id"]], 'id' . $type["type_id"],  $type["next_reference"]);
         }

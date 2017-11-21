@@ -30,7 +30,7 @@ class SetupSystemDisplay
 
         // table_section(1);
         row_start();
-        col_start(6);
+        col_start(12,"col-md-4 col-md-offset-1");
         fieldset_start(_("Decimal Places"));
 
         numbers_list(_("Prices"), 'prices_dec', user_price_dec(), 0, 10);
@@ -70,7 +70,7 @@ class SetupSystemDisplay
 
         languages_bootstrap(_("Language"), 'language', $_POST['language']);
 
-        col_start(6);
+        col_start(12,"col-md-4 col-md-offset-1");
         fieldset_start(_("Miscellaneous"));
 
         check_bootstrap("Show hints for new users", 'show_hints', user_hints());

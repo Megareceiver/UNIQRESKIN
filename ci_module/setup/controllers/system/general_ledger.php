@@ -93,7 +93,7 @@ class SetupSystemGeneralLedger
 
         bootstrap_set_label_column(5);
         row_start();
-        col_start(6);
+        col_start(12,"col-md-4 col-md-offset-1");
         // ---------------
         if ( config_ci('kastam') ) {
             fieldset_start(_("Company GST Registration Date"));
@@ -163,7 +163,7 @@ class SetupSystemGeneralLedger
 
         // ----------------
 
-        col_start(6);
+        col_start(12,"col-md-4 col-md-offset-1");
 
         fieldset_start(_("Department Defaults"));
         input_text_addon_bootstrap(_("Department Required By After"), 'default_dim_required', $_POST['default_dim_required'], _("days"));
