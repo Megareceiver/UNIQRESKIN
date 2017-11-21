@@ -17,7 +17,7 @@ class ManageExchangeRate
             $_POST['curr_abrev'] = get_company_pref('curr_default');
 
         row_start('justify-content-md-center');
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
         currency_bootstrap("Select a currency", 'curr_abrev',null,true);
         col_end();
         row_end();

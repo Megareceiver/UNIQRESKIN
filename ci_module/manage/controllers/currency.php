@@ -79,8 +79,7 @@ class ManageCurrency
     {
         row_start('justify-content-md-center');
         bootstrap_set_label_column(4);
-        col_start(8);
-
+        col_start(8,"col-md-8 col-md-offset-2");
         if ($this->selected_id != '')
         {
             if ( $this->mode == 'Edit') {
