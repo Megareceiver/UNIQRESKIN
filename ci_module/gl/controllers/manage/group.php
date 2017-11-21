@@ -84,7 +84,7 @@ class GlManageGroup
     {
         row_start('justify-content-center');
 
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
 
         // -----------------------------------------------------------------------------------
 

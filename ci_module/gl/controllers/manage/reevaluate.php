@@ -21,7 +21,7 @@ class GlManageReevaluate
 
         box_start("");
         row_start();
-        col_start(8, 'class="col-md-offset-2"');
+        col_start(8,"col-md-8 col-md-offset-2");
 
 //         date_row(_("Date for Revaluation:"), 'date', '', null, 0, 0, 0, null, true);
         input_date_bootstrap('Date for Revaluation','date');

@@ -18,10 +18,10 @@ class GlManageAccount
         {
             row_start('justify-content-md-center');
 
-            col_start(6);
+            col_start(8,"col-md-8 col-md-offset-2");
             gl_accounts_bootstrap(null, 'AccountList', null, false, false,
             _('New account'), true, check_value('show_inactive'));
-            col_start(2);
+            col_start(8,"col-md-8 col-md-offset-2");
             bootstrap_set_label_column(9);
             check_bootstrap( _("Show inactive:"), 'show_inactive', null, true);
             bootstrap_set_label_column(NULL);
@@ -62,7 +62,7 @@ class GlManageAccount
     private function detail()
     {
 
-        col_start(8,'class="col-md-offset-2"');
+        col_start(8,"col-md-8 col-md-offset-2");
 
         if ($this->selected_id != "")
         {
