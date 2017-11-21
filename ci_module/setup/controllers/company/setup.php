@@ -63,7 +63,8 @@ class SetupCompanySetup
         $_POST['del_coy_logo'] = 0;
         $this->bootstrap->label_column = 5;
         row_start();
-        $this->bootstrap->col_start(6);
+        col_start(8,"col-md-8 col-md-offset-2");
+        // $this->bootstrap->col_start(6);
             input_text_bootstrap( "Company Name", 'coy_name', $value = null, $title = null, $submit_on_change = false, $size = NULL, $max = NULL,'To appear on reports');
             input_textarea_bootstrap(_("Address"), 'postal_address', $_POST['postal_address']);
             input_text_bootstrap( "Country", 'domicile');
@@ -104,7 +105,7 @@ class SetupCompanySetup
                 </div>
             </div>';
 
-        col_start(6,'style="overflow:hidden;"');
+        // col_start(6,'style="overflow:hidden;"');
         input_label_bootstrap(_("Company Logo"),null, $myrow['coy_logo']);
         file_bootstrap(_("New Company Logo"), 'pic','(jpg|png)','pic');
         check_bootstrap(_("Delete Company Logo"), 'del_coy_logo', $_POST['del_coy_logo']);
@@ -137,6 +138,7 @@ class SetupCompanySetup
         //submit('update', _("Update"), true, '', 'default',"save");
         submit('update', _("Update"), true, '', false ,"save");
         $this->bootstrap->box_end();
+        col_end();
         end_form();
         // -------------------------------------------------------------------------------------------------
 

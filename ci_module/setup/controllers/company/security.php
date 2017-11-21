@@ -24,7 +24,7 @@ class SetupCompanySecurity
         start_form();
         row_start('justify-content-md-center');
 
-        col_start(6);
+        col_start(8,"col-md-8 col-md-offset-2");
         $this->bootstrap->label_column = 2;
         security_roles_bootstrap(_("Role"), 'role', null, true, true, check_value('show_inactive'));
 
@@ -41,7 +41,7 @@ class SetupCompanySecurity
 
             fieldset_start("Role Information");
             row_start('justify-content-md-center');
-            col_start(8);
+            col_start(8,"col-md-8 col-md-offset-2");
                 input_text_bootstrap(_("Role name"), 'name');
                 input_text_bootstrap(_("Role description"), 'description');
                 input_text_bootstrap(_("Role name"), 'name');
@@ -51,7 +51,7 @@ class SetupCompanySecurity
             col_end();
             echo "<hr>";
             row_start('justify-content-md-center');
-            col_start(8,'class="fieldset_level2" ',false);
+            col_start(8,"col-md-8 col-md-offset-2");
 
                 $this->bootstrap->label_column = 9;
                 $this->access_role();
