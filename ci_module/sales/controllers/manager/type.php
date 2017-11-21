@@ -95,7 +95,7 @@ class SalesManagerType
         } else {
             $_POST['factor'] = number_total(1);
         }
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
         input_text_bootstrap("Sales Type Name", 'sales_type');
         input_money('Calculation factor','factor',input_val('factor'));
         check_bootstrap('Tax included','tax_included');

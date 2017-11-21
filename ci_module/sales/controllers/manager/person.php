@@ -96,7 +96,7 @@ class SalesManagerPerson
             $_POST['provision2'] = percent_format(0);
         }
 
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
         input_text_bootstrap("Sales person name", 'salesman_name');
         input_text_bootstrap("Telephone number", 'salesman_phone');
         input_text_bootstrap("Fax number", 'salesman_fax');

@@ -81,7 +81,7 @@ class SalesManagerCreditStatus
             hidden('selected_id', $this->id);
         }
 
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
         input_textarea_bootstrap('Description','reason_description');
 //         text_row_ex(_("Description:"), 'reason_description', 50);
 
