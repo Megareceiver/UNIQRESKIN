@@ -313,10 +313,10 @@ function box_footer_show_active($show_back = false)
  * red, white, dark, blue, green, grey
  * blue-madison, blue-chambray, blue-ebonyclay, blue-hoki, blue-steel, blue-soft
  * blue-dark, blue-sharp, blue-oleo
- * 
- * green-meadow, green-seagreen, green-turquoise, green-haze, green-jungle, 
+ *
+ * green-meadow, green-seagreen, green-turquoise, green-haze, green-jungle,
  * green-soft, green-dark, green-sharp, green-steel
- * 
+ *
  * grey-steel, grey-cararra
  */
 function portlet_start($title= NULL,$color='red',$class= NULL){
@@ -325,4 +325,3 @@ function portlet_start($title= NULL,$color='red',$class= NULL){
 function portlet_end(){
     get_instance()->bootstrap->portlet_end();
 }
-

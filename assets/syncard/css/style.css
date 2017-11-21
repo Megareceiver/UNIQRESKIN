@@ -14,28 +14,41 @@ body { font-family: Quicksand !important; }
 	padding: 15px;
 }
 
+.page-title { position: relative; }
+.page-title h1 {
+  text-align: center;
+  padding-bottom: 45px;
+  border-bottom: 1px dashed #CCC;
+}
 
+.container{
+	/*background: #4684A3;*/
+	margin: unset;
+	display: block;
+	width: 100%;
+	padding: 10px;
+}
 
 /* RESPONSIVE ================================================================ */
 /* extra small */
 @media (max-width: 767px) {
-	
+
 }
 
 /* extra small to small */
 @media (max-width: 991px) {
-	
+
 }
 
 /* small */
 @media (min-width: 768px) and (max-width: 991px) {
-	
+
 }
 /* medium */
 @media (min-width: 992px) and (max-width: 1199px) {
-	
+
 }
 /* large */
 @media (min-width: 1200px) {
-	
+
 }

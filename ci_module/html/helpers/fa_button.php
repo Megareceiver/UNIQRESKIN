@@ -156,7 +156,7 @@ function submit($name, $value, $echo=true, $title=false, $atype=false, $icon=fal
     }
 
 
-    $submit_str = "<button $aspect "._parse_attributes($attributes)." >".$icon_show.$value."</button>\n";
+    $submit_str = "<button $aspect "._parse_attributes($attributes)." >".$value."</button>\n";
 
     if ($echo)
 		echo $submit_str;

@@ -9,7 +9,7 @@ class HtmlInquiryActionsSmarty{
             $button_add_new = $params->tpl_vars['button_add_new']->value;
 
             $icon = '<i class="fa fa-plus"></i>';
-            return anchor($button_add_new['uri'],$icon." ".$button_add_new['title'],'class="btn green ajaxsubmit"');
+            return anchor($button_add_new['uri'],$icon,'class="btn green ajaxsubmit"');
         }
     }
 

@@ -5,13 +5,18 @@
 		<!-- </div> -->
 		<div class="page-footer">
 			<div class="container">
-				<div>Copyright 2016 &copy; {$power_by} &nbsp;|&nbsp;<a target="_blank" href="{$power_url}">{$power_company}</a></div>
-				<div class="shortcut_key hidden-sm-down">{$phelp} </div>
+				<div>Copyright 2016 &copy; {$power_by}</div>
+				<div class="shortcut_key hidden-sm-down">
+					{if $phelp != ""}
+						&nbsp;|&nbsp;
+						{$phelp}
+					{/if}
+				</div>
 				<div class="scroll-to-top pull-right">
 					<i class="icon-arrow-up"></i>
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 </div>

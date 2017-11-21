@@ -22,32 +22,29 @@ class SalesInquirySalesOrders
         }
 
         /*dropdown*/
-       
-        echo "<div class='col-md-3 dropdown_search' style='display: ;'>";
+
+        // echo "<div class='col-md-3 dropdown_search' style='display: ;'>";
 
             $this->fillter();
 
-        echo '</div>';
-           
-        echo '<div id="table-flex" name="9" class="col-md-9" style="margin-bottom: 10px;">';
-            echo '<div style="text-align: left; margin: 10px;">';
-                echo '<a id="dropdown_search"><i class="fa fa-filter"></i><span>Hide search</span></a>';
-            echo '</div>';
+        // echo '</div>';
+        //
+        // echo '<div id="table-flex" name="9" class="col-md-9" style="margin-bottom: 10px;">';
+        //     echo '<div style="text-align: left; margin: 10px;">';
+        //         echo '<a id="dropdown_search"><i class="fa fa-filter"></i><span>Hide search</span></a>';
+        //     echo '</div>';
             $this->transactions_table();
-        echo '</div>';
-        echo '<div class="clearfix"></div>';
-            if (!@$_GET['popup']){
-                echo '<div class="col-md-12">';
-                    box_footer_start();
-                    submit('Update', _("Update"), true, '', true);
-                    box_footer_end();
-                    box_end();
-                    end_form();
-                echo '</div>';
-            }
-
-
-
+        // echo '</div>';
+        // echo '<div class="clearfix"></div>';
+        if (!@$_GET['popup']){
+            // echo '<div class="col-md-12">';
+                box_footer_start();
+                submit('Update', _("Update"), true, '', true);
+                box_footer_end();
+                box_end();
+                end_form();
+            // echo '</div>';
+        }
     }
 
     private function get_val()
@@ -95,8 +92,8 @@ class SalesInquirySalesOrders
 
             $Ajax->activate('orders_tbl');
         }
-        
-        
+
+
         row_start('inquiry-filter justify-content-center');
         col_start(12,'col-md-12');
         input_text_bootstrap( '#', 'OrderNumber', '', null, true);
@@ -127,7 +124,7 @@ class SalesInquirySalesOrders
             if( !isMobile() ){
                 bootstrap_set_label_column(6);
             }
-            
+
             check_bootstrap('Show All', 'show_all');
         }
 

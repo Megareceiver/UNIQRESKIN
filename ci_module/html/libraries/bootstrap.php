@@ -37,7 +37,7 @@ class HtmlBootstrapLib
         if( isset($this->mt_list_started) AND $this->mt_list_started ){
             $this->mt_list_end();
         }
-        
+
         if( isset($this->portlet_started) AND $this->portlet_started ){
             $this->portlet_end();
         }
@@ -297,7 +297,7 @@ class HtmlBootstrapLib
         echo "<div " . _parse_attributes($attributes) . " >";
 
         if( $show_back ){
-            echo anchor(get_instance()->url_back,'<i class="fa fa-rotate-left"></i>  Back','class="btn green btn_left" ');
+            echo anchor(get_instance()->url_back,'Back','class="btn" ');
         }
 
         $this->tb_footer_started = true;
@@ -408,7 +408,7 @@ class HtmlBootstrapLib
         }
     }
 
-    
+
     /*
      * portlet
      */
@@ -417,21 +417,21 @@ class HtmlBootstrapLib
         $html = '<div class="portlet box '.$corlor.'">';
         $html.= '<div class="portlet-title"><div class="caption bold">'.$title.'</div></div>';
         $html.= '<div class="portlet-body">';
-        
+
         if( $this->portlet_started ){
             $this->portlet_end();
         }
-        
-        
+
+
         $this->portlet_started = true;
         echo $html;
     }
-    
+
     function portlet_end(){
         if( $this->portlet_started ){
             echo "</div></div>\n";
             $this->portlet_started = false;
         }
-      
+
     }
 }

@@ -59,27 +59,27 @@ class SalesInquiryTransactions
     {
         row_start('inquiry-filter justify-content-center');
         if (! @$_GET['popup']) {
-            col_start(12,'col-md-3');
+            col_start(12,'col-md-12');
             customer_list_bootstrap( _("Customer"), 'customer_id', input_val('customer_id'), false, ! @$_GET['popup']);
         }
-        col_start(12,'col-md-2');
+        col_start(12,'col-md-12');
         input_date_bootstrap("From", 'TransAfterDate', NULL, false, false, 0, - 1);
 
-        col_start(12,'col-md-2');
+        col_start(12,'col-md-12');
         input_date_bootstrap("To", 'TransToDate', NULL);
 
-        col_start(12,'col-md-2');
+        col_start(12,'col-md-12');
         $fillter_type_title = isMobile() ? "Tran Type" :NULL;
         cust_allocations_bootstrap( $fillter_type_title, 'filterType', input_val('filterType'), true);
 
-        col_start(12,'col-md-1');
+        col_start(12,'col-md-12');
         if( !isMobile() ){
             bootstrap_set_label_column(7);
         }
-        
+
         check_bootstrap('Voided', 'voided');
 
-        col_start(12,'col-md-1');
+        col_start(12,'col-md-12');
         submit_bootstrap('RefreshInquiry', _("Search"), _('Refresh Inquiry'), 'default','search');
         row_end();
     }
