@@ -86,7 +86,7 @@ class ManagePrinter
         }
 
         row_start('justify-content-md-center');
-        col_start(8, 'class="col-md-offset-2"');
+        col_start(8,"col-md-8 col-md-offset-2");
 
         input_text(_("Printer Name"), 'name');
         input_text(_("Printer Description"), 'descr');

@@ -72,7 +72,7 @@ class ManagePaymentTerm
     {
         div_start('edits');
         row_start('justify-content-md-center');
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
 
         // start_table(TABLESTYLE2);
 

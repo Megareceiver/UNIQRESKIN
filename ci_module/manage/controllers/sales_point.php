@@ -75,14 +75,13 @@ class ManageSalesPoint
         row_start('justify-content-md-center');
         $cash = db_has_cash_accounts();
         if (! $cash){
-            col_start(12);
+            col_start(8,"col-md-8 col-md-offset-2");
             display_heading2(_("To have cash POS first define at least one cash bank account."));
         }
         bootstrap_set_label_column(4);
 
 
-        col_start(8);
-
+        col_start(8,"col-md-8 col-md-offset-2");
 
 
 
