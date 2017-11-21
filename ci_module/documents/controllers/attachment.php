@@ -15,14 +15,18 @@ class Documentsattachment
         start_form(true);
 
         box_start("");
+        col_start(8,"col-md-8 col-md-offset-2");
         systypes(_("Type:"), 'filterType', null, true);
         if (list_updated('filterType'))
             $this->selected_id = - 1;
         ;
+        col_end();
 
+        col_start(12);
         row_start(null, 'style="padding-top:15px"');
         $this->items_list($_POST['filterType']);
         row_end();
+        col_end();
 
         box_start();
         $this->item_detail();
@@ -110,7 +114,7 @@ class Documentsattachment
     {
 //         row_start();
         row_start('justify-content-md-center');
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
         if ($this->selected_id != - 1) {
             if ( $this->mode == 'Edit') {
                 $row = get_attachment($this->selected_id);
