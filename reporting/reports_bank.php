@@ -94,8 +94,10 @@ if( !$_POST ){
     include_once($path_to_root . "/reporting/includes/reports_classes.inc");
     $reports = new BoxReports;
 }
+
 $reports->addReportClass(_('General Ledger'), RC_GL);
 $reports->addReport(RC_GL, $_REQUEST['REP_ID'], _('List of '.$page),$table);
+
 
 add_custom_reports($reports);
 
@@ -105,6 +107,7 @@ $bootstrap = get_instance()->bootstrap;
 // bug($reports->report_current);die;
 // $bootstrap->box_start("");
 start_form($multi = false, $dummy = false, $action = "", $name = "", 'target="_blank" class="report" ');
+col_start(8,"col-md-10 col-md-offset-3");
 if($type == '1' || $type == '2' || $type == '4'){
 	    	echo "<a class='btn green ajaxsubmit' href=".site_url().'report/report/manage_template/'.$type." >Manage Template ".access_string($reports->report_current->name, true)."</a>";
 	    }
@@ -118,6 +121,7 @@ echo $reports->ci_display();
 // echo hidden('REP_ID', $reports->report_current->id, false);
 // $bootstrap->box_footer_end();
 // $bootstrap->fieldset_end();
+col_end();
 end_form();
 // $bootstrap->box_end();
 
