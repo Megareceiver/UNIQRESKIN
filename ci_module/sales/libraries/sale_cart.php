@@ -722,7 +722,7 @@ class SalesSaleCartLib
 
         if ( $order->payment_terms['cash_sale'] ) { // Direct payment sale
             $Ajax->activate('items_table');
-            col_start(12,'col-md-8');
+            col_start(8,"col-md-8 col-md-offset-2");
             locations_bootstrap(_("Deliver from Location"), 'Location', null, false, true);
             if (list_updated('Location'))
                 $Ajax->activate('items_table');
