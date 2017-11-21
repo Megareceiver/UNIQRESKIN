@@ -42,15 +42,13 @@ class SalesTranCredit
     private function credit_header(){
         $cart = $_SESSION['Items'];
         box_start(); row_start();
-        col_start(3);
+        col_start(8,"col-md-8 col-md-offset-2");
         bootstrap_set_label_column(4);
         input_label(_("Customer"), null, $cart->customer_name);
         input_label(_("Branch"), null, get_branch_name($cart->Branch));
         input_label(_("Currency"), null, $cart->customer_currency);
 
-        
-        col_start(5);
-        bootstrap_set_label_column(5);
+        // bootstrap_set_label_column(5);
         //	if (!isset($_POST['ref']))
         //		$_POST['ref'] = $Refs->get_next(11);
         
@@ -73,7 +71,7 @@ class SalesTranCredit
         //	label_cell(_("Sales Type"), "class='tableheader2'");
         //	sales_types_list_cells(null, 'sales_type_id', $_POST['sales_type_id']);
         
-        col_start(4);
+        // col_start(4);
         input_label(_("Invoice Date"), null, $_SESSION['Items']->src_date);
         //         date_row(_("Credit Note Date"), 'CreditDate', '', $_SESSION['Items']->trans_no==0, 0, 0, 0, "class='tableheader2'");
         input_date_bootstrap(_("Credit Note Date"), 'CreditDate');
@@ -153,7 +151,7 @@ class SalesTranCredit
         }
         div_start('options');
         row_start("justify-content-center");
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
 //             start_table(TABLESTYLE2);
     
         credit_types(_("Credit Note Type"), 'CreditType',null, true);
