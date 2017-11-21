@@ -57,11 +57,11 @@ class CustomerManagerCustomer
 
         if (db_has_customers()) {
             row_start();
-            col_start(8);
+            col_start(8,"col-md-8 col-md-offset-2");
 
             customer_list_bootstrap('Select a customer', 'customer_id', null, $submit_on_change = true, $editkey = false, _('New customer'), check_value('show_inactive'));
 
-            col_start(3);
+            // col_start(3);
             $this->bootstrap->label_column = 8;
             check_bootstrap(_("Show inactive"), 'show_inactive', null, true);
 
@@ -70,7 +70,7 @@ class CustomerManagerCustomer
                 set_focus('customer_id');
             }
             // col_end(true);
-            row_end();
+            
         } else {
             hidden('customer_id');
         }
@@ -100,7 +100,7 @@ class CustomerManagerCustomer
                 $this->customer_id
             )
         ));
-        bootstrap_set_label_column(3);
+        // bootstrap_set_label_column(3);
         switch (get_post('_tabs_sel')) {
             default:
             case 'settings':
