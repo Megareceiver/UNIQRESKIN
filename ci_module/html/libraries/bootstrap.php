@@ -216,7 +216,7 @@ class HtmlBootstrapLib
 
         $html = NULL;
         if( $new_row ){
-            $html.= '<div class="row"><div class="col-md-offset-2 col-md-8">';
+            $html.= '<div class="row"><div class="col-md-offset-3 col-md-6">';
         }
 
         $html.= '<div class="clearfix portlet light portlet-fit portlet-form" '.(strlen($box_id) > 0 ? 'id="'.$box_id.'"' : NULL).' >';
@@ -297,7 +297,7 @@ class HtmlBootstrapLib
         echo "<div " . _parse_attributes($attributes) . " >";
 
         if( $show_back ){
-            echo anchor(get_instance()->url_back,'Back','class="btn" ');
+            echo anchor(get_instance()->url_back,'Home','class="btn" ');
         }
 
         $this->tb_footer_started = true;

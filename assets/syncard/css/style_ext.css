@@ -79,10 +79,10 @@
 .form-actions{
 	border-bottom: 1px dashed #ADADAD;
 	margin-top: 20px;
-	margin-bottom: 38px;
 	padding-bottom: 45px;
 	text-align: center;
 }
+
 
 .add_new_inquiry a,
 .form-actions a {
@@ -116,6 +116,11 @@
 	background: #FC9A1A;
 	height: 33px;
 	margin-right: 15px;
+}
+
+.form-actions a:last-child,
+.form-actions button:last-child {
+    margin-right: 0;
 }
 
 .form-body{
@@ -215,6 +220,31 @@ kbd{
 .shortcut_key > kbd:nth-child(5) {
     background-color: #049A5C;
 }
+
+legend, .caption {
+	padding-bottom:  25px;
+	text-align: center;
+}
+
+.caption {
+	padding-top: 15px;
+}
+
+.inquiry-filter {
+	margin-bottom: 25px;
+}
+
+.inquiry-filter div {
+	width: 100%;
+}
+
+#filterToggle {
+	border: 1px solid #BBB;
+	border-bottom: none;
+	margin-bottom: -1px;
+	background-color: #FFF;
+}
+
 /* RESPONSIVE ================================================================ */
 /* extra small */
 @media (max-width: 767px) {

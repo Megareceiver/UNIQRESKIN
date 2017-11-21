@@ -33,6 +33,9 @@ print_remittance();
 print_paymentvoucher();
 print_depositvoucher();
 print_transfervoucher();
+
+//ui hack
+filter_hack();
 });
 
 function SetupJav(){
@@ -929,4 +932,26 @@ function dropdown_menu(){
 	$('body').on("click", function(e){
 	    $('.dropdown-menu .dropdown-submenu').removeClass('open');
  	});
+}
+
+function filter_hack(){
+	if($(".inquiry-filter").length > 0){
+		var button = 
+		'<div class="col-xs-4 col-xs-offset-4 text-center margin-top margin-bottom" style="border-bottom:1px solid #CCC">' +
+			'<button type="button" class="btn btn-xs" id="filterToggle">Show filter</button>' +
+		'</div><div class="clearfix"></div>';
+		$(".inquiry-filter").attr('style', "display:none");
+		$(".inquiry-filter:first-child").before(button);
+
+		$('#filterToggle').unbind().on('click', function(){
+			show_filter();
+		});
+	}
+}
+
+function show_filter(){
+	$(".inquiry-filter").slideToggle();
+	if($(".inquiry-filter").is(":visible")){
+		$("#filterToggle").html("Hide Filter");
+	}
 }
