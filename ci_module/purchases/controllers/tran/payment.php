@@ -36,7 +36,7 @@ class PurchasesTranPayment
 
         row_start();
 
-        col_start(4);
+        col_start(8,"col-md-8 col-md-offset-2");
         bootstrap_set_label_column(5);
         supplier_list_bootstrap(_("Payment To"), 'supplier_id', null, false, true);
 
@@ -61,7 +61,7 @@ class PurchasesTranPayment
         bank_balance_label($_POST['bank_account']);
 
 
-        col_start(4);
+        // col_start(4);
         bootstrap_set_label_column(4);
 
         input_date_bootstrap(_("Date Paid"), 'DatePaid', '', false, true);
@@ -69,7 +69,7 @@ class PurchasesTranPayment
         input_ref('Reference', 'ref',$Refs->get_next(ST_SUPPAYMENT));
         input_text('Cheque No.', 'cheque');
 
-        col_start(4);
+        // col_start(4);
 
         $comp_currency = get_company_currency();
         $supplier_currency = $_SESSION['alloc']->set_person($_POST['supplier_id'], PT_SUPPLIER);
@@ -96,7 +96,7 @@ class PurchasesTranPayment
 
         row_start('justify-content-md-center');
         bootstrap_set_label_column(3);
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
             input_money('Amount of Discount', 'discount');
             input_money('Amount of Payment', 'amount');
             input_textarea_bootstrap('Memo', 'memo_');
