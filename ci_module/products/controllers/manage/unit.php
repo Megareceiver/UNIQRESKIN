@@ -29,7 +29,7 @@ class ProductsManageUnit
 
     private function listview()
     {
-
+        
         $result = get_all_item_units(check_value('show_inactive'));
 
         start_table(TABLESTYLE, 'class="table table-striped table-bordered table-hover tablestyle"');
@@ -61,7 +61,7 @@ class ProductsManageUnit
     private function detail()
     {
         row_start();
-        col_start(8,'class="col-md-offset-2"');
+        col_start(8,"col-md-8 col-md-offset-2");
 
         if ($this->selected_id != '')
         {

@@ -29,7 +29,7 @@ class ProductsManageSalesKit
         box_start("");
 
         row_start();
-        col_start(9);
+        col_start(8,"col-md-8 col-md-offset-2");
         sales_kits('Select a sale kit', 'item_code', null, _('New kit'), true);
         col_end();
         row_end();
@@ -44,7 +44,7 @@ class ProductsManageSalesKit
             col_start(12, 'style="padding: 15px;"');
             $this->kit_items($selected_kit);
 
-            col_start(9, 'style="padding: 5px;"');
+            col_start(8,"col-md-8 col-md-offset-2");
 
             $props = get_kit_props($_POST['item_code']);
             // Kit selected so display bom or edit component
@@ -64,9 +64,11 @@ class ProductsManageSalesKit
         }
 
         if ($this->mode == 'Edit') {
+            col_start(8,"col-md-8 col-md-offset-2");
             $myrow = get_item_code($this->selected_id);
             $_POST['component'] = $myrow["stock_id"];
             $_POST['quantity'] = number_format2($myrow["quantity"], get_qty_dec($myrow["stock_id"]));
+            col_end();
         }
         hidden("selected_id", $this->selected_id);
 
@@ -121,7 +123,7 @@ class ProductsManageSalesKit
 
     private function kit_item()
     {
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2",false);
         bootstrap_set_label_column(NULL);
 
         sales_local_items(_("Component:"), 'component', null, false, true);

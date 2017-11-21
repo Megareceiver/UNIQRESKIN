@@ -23,13 +23,13 @@ class ProductsManageProduct
 
         if (db_has_stock_items()) {
             row_start();
-            col_start(12,'col-md-9');
+            col_start(8,"col-md-8 col-md-offset-2");
             if( !isMobile() ){
                 bootstrap_set_label_column(2);
             }
             
             stock_items_bootstrap(_("Select an item"), 'stock_id', input_post('stock_id'), _('New item'), true, check_value('show_inactive'));
-            col_start(12,'col-md-3');
+            // col_start(12,'col-md-3');
             $new_item = get_post('stock_id') == '';
             if( !isMobile() ){
                 bootstrap_set_label_column(6);
@@ -49,9 +49,7 @@ class ProductsManageProduct
         div_start('details');
         if (! $this->id)
             unset($_POST['_tabs_sel']); // force settings tab for new customer
-
-        col_start(12,null,false);
-
+        col_start(12,"col-md-11 col-md-offset-1",false);
         tabs_bootstrap('tabs', array(
             'settings' => array(
                 _('&General settings'),
@@ -136,7 +134,7 @@ class ProductsManageProduct
         col_end();
         div_end();
 
-
+        col_start(12,"col-md-12");
         box_footer_start();
         div_start('controls');
         switch (get_post('_tabs_sel')) {
@@ -173,10 +171,9 @@ class ProductsManageProduct
         div_end();
         box_footer_end();
 
-        box_end();
-
         hidden('popup', @$_REQUEST['popup']);
         end_form();
+        box_end();
     }
 
     function check_data_requirement(){

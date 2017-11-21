@@ -84,7 +84,7 @@ class ProductsManageCategorie
 
     private function categorie_item()
     {
-
+        
         if ($this->selected_id != - 1) {
             if ($this->mode == 'Edit') {
                 // editing an existing item category
@@ -131,8 +131,8 @@ class ProductsManageCategorie
             }
 
         div_start('details');
-        col_start(12);
-        bootstrap_set_label_column(3);
+        col_start(8,"col-md-8 col-md-offset-2");
+        // bootstrap_set_label_column(3);
 
         input_text_bootstrap(_("Category Name:"), 'description');
 

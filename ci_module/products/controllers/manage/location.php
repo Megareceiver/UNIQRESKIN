@@ -71,7 +71,7 @@ class ProductsManageLocation
     private function detail()
     {
         row_start();
-        col_start(12);
+        col_start(8,"col-md-8 col-md-offset-2");
         bootstrap_set_label_column(2);
 
         $_POST['email'] = "";

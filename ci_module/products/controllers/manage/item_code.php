@@ -21,7 +21,7 @@ class ProductsManageItemCode
         box_start("");
 
         row_start();
-        col_start(9);
+        col_start(8,"col-md-8 col-md-offset-2");
         stock_items_bootstrap("Item", 'stock_id', $_POST['stock_id'], false, true);
         col_end();
         row_end();
@@ -39,9 +39,11 @@ class ProductsManageItemCode
         box_start();
         $this->code_item();
 
+        col_start(12,"col-md-12");
         box_footer_start();
         submit_add_or_update_center($this->selected_id == - 1, '', 'both');
         box_footer_end();
+        col_end();
         box_form_end();
 
 
@@ -74,6 +76,7 @@ class ProductsManageItemCode
 
     private function codes_list()
     {
+
         $result = get_all_item_codes($_POST['stock_id']);
         start_table(TABLESTYLE, 'class="table table-striped table-bordered table-hover tablestyle"');
 
@@ -146,7 +149,7 @@ class ProductsManageItemCode
             unset($_POST);
         }
 
-        col_start(8);
+        col_start(8,"col-md-8 col-md-offset-2");
         bootstrap_set_label_column(NULL);
 
         hidden('code_id', $this->selected_id);
